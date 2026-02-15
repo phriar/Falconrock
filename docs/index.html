@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FalconRock Consulting | Government IT & Defense Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --steel: #1a2d4a;
+    --accent: #c8a44e;
+    --accent-light: #dfc06e;
+    --silver: #8a9bb5;
+    --light: #c9d4e4;
+    --white: #eef1f6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Source Serif 4', Georgia, serif; background: var(--navy); color: var(--light); overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 22, 40, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(200, 164, 78, 0.15); transition: all 0.4s ease; }
+  .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--white); display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .logo-icon { width: 36px; height: 36px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--silver); text-decoration: none; transition: color 0.3s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(26, 45, 74, 0.6) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(200, 164, 78, 0.08) 0%, transparent 50%), linear-gradient(180deg, var(--navy) 0%, var(--deep) 100%); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(30deg, rgba(200, 164, 78, 0.04) 1px, transparent 1px), linear-gradient(-30deg, rgba(200, 164, 78, 0.04) 1px, transparent 1px); background-size: 60px 60px; }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 5vw; animation: fadeUp 1s ease-out 0.3s both; }
+  .hero-badge { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease-out 0.6s forwards; }
+  .hero-badge::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
+  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.95; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; letter-spacing: -1px; }
+  .hero h1 .gold { color: var(--accent); }
+  .hero-desc { font-size: 1.15rem; line-height: 1.75; color: var(--silver); max-width: 600px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s ease-out 0.9s forwards; }
+  .hero-cta { display: inline-flex; gap: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease-out 1.1s forwards; }
+  .btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 2.5px; text-transform: uppercase; padding: 1rem 2.5rem; text-decoration: none; transition: all 0.35s ease; cursor: pointer; border: none; display: inline-block; }
+  .btn-primary { background: var(--accent); color: var(--navy); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200, 164, 78, 0.25); }
+  .btn-outline { background: transparent; color: var(--light); border: 1px solid rgba(200, 164, 78, 0.3); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-stats { position: absolute; right: 5vw; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; flex-direction: column; gap: 3rem; opacity: 0; animation: fadeUp 1s ease-out 1.3s forwards; }
+  .stat-item { text-align: right; }
+  .stat-number { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 3.5rem; color: var(--accent); line-height: 1; }
+  .stat-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--silver); margin-top: 0.3rem; }
+
+  /* SECTIONS */
+  section { padding: 7rem 5vw; position: relative; }
+  .section-header { margin-bottom: 4rem; }
+  .section-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+  .section-tag::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; color: var(--white); letter-spacing: -0.5px; line-height: 1.05; }
+
+  /* CAPABILITIES */
+  .capabilities { background: var(--deep); }
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .cap-card { padding: 2.5rem; background: linear-gradient(135deg, rgba(13, 31, 60, 0.8), rgba(26, 45, 74, 0.4)); border: 1px solid rgba(200, 164, 78, 0.08); position: relative; overflow: hidden; transition: all 0.5s ease; }
+  .cap-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0; transition: opacity 0.4s ease; }
+  .cap-card:hover { border-color: rgba(200, 164, 78, 0.2); transform: translateY(-4px); box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3); }
+  .cap-card:hover::after { opacity: 1; }
+  .cap-icon { width: 48px; height: 48px; margin-bottom: 1.5rem; color: var(--accent); }
+  .cap-card h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--white); margin-bottom: 0.8rem; }
+  .cap-card p { font-size: 0.95rem; line-height: 1.7; color: var(--silver); }
+
+  /* AI SECTION */
+  .ai-section { background: var(--navy); position: relative; }
+  .ai-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(200, 164, 78, 0.05) 0%, transparent 60%); }
+  .ai-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+  .ai-visual { display: flex; justify-content: center; align-items: center; height: 400px; position: relative; }
+  .ai-orb { width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(200, 164, 78, 0.15), transparent 70%); border: 1px solid rgba(200, 164, 78, 0.2); display: flex; align-items: center; justify-content: center; animation: pulse 4s ease-in-out infinite; position: relative; }
+  .ai-orb::before, .ai-orb::after { content: ''; position: absolute; border-radius: 50%; border: 1px solid rgba(200, 164, 78, 0.08); }
+  .ai-orb::before { inset: -30px; animation: spin 20s linear infinite; }
+  .ai-orb::after { inset: -60px; animation: spin 30s linear infinite reverse; }
+  .ai-orb-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); text-align: center; line-height: 1.4; }
+  .ai-features { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ai-feature { padding: 1.5rem 2rem; background: rgba(26, 45, 74, 0.3); border-left: 3px solid var(--accent); transition: all 0.3s ease; }
+  .ai-feature:hover { background: rgba(26, 45, 74, 0.5); transform: translateX(8px); }
+  .ai-feature h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; color: var(--white); margin-bottom: 0.4rem; }
+  .ai-feature p { font-size: 0.9rem; color: var(--silver); line-height: 1.6; }
+
+  /* HOW WE ENGAGE */
+  .engage { background: var(--deep); }
+  .engage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .engage-card { padding: 2rem; background: rgba(26, 45, 74, 0.4); border: 1px solid rgba(200, 164, 78, 0.08); border-top: 3px solid var(--accent); transition: all 0.3s ease; }
+  .engage-card:hover { border-color: rgba(200, 164, 78, 0.2); transform: translateY(-3px); }
+  .engage-card h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--white); margin-bottom: 0.5rem; }
+  .engage-card p { font-size: 0.9rem; line-height: 1.65; color: var(--silver); }
+
+  /* CLEARANCE BANNER */
+  .clearance-banner { background: linear-gradient(90deg, var(--steel), var(--deep)); padding: 4rem 5vw; display: flex; align-items: center; justify-content: center; gap: 4rem; border-top: 1px solid rgba(200, 164, 78, 0.15); border-bottom: 1px solid rgba(200, 164, 78, 0.15); }
+  .clearance-banner .shield-icon { width: 64px; height: 64px; color: var(--accent); flex-shrink: 0; }
+  .clearance-text h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.8rem; text-transform: uppercase; color: var(--white); letter-spacing: 2px; margin-bottom: 0.5rem; }
+  .clearance-text p { font-size: 1rem; color: var(--silver); line-height: 1.6; max-width: 700px; }
+
+  /* CTA */
+  .cta-section { background: var(--navy); text-align: center; position: relative; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(200, 164, 78, 0.06) 0%, transparent 60%); }
+  .cta-inner { position: relative; z-index: 1; max-width: 650px; margin: 0 auto; }
+  .cta-inner p { font-size: 1.1rem; color: var(--silver); line-height: 1.75; margin-bottom: 2.5rem; }
+
+  /* FOOTER */
+  footer { background: var(--deep); border-top: 1px solid rgba(200, 164, 78, 0.1); padding: 2.5rem 5vw; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-family: 'Barlow Condensed', sans-serif; font-weight: 400; font-size: 0.8rem; letter-spacing: 2px; color: var(--silver); }
+  footer .footer-links { display: flex; gap: 2rem; }
+  footer .footer-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--silver); text-decoration: none; transition: color 0.3s; }
+  footer .footer-links a:hover { color: var(--accent); }
+  .disclaimer { font-size: 0.7rem; color: var(--silver); opacity: 0.5; text-align: center; padding: 0 5vw 1.5rem; background: var(--deep); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 40px rgba(200, 164, 78, 0.1); } 50% { box-shadow: 0 0 80px rgba(200, 164, 78, 0.2); } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) { .cap-grid, .engage-grid { grid-template-columns: repeat(2, 1fr); } .ai-content { grid-template-columns: 1fr; } .ai-visual { height: 300px; } .hero-stats { display: none; } }
+  @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .cap-grid, .engage-grid { grid-template-columns: 1fr; } .clearance-banner { flex-direction: column; text-align: center; gap: 2rem; } section { padding: 4rem 1.5rem; } .hero-content { padding: 0 1.5rem; } .hero-cta { flex-direction: column; } footer { flex-direction: column; gap: 1rem; text-align: center; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none"><path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/><path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/><path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/></svg>
+    FalconRock
+  </a>
+  <ul class="nav-links">
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#ai">On-Prem AI</a></li>
+    <li><a href="#engage">Engagement</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Cleared Government IT Consulting</div>
+    <h1>Mission-Critical<br>IT <span class="gold">Architecture</span><br>& AI Solutions</h1>
+    <p class="hero-desc">FalconRock Consulting brings 25 years of hands-on experience to the hardest infrastructure problems in government. Virtualization, network architecture, and on-premises AI — built for classified environments where failure isn't an option.</p>
+    <div class="hero-cta">
+      <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+      <a href="about.html" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat-item"><div class="stat-number">DoD</div><div class="stat-label">Cleared Operations</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">On-Premises</div></div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities" id="capabilities">
+  <div class="section-header reveal">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Core Capabilities</h2>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card reveal">
+      <svg class="cap-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="6" y="24" width="36" height="12" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="14" r="2" fill="currentColor"/><circle cx="14" cy="30" r="2" fill="currentColor"/><line x1="20" y1="14" x2="36" y2="14" stroke="currentColor" stroke-width="2"/><line x1="20" y1="30" x2="36" y2="30" stroke="currentColor" stroke-width="2"/></svg>
+      <h3>Virtualization & VDI</h3>
+      <p>VMware, Hyper-V, and Citrix architecture for classified and unclassified networks. Enterprise-scale VDI deployments with thin client and CAC integration.</p>
+    </div>
+    <div class="cap-card reveal">
+      <svg class="cap-icon" viewBox="0 0 48 48" fill="none"><path d="M24 4L6 14V34L24 44L42 34V14L24 4Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M24 4V24M6 14L24 24M42 14L24 24" stroke="currentColor" stroke-width="2"/></svg>
+      <h3>Network Architecture</h3>
+      <p>Enterprise LAN/WAN design, cross-domain solutions, and secure enclave networking across multiple classification levels and network domains.</p>
+    </div>
+    <div class="cap-card reveal">
+      <svg class="cap-icon" viewBox="0 0 48 48" fill="none"><rect x="12" y="6" width="24" height="36" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/><path d="M24 16V24L28 28" stroke="currentColor" stroke-width="2"/></svg>
+      <h3>Systems Engineering</h3>
+      <p>Full lifecycle support from requirements through deployment. Server, storage, and compute architecture for mission-critical operations.</p>
+    </div>
+    <div class="cap-card reveal">
+      <svg class="cap-icon" viewBox="0 0 48 48" fill="none"><path d="M8 24C8 15.16 15.16 8 24 8" stroke="currentColor" stroke-width="2"/><path d="M40 24C40 32.84 32.84 40 24 40" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="8" r="3" fill="currentColor"/><circle cx="24" cy="40" r="3" fill="currentColor"/></svg>
+      <h3>On-Premises AI & ML</h3>
+      <p>Air-gapped LLM deployment, RAG pipelines, and AI toolchains that run entirely on your infrastructure. Zero cloud dependencies, zero data exposure.</p>
+    </div>
+    <div class="cap-card reveal">
+      <svg class="cap-icon" viewBox="0 0 48 48" fill="none"><path d="M24 8L28 16L36 17.5L30 23.5L31.5 32L24 28L16.5 32L18 23.5L12 17.5L20 16L24 8Z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>
+      <h3>Security & Compliance</h3>
+      <p>STIG hardening, RMF accreditation support, vulnerability management, and continuous monitoring aligned to NIST 800-53 and DISA requirements.</p>
+    </div>
+    <div class="cap-card reveal">
+      <svg class="cap-icon" viewBox="0 0 48 48" fill="none"><rect x="4" y="14" width="16" height="24" rx="2" stroke="currentColor" stroke-width="2"/><rect x="28" y="14" width="16" height="24" rx="2" stroke="currentColor" stroke-width="2"/><path d="M20 22H28M20 30H28" stroke="currentColor" stroke-width="2"/></svg>
+      <h3>Cloud & Hybrid</h3>
+      <p>IL4/IL5 cloud architectures on AWS GovCloud and Azure Government. Hybrid connectivity between on-prem enclaves and authorized cloud environments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ON-PREM AI -->
+<section class="ai-section" id="ai">
+  <div class="ai-content">
+    <div class="ai-visual reveal">
+      <div class="ai-orb"><div class="ai-orb-text">On-Prem<br>AI</div></div>
+    </div>
+    <div class="reveal">
+      <div class="section-header">
+        <div class="section-tag">Next Generation</div>
+        <h2 class="section-title">Air-Gapped AI<br>That Never Leaves<br>Your Network</h2>
+      </div>
+      <div class="ai-features">
+        <div class="ai-feature"><h4>Local LLM Deployment</h4><p>Enterprise-grade language models running entirely on your hardware. No cloud calls, no data exfiltration risk, no third-party dependencies.</p></div>
+        <div class="ai-feature"><h4>RAG Over Your Documents</h4><p>Retrieval-augmented generation across your document corpus. Intelligent search and synthesis without exposing content to external services.</p></div>
+        <div class="ai-feature"><h4>Hardened AI Stack</h4><p>Containerized, security-hardened toolchains built on Linux. Designed for environments where compliance and isolation are non-negotiable.</p></div>
+        <div class="ai-feature"><h4>Regulated Industry Focus</h4><p>Purpose-built for organizations with strict data handling — defense, intelligence, legal, and financial sectors where cloud AI isn't an option.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE ENGAGE -->
+<section class="engage" id="engage">
+  <div class="section-header reveal">
+    <div class="section-tag">Working With Us</div>
+    <h2 class="section-title">How We Engage</h2>
+  </div>
+  <div class="engage-grid">
+    <div class="engage-card reveal">
+      <h4>Corp-to-Corp (C2C)</h4>
+      <p>Our primary engagement model. Senior cleared architects delivered through our S-corp, integrated directly into your program team.</p>
+    </div>
+    <div class="engage-card reveal">
+      <h4>Subcontract Support</h4>
+      <p>Available as a subcontractor to primes on existing vehicles. We work within your processes, your timelines, and your security requirements.</p>
+    </div>
+    <div class="engage-card reveal">
+      <h4>Advisory & Assessment</h4>
+      <p>Short-term architecture reviews, infrastructure assessments, and technology roadmaps. Get expert eyes on your environment without a long-term commitment.</p>
+    </div>
+    <div class="engage-card reveal">
+      <h4>Fixed-Scope Pilots</h4>
+      <p>Proof-of-concept engagements for on-premises AI, virtualization modernization, or new enclave builds. Defined scope, defined timeline, delivered results.</p>
+    </div>
+    <div class="engage-card reveal">
+      <h4>Staff Augmentation</h4>
+      <p>Cleared technical personnel for programs that need experienced architects now. We fill the senior roles that are hardest to staff.</p>
+    </div>
+    <div class="engage-card reveal">
+      <h4>Retainer Engagements</h4>
+      <p>Ongoing advisory and support for organizations that need regular access to senior architecture expertise without a full-time hire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLEARANCE BANNER -->
+<div class="clearance-banner reveal">
+  <svg class="shield-icon" viewBox="0 0 64 64" fill="none"><path d="M32 4L8 16V32C8 46 32 60 32 60C32 60 56 46 56 32V16L32 4Z" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M24 32L30 38L42 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+  <div class="clearance-text">
+    <h3>Cleared. Experienced. Proven.</h3>
+    <p>Our personnel hold active Department of Defense security clearances and have extensive experience operating in sensitive classified environments. We understand the unique constraints, compliance requirements, and zero-tolerance expectations of cleared programs.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="section-header">
+      <div class="section-tag">Let's Talk</div>
+      <h2 class="section-title">Ready to Build<br>Something Mission-Critical?</h2>
+    </div>
+    <p>Whether you need a cleared architect for your next program, an on-premises AI pilot, or a trusted infrastructure partner — we're ready.</p>
+    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 FalconRock Consulting LLC. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+<p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners. FalconRock Consulting is an independent consultancy and is not affiliated with or endorsed by any referenced vendor or government agency.</p>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => { if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 100); observer.unobserve(entry.target); } });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) { nav.style.padding = '0.8rem 3rem'; } else { nav.style.padding = '1.2rem 3rem'; }
+  });
+</script>
+</body>
+</html>
