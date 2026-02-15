@@ -119,6 +119,10 @@
         <p>Our personnel hold active DoD security clearances and have extensive experience in classified program environments.</p>
       </div>
       <div class="contact-method">
+        <div class="label">Phone</div>
+        <a href="tel:+16198928342">(619) 892-8342</a>
+      </div>
+      <div class="contact-method">
         <div class="label">Response Time</div>
         <p>We respond to all inquiries within one business day.</p>
       </div>
@@ -141,6 +145,10 @@
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555">
         </div>
         <div class="form-group">
           <label for="interest">Area of Interest</label>
@@ -204,16 +212,18 @@
       4. The form will then email submissions to your linked email
     */
     try{
+      const formData={
+        name:n,
+        email:e,
+        phone:document.getElementById('phone').value,
+        organization:document.getElementById('org').value,
+        'area of interest':document.getElementById('interest').value,
+        message:document.getElementById('message').value
+      };
       const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          name:n,
-          email:e,
-          organization:document.getElementById('org').value,
-          interest:document.getElementById('interest').value,
-          message:document.getElementById('message').value
-        })
+        body:JSON.stringify(formData)
       });
       if(res.ok){
         document.getElementById('contactForm').style.display='none';
