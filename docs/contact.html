@@ -6,25 +6,225 @@
 <title>Contact | FalconRock Consulting</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --navy: #0a1628; --deep: #0d1f3c; --steel: #1a2d4a; --accent: #c8a44e; --accent-light: #dfc06e; --silver: #8a9bb5; --light: #c9d4e4; --white: #eef1f6; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Source Serif 4', Georgia, serif; background: var(--navy); color: var(--light); overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; }
+  :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--navy);color:var(--light);overflow-x:hidden}
+  nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,164,78,.15)}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:.7rem;text-decoration:none}
+  .logo-icon{width:36px;height:36px}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s;position:relative}
+  .nav-links a.active{color:var(--accent)}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .page-hero{padding:10rem 5vw 5rem;position:relative;background:radial-gradient(ellipse at 60% 40%,rgba(26,45,74,.6) 0%,transparent 60%),radial-gradient(ellipse at 20% 70%,rgba(200,164,78,.06) 0%,transparent 50%),var(--navy)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(30deg,rgba(200,164,78,.03) 1px,transparent 1px),linear-gradient(-30deg,rgba(200,164,78,.03) 1px,transparent 1px);background-size:60px 60px}
+  .page-hero-content{position:relative;z-index:2;max-width:800px}
+  .section-tag{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+  .section-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
+  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4rem);text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:1.5rem}
+  .page-title .gold{color:var(--accent)}
+  .page-subtitle{font-size:1.15rem;line-height:1.8;color:var(--silver);max-width:600px}
+  .contact-main{padding:5rem 5vw;background:var(--deep)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1100px;margin:0 auto}
+  .contact-info h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:1.5rem}
+  .contact-method{padding:1.5rem 0;border-bottom:1px solid rgba(200,164,78,.1)}
+  .contact-method:last-child{border-bottom:none}
+  .contact-method .label{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+  .contact-method a,.contact-method p{font-size:1.05rem;color:var(--light);text-decoration:none;line-height:1.6}
+  .contact-method a:hover{color:var(--accent)}
+  .contact-form-wrap h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:1.5rem}
+  .form-group{margin-bottom:1.5rem}
+  .form-group label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:.5rem}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:.9rem 1.2rem;background:rgba(26,45,74,.5);border:1px solid rgba(200,164,78,.15);color:var(--light);font-family:'Source Serif 4',Georgia,serif;font-size:1rem;transition:border-color .3s;outline:none}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+  .form-group select{cursor:pointer}
+  .form-group select option{background:var(--deep);color:var(--light)}
+  .form-group textarea{resize:vertical;min-height:120px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;transition:all .35s ease;cursor:pointer;border:none;display:inline-block}
+  .btn-primary{background:var(--accent);color:var(--navy);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));width:100%}
+  .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,78,.25)}
+  .form-note{font-size:.8rem;color:var(--silver);margin-top:1rem;line-height:1.5;opacity:.7}
+  .email-fallback{margin-top:1.5rem;padding:1.2rem;background:rgba(200,164,78,.06);border:1px solid rgba(200,164,78,.15);text-align:center}
+  .email-fallback p{font-size:.85rem;color:var(--silver);margin-bottom:.5rem}
+  .email-fallback a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:1px;color:var(--accent);text-decoration:none}
+  .email-fallback a:hover{color:var(--accent-light)}
+  .security-note{background:var(--navy);padding:4rem 5vw;border-top:1px solid rgba(200,164,78,.15)}
+  .security-note-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:2rem;text-align:left}
+  .security-note-inner svg{width:48px;height:48px;color:var(--accent);flex-shrink:0}
+  .security-note-inner p{font-size:.95rem;color:var(--silver);line-height:1.7}
+  .security-note-inner strong{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--white)}
+  footer{background:var(--deep);border-top:1px solid rgba(200,164,78,.1);padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items:center}
+  footer p{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:2px;color:var(--silver)}
+  footer .footer-links{display:flex;gap:2rem}
+  footer .footer-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s}
+  footer .footer-links a:hover{color:var(--accent)}
+  .disclaimer{font-size:.7rem;color:var(--silver);opacity:.5;text-align:center;padding:0 5vw 1.5rem;background:var(--deep)}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .success-msg{display:none;text-align:center;padding:3rem 2rem}
+  .success-msg.show{display:block}
+  .success-msg h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.8rem;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+  .success-msg p{font-size:1rem;color:var(--silver)}
+  @media(max-width:1024px){.contact-grid{grid-template-columns:1fr;gap:3rem}}
+  @media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.contact-main{padding:3rem 1.5rem}.form-row{grid-template-columns:1fr}.security-note-inner{flex-direction:column;text-align:center}footer{flex-direction:column;gap:1rem;text-align:center}}
+</style>
+</head>
+<body>
 
-  nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10, 22, 40, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(200, 164, 78, 0.15); }
-  .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.6rem; letter-spacing: 3px; text-transform: uppercase; color: var(--white); display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
-  .logo-icon { width: 36px; height: 36px; }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--silver); text-decoration: none; transition: color 0.3s; position: relative; }
-  .nav-links a.active { color: var(--accent); }
-  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none"><path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/><path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/><path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/></svg>
+    FalconRock
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#capabilities">Capabilities</a></li>
+    <li><a href="index.html#ai">On-Prem AI</a></li>
+    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
 
-  .page-hero { padding: 10rem 5vw 5rem; position: relative; background: radial-gradient(ellipse at 60% 40%, rgba(26, 45, 74, 0.6) 0%, transparent 60%), radial-gradient(ellipse at 20% 70%, rgba(200, 164, 78, 0.06) 0%, transparent 50%), var(--navy); }
-  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(30deg, rgba(200, 164, 78, 0.03) 1px, transparent 1px), linear-gradient(-30deg, rgba(200, 164, 78, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
-  .page-hero-content { position: relative; z-index: 2; max-width: 800px; }
-  .section-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
-  .section-tag::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
-  .page-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase; color: var(--white); line-height: 1.05
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Get In Touch</div>
+    <h1 class="page-title">Let's Build<br>Something <span class="gold">Mission-Critical</span></h1>
+    <p class="page-subtitle">Whether you need cleared architecture support, an on-premises AI pilot, or a strategic technology partner — we're ready to talk.</p>
+  </div>
+</div>
+
+<div class="contact-main">
+  <div class="contact-grid reveal">
+    <div class="contact-info">
+      <h3>Direct Contact</h3>
+      <div class="contact-method">
+        <div class="label">Email</div>
+        <a href="mailto:contact@falconrockconsulting.com">contact@falconrockconsulting.com</a>
+      </div>
+      <div class="contact-method">
+        <div class="label">Engagement Models</div>
+        <p>Available as prime or subcontractor. We support C2C, staff augmentation, fixed-scope pilots, and advisory retainer engagements.</p>
+      </div>
+      <div class="contact-method">
+        <div class="label">Contract Support</div>
+        <p>Experienced supporting work under multiple contract vehicles. Can operate under customer or prime contractor processes and compliance frameworks.</p>
+      </div>
+      <div class="contact-method">
+        <div class="label">Cleared Personnel</div>
+        <p>Our personnel hold active DoD security clearances and have extensive experience in classified program environments.</p>
+      </div>
+      <div class="contact-method">
+        <div class="label">Response Time</div>
+        <p>We respond to all inquiries within one business day.</p>
+      </div>
+    </div>
+    <div class="contact-form-wrap">
+      <h3>Send a Message</h3>
+      <!-- FORMSPREE: Replace YOUR_FORM_ID with your Formspree endpoint -->
+      <!-- Sign up free at formspree.io, create a form, and paste your ID below -->
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="org">Organization</label>
+            <input type="text" id="org" name="organization" placeholder="Company or agency">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="interest">Area of Interest</label>
+          <select id="interest" name="interest">
+            <option value="">Select one...</option>
+            <option>System Architecture & Engineering</option>
+            <option>On-Premises AI / LLM Deployment</option>
+            <option>Virtualization & VDI</option>
+            <option>Network Architecture</option>
+            <option>Security & Compliance (RMF/ATO)</option>
+            <option>Staff Augmentation</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your requirements..."></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="handleSubmit()">Send Message</button>
+        <p class="form-note">All communications are handled with discretion. No information is shared with third parties.</p>
+      </div>
+      <div class="success-msg" id="successMsg">
+        <h3>Message Received</h3>
+        <p>Thank you for reaching out. We'll respond within one business day.</p>
+      </div>
+      <div class="email-fallback">
+        <p>Prefer email directly?</p>
+        <a href="mailto:contact@falconrockconsulting.com">contact@falconrockconsulting.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="security-note">
+  <div class="security-note-inner reveal">
+    <svg viewBox="0 0 48 48" fill="none"><path d="M24 4L6 14V26C6 38 24 46 24 46S42 38 42 26V14L24 4Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M18 24L22 28L30 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <p><strong>Security Notice:</strong> Do not include classified or CUI information in web-based communications. For discussions involving sensitive programs or classified requirements, please contact us via email to coordinate an appropriate communication channel.</p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 FalconRock Consulting LLC. All rights reserved.</p>
+  <div class="footer-links"><a href="about.html">About</a><a href="index.html#capabilities">Capabilities</a><a href="contact.html">Contact</a></div>
+</footer>
+<p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners.</p>
+
+<script>
+  const reveals=document.querySelectorAll('.reveal');
+  const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*100);observer.unobserve(entry.target)}})},{threshold:.15});
+  reveals.forEach(el=>observer.observe(el));
+
+  async function handleSubmit(){
+    const n=document.getElementById('name').value;
+    const e=document.getElementById('email').value;
+    if(!n||!e){alert('Please fill in at least your name and email.');return}
+    /* 
+      TO MAKE THIS FORM WORK:
+      1. Go to https://formspree.io and create a free account
+      2. Create a new form and copy your form ID (looks like: xyzabcde)
+      3. Replace YOUR_FORM_ID below with your actual ID
+      4. The form will then email submissions to your linked email
+    */
+    try{
+      const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          name:n,
+          email:e,
+          organization:document.getElementById('org').value,
+          interest:document.getElementById('interest').value,
+          message:document.getElementById('message').value
+        })
+      });
+      if(res.ok){
+        document.getElementById('contactForm').style.display='none';
+        document.getElementById('successMsg').classList.add('show');
+      }else{
+        window.location.href='mailto:contact@falconrockconsulting.com?subject=Website Inquiry&body=Name: '+n+'%0AEmail: '+e;
+      }
+    }catch(err){
+      window.location.href='mailto:contact@falconrockconsulting.com?subject=Website Inquiry&body=Name: '+n+'%0AEmail: '+e;
+    }
+  }
+</script>
+</body>
+</html>
