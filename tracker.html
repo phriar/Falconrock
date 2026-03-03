@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operations | FalconRock</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6;--green:#2d6a4f;--green-light:#52b788;--red:#7b2d2d;--red-light:#e07070}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--navy);color:var(--light);min-height:100vh}
+
+  /* LOGIN SCREEN */
+  #loginScreen{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:9000;flex-direction:column}
+  .login-box{width:100%;max-width:400px;padding:3rem;background:var(--deep);border:1px solid rgba(200,164,78,.2);position:relative}
+  .login-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+  .login-logo{display:flex;align-items:center;gap:.7rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:2.5rem;justify-content:center}
+  .login-logo svg{width:32px;height:32px}
+  .login-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--silver);text-align:center;margin-bottom:2rem}
+  .pw-group{margin-bottom:1.5rem}
+  .pw-group label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:.5rem}
+  .pw-group input{width:100%;padding:.9rem 1.2rem;background:rgba(26,45,74,.5);border:1px solid rgba(200,164,78,.15);color:var(--light);font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:3px;outline:none;transition:border-color .3s}
+  .pw-group input:focus{border-color:var(--accent)}
+  .pw-btn{width:100%;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;padding:1rem;background:var(--accent);color:var(--navy);border:none;cursor:pointer;transition:background .3s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+  .pw-btn:hover{background:var(--accent-light)}
+  .pw-error{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:1px;color:var(--red-light);text-align:center;margin-top:1rem;display:none}
+  .pw-error.show{display:block}
+  .noindex-note{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:1.5px;color:var(--silver);opacity:.4;text-align:center;margin-top:2rem}
+
+  /* DASHBOARD */
+  #dashboard{display:none}
+  header{background:rgba(10,22,40,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,164,78,.15);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+  .header-logo{display:flex;align-items:center;gap:.7rem;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:3px;text-transform:uppercase;color:var(--white)}
+  .header-logo svg{width:28px;height:28px}
+  .header-right{display:flex;align-items:center;gap:1.5rem}
+  .header-badge{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);background:rgba(200,164,78,.08);border:1px solid rgba(200,164,78,.2);padding:.3rem .8rem}
+  .logout-btn{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);background:none;border:1px solid rgba(200,164,78,.15);padding:.4rem 1rem;cursor:pointer;transition:all .3s}
+  .logout-btn:hover{color:var(--accent);border-color:rgba(200,164,78,.3)}
+
+  .dashboard-body{padding:2rem;max-width:1400px;margin:0 auto}
+  .dash-grid-top{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:2rem}
+  .kpi-card{padding:1.5rem;background:var(--deep);border:1px solid rgba(200,164,78,.08);border-top:3px solid var(--accent)}
+  .kpi-card .kpi-label{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);margin-bottom:.5rem}
+  .kpi-card .kpi-value{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--white);line-height:1}
+  .kpi-card .kpi-sub{font-size:.8rem;color:var(--silver);margin-top:.3rem}
+  .kpi-card .kpi-value.green{color:var(--green-light)}
+  .kpi-card .kpi-value.amber{color:var(--accent)}
+
+  .dash-grid-main{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-bottom:2rem}
+  .panel{background:var(--deep);border:1px solid rgba(200,164,78,.08);overflow:hidden}
+  .panel-header{padding:1.2rem 1.5rem;border-bottom:1px solid rgba(200,164,78,.08);display:flex;justify-content:space-between;align-items:center}
+  .panel-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--white)}
+  .panel-action{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);background:none;border:none;cursor:pointer;transition:color .2s}
+  .panel-action:hover{color:var(--accent-light)}
+
+  /* PIPELINE TABLE */
+  .pipeline-table{width:100%;border-collapse:collapse}
+  .pipeline-table th{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-align:left;padding:.8rem 1.5rem;border-bottom:1px solid rgba(200,164,78,.08)}
+  .pipeline-table td{font-size:.88rem;padding:.9rem 1.5rem;border-bottom:1px solid rgba(26,45,74,.5);vertical-align:middle}
+  .pipeline-table tr:last-child td{border-bottom:none}
+  .pipeline-table tr:hover td{background:rgba(26,45,74,.3)}
+  .client-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;color:var(--white);letter-spacing:.5px}
+  .client-type{font-size:.75rem;color:var(--silver)}
+  .status-badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;padding:.25rem .6rem}
+  .status-active{background:rgba(82,183,136,.12);color:var(--green-light);border:1px solid rgba(82,183,136,.2)}
+  .status-proposal{background:rgba(200,164,78,.1);color:var(--accent);border:1px solid rgba(200,164,78,.2)}
+  .status-prospect{background:rgba(138,155,181,.1);color:var(--silver);border:1px solid rgba(138,155,181,.2)}
+  .status-hold{background:rgba(224,112,112,.1);color:var(--red-light);border:1px solid rgba(224,112,112,.2)}
+  .engagement-type{color:var(--silver);font-size:.82rem}
+  .value-cell{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;color:var(--accent)}
+  .action-cell{display:flex;gap:.5rem}
+  .tbl-btn{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;padding:.25rem .6rem;background:none;border:1px solid rgba(200,164,78,.15);color:var(--silver);cursor:pointer;transition:all .2s}
+  .tbl-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* NOTES PANEL */
+  .notes-body{padding:1.2rem 1.5rem}
+  .note-item{padding:.8rem 0;border-bottom:1px solid rgba(200,164,78,.06)}
+  .note-item:last-child{border-bottom:none}
+  .note-date{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:2px;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase}
+  .note-text{font-size:.88rem;color:var(--silver);line-height:1.5}
+  .note-input-area{padding:1rem 1.5rem;border-top:1px solid rgba(200,164,78,.08);display:flex;gap:.8rem}
+  .note-input-area input{flex:1;padding:.6rem .8rem;background:rgba(26,45,74,.5);border:1px solid rgba(200,164,78,.15);color:var(--light);font-family:'Source Serif 4',serif;font-size:.85rem;outline:none}
+  .note-input-area input:focus{border-color:var(--accent)}
+  .note-input-area button{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:.6rem 1.2rem;background:var(--accent);color:var(--navy);border:none;cursor:pointer;white-space:nowrap}
+  .note-input-area button:hover{background:var(--accent-light)}
+
+  /* TASK LIST */
+  .dash-grid-bottom{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+  .task-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid rgba(26,45,74,.5)}
+  .task-item:last-child{border-bottom:none}
+  .task-check{width:16px;height:16px;border:1px solid rgba(200,164,78,.3);flex-shrink:0;margin-top:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .task-check.done{background:var(--accent);border-color:var(--accent)}
+  .task-check svg{width:10px;height:10px;color:var(--navy);display:none}
+  .task-check.done svg{display:block}
+  .task-text{font-size:.88rem;color:var(--silver);line-height:1.5;flex:1}
+  .task-text.done-text{text-decoration:line-through;opacity:.5}
+  .task-due{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--silver);opacity:.6;white-space:nowrap;flex-shrink:0}
+  .task-due.overdue{color:var(--red-light);opacity:1}
+  .add-task{padding:.8rem 1.5rem;display:flex;gap:.8rem;border-top:1px solid rgba(200,164,78,.08)}
+  .add-task input{flex:1;padding:.5rem .8rem;background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.1);color:var(--light);font-size:.85rem;outline:none}
+  .add-task input:focus{border-color:rgba(200,164,78,.3)}
+  .add-task button{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;padding:.5rem 1rem;background:rgba(200,164,78,.15);color:var(--accent);border:none;cursor:pointer;transition:background .2s}
+  .add-task button:hover{background:rgba(200,164,78,.25)}
+
+  /* FINANCE */
+  .finance-row{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.5rem;border-bottom:1px solid rgba(26,45,74,.4)}
+  .finance-row:last-child{border-bottom:none}
+  .finance-label{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;color:var(--silver)}
+  .finance-value{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white)}
+  .finance-value.positive{color:var(--green-light)}
+  .finance-value.pending{color:var(--accent)}
+  .progress-bar{height:4px;background:rgba(26,45,74,.6);margin:.3rem 0}
+  .progress-fill{height:100%;background:var(--accent);transition:width 1s ease}
+
+  @media(max-width:1024px){.dash-grid-top{grid-template-columns:repeat(2,1fr)}.dash-grid-main{grid-template-columns:1fr}.dash-grid-bottom{grid-template-columns:1fr}}
+  @media(max-width:600px){.dash-grid-top{grid-template-columns:1fr 1fr}.header-badge{display:none}.pipeline-table th:nth-child(3),.pipeline-table td:nth-child(3),.pipeline-table th:nth-child(4),.pipeline-table td:nth-child(4){display:none}.action-cell{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">
+      <svg viewBox="0 0 36 36" fill="none"><path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/><path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/><path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/></svg>
+      FalconRock
+    </div>
+    <div class="login-title">Operations Dashboard — Restricted Access</div>
+    <div class="pw-group">
+      <label for="pwInput">Passphrase</label>
+      <input type="password" id="pwInput" placeholder="Enter passphrase" autocomplete="current-password" onkeydown="if(event.key==='Enter')checkPassword()">
+    </div>
+    <button class="pw-btn" onclick="checkPassword()">Authenticate</button>
+    <div class="pw-error" id="pwError">Incorrect passphrase. Access denied.</div>
+    <div class="noindex-note">This page is not indexed by search engines.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <header>
+    <div class="header-logo">
+      <svg viewBox="0 0 36 36" fill="none"><path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/><path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/><path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/></svg>
+      FalconRock Ops
+    </div>
+    <div class="header-right">
+      <div class="header-badge">Internal — Restricted</div>
+      <button class="logout-btn" onclick="logout()">Lock</button>
+    </div>
+  </header>
+
+  <div class="dashboard-body">
+
+    <!-- KPI ROW -->
+    <div class="dash-grid-top">
+      <div class="kpi-card">
+        <div class="kpi-label">Active Engagements</div>
+        <div class="kpi-value" id="kpiActive">—</div>
+        <div class="kpi-sub">Current contracts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pipeline Value</div>
+        <div class="kpi-value amber" id="kpiPipeline">—</div>
+        <div class="kpi-sub">Open proposals & prospects</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">YTD Revenue</div>
+        <div class="kpi-value green" id="kpiRevenue">—</div>
+        <div class="kpi-sub" id="kpiRevenueGoal">vs. annual goal</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Open Tasks</div>
+        <div class="kpi-value" id="kpiTasks">—</div>
+        <div class="kpi-sub">Pending action items</div>
+      </div>
+    </div>
+
+    <!-- MAIN ROW -->
+    <div class="dash-grid-main">
+
+      <!-- PIPELINE -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Engagement Pipeline</div>
+          <button class="panel-action" onclick="addEngagement()">+ Add</button>
+        </div>
+        <table class="pipeline-table">
+          <thead>
+            <tr>
+              <th>Client / Opportunity</th>
+              <th>Status</th>
+              <th>Type</th>
+              <th>Est. Value</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="pipelineBody"></tbody>
+        </table>
+      </div>
+
+      <!-- NOTES -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Operations Log</div>
+        </div>
+        <div class="notes-body" id="notesBody"></div>
+        <div class="note-input-area">
+          <input type="text" id="noteInput" placeholder="Add a note..." onkeydown="if(event.key==='Enter')addNote()">
+          <button onclick="addNote()">Log</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM ROW -->
+    <div class="dash-grid-bottom">
+
+      <!-- TASKS -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Action Items</div>
+          <button class="panel-action" onclick="clearDoneTasks()">Clear Done</button>
+        </div>
+        <div id="taskList"></div>
+        <div class="add-task">
+          <input type="text" id="taskInput" placeholder="New task..." onkeydown="if(event.key==='Enter')addTask()">
+          <button onclick="addTask()">Add</button>
+        </div>
+      </div>
+
+      <!-- FINANCE -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Financial Summary</div>
+          <button class="panel-action" onclick="editFinance()">Edit</button>
+        </div>
+        <div id="financeBody"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// CONFIGURATION — Change this password before publishing!
+// ============================================================
+const ACCESS_PASSWORD = 'falconrock2025';
+
+// ============================================================
+// AUTH
+// ============================================================
+function checkPassword(){
+  const val=document.getElementById('pwInput').value;
+  if(val===ACCESS_PASSWORD){
+    sessionStorage.setItem('fr_auth','1');
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    initDashboard();
+  } else {
+    document.getElementById('pwError').classList.add('show');
+    document.getElementById('pwInput').value='';
+    setTimeout(()=>document.getElementById('pwError').classList.remove('show'),3000);
+  }
+}
+function logout(){
+  sessionStorage.removeItem('fr_auth');
+  location.reload();
+}
+if(sessionStorage.getItem('fr_auth')==='1'){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+}
+
+// ============================================================
+// DATA STORE (localStorage for persistence)
+// ============================================================
+function getData(key,def){try{const v=localStorage.getItem('fr_'+key);return v?JSON.parse(v):def;}catch{return def;}}
+function setData(key,val){localStorage.setItem('fr_'+key,JSON.stringify(val));}
+
+// Default sample data
+const defaultEngagements=[
+  {id:1,client:'Opportunity A',org:'Federal Agency',status:'prospect',type:'C2C Architecture',value:'$240K',notes:''},
+  {id:2,client:'Opportunity B',org:'Defense Contractor',status:'proposal',type:'Staff Aug',value:'$180K',notes:''},
+  {id:3,client:'Example Client',org:'Private Sector',status:'active',type:'On-Prem AI Pilot',value:'$95K',notes:''},
+];
+const defaultTasks=[
+  {id:1,text:'Update resume / capability statement',done:false,due:'Soon'},
+  {id:2,text:'Follow up on pending proposals',done:false,due:'This week'},
+  {id:3,text:'Review contract vehicle options',done:false,due:''},
+];
+const defaultNotes=[
+  {date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),text:'Dashboard initialized. Update with current pipeline data.'},
+];
+const defaultFinance={
+  ytdRevenue:'$0',
+  annualGoal:'$300K',
+  outstanding:'$0',
+  nextInvoice:'—',
+  lastUpdated:new Date().toLocaleDateString(),
+  goalPct:0,
+};
+
+// ============================================================
+// INIT
+// ============================================================
+function initDashboard(){
+  if(!sessionStorage.getItem('fr_auth'))return;
+  renderPipeline();
+  renderNotes();
+  renderTasks();
+  renderFinance();
+  updateKPIs();
+}
+if(sessionStorage.getItem('fr_auth')==='1') initDashboard();
+
+// ============================================================
+// PIPELINE
+// ============================================================
+function renderPipeline(){
+  const engagements=getData('engagements',defaultEngagements);
+  const body=document.getElementById('pipelineBody');
+  if(!body)return;
+  body.innerHTML=engagements.map(e=>`
+    <tr>
+      <td><div class="client-name">${e.client}</div><div class="client-type">${e.org}</div></td>
+      <td><span class="status-badge status-${e.status}">${e.status}</span></td>
+      <td><span class="engagement-type">${e.type}</span></td>
+      <td><span class="value-cell">${e.value}</span></td>
+      <td><div class="action-cell">
+        <button class="tbl-btn" onclick="editEngagement(${e.id})">Edit</button>
+        <button class="tbl-btn" onclick="removeEngagement(${e.id})">Remove</button>
+      </div></td>
+    </tr>
+  `).join('');
+}
+function addEngagement(){
+  const client=prompt('Client/Opportunity name:');
+  if(!client)return;
+  const org=prompt('Organization:') || '';
+  const statusOpts=['active','proposal','prospect','hold'];
+  const status=prompt('Status (active/proposal/prospect/hold):') || 'prospect';
+  const type=prompt('Engagement type:') || 'C2C';
+  const value=prompt('Estimated value (e.g. $150K):') || '—';
+  const engagements=getData('engagements',defaultEngagements);
+  engagements.push({id:Date.now(),client,org,status:statusOpts.includes(status)?status:'prospect',type,value,notes:''});
+  setData('engagements',engagements);
+  renderPipeline();
+  updateKPIs();
+}
+function editEngagement(id){
+  const engagements=getData('engagements',defaultEngagements);
+  const e=engagements.find(x=>x.id===id);
+  if(!e)return;
+  const client=prompt('Client name:',e.client);
+  if(client===null)return;
+  e.client=client;
+  e.org=prompt('Organization:',e.org)||e.org;
+  e.status=prompt('Status (active/proposal/prospect/hold):',e.status)||e.status;
+  e.type=prompt('Type:',e.type)||e.type;
+  e.value=prompt('Value:',e.value)||e.value;
+  setData('engagements',engagements);
+  renderPipeline();
+  updateKPIs();
+}
+function removeEngagement(id){
+  if(!confirm('Remove this engagement?'))return;
+  let engagements=getData('engagements',defaultEngagements);
+  engagements=engagements.filter(x=>x.id!==id);
+  setData('engagements',engagements);
+  renderPipeline();
+  updateKPIs();
+}
+
+// ============================================================
+// NOTES
+// ============================================================
+function renderNotes(){
+  const notes=getData('notes',defaultNotes);
+  const body=document.getElementById('notesBody');
+  if(!body)return;
+  body.innerHTML=notes.slice().reverse().slice(0,8).map(n=>`
+    <div class="note-item">
+      <div class="note-date">${n.date}</div>
+      <div class="note-text">${n.text}</div>
+    </div>
+  `).join('');
+}
+function addNote(){
+  const input=document.getElementById('noteInput');
+  const text=input.value.trim();
+  if(!text)return;
+  const notes=getData('notes',defaultNotes);
+  notes.push({date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),text});
+  setData('notes',notes);
+  input.value='';
+  renderNotes();
+}
+
+// ============================================================
+// TASKS
+// ============================================================
+function renderTasks(){
+  const tasks=getData('tasks',defaultTasks);
+  const list=document.getElementById('taskList');
+  if(!list)return;
+  const kpi=tasks.filter(t=>!t.done).length;
+  const el=document.getElementById('kpiTasks');
+  if(el)el.textContent=kpi;
+  list.innerHTML=tasks.map(t=>`
+    <div class="task-item">
+      <div class="task-check ${t.done?'done':''}" onclick="toggleTask(${t.id})">
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="task-text ${t.done?'done-text':''}">${t.text}</div>
+      ${t.due?`<div class="task-due">${t.due}</div>`:''}
+    </div>
+  `).join('');
+}
+function toggleTask(id){
+  const tasks=getData('tasks',defaultTasks);
+  const t=tasks.find(x=>x.id===id);
+  if(t)t.done=!t.done;
+  setData('tasks',tasks);
+  renderTasks();
+}
+function addTask(){
+  const input=document.getElementById('taskInput');
+  const text=input.value.trim();
+  if(!text)return;
+  const tasks=getData('tasks',defaultTasks);
+  tasks.push({id:Date.now(),text,done:false,due:''});
+  setData('tasks',tasks);
+  input.value='';
+  renderTasks();
+}
+function clearDoneTasks(){
+  let tasks=getData('tasks',defaultTasks);
+  tasks=tasks.filter(t=>!t.done);
+  setData('tasks',tasks);
+  renderTasks();
+}
+
+// ============================================================
+// FINANCE
+// ============================================================
+function renderFinance(){
+  const f=getData('finance',defaultFinance);
+  const body=document.getElementById('financeBody');
+  if(!body)return;
+  const pct=f.goalPct||0;
+  body.innerHTML=`
+    <div class="finance-row"><span class="finance-label">YTD Revenue</span><span class="finance-value positive">${f.ytdRevenue}</span></div>
+    <div style="padding:0 1.5rem .5rem">
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:1px;color:var(--silver);opacity:.6">${pct}% of ${f.annualGoal} annual goal</div>
+    </div>
+    <div class="finance-row"><span class="finance-label">Outstanding / AR</span><span class="finance-value pending">${f.outstanding}</span></div>
+    <div class="finance-row"><span class="finance-label">Next Invoice</span><span class="finance-value">${f.nextInvoice}</span></div>
+    <div class="finance-row"><span class="finance-label">Annual Goal</span><span class="finance-value">${f.annualGoal}</span></div>
+    <div class="finance-row" style="border-bottom:none"><span class="finance-label">Last Updated</span><span style="font-size:.8rem;color:var(--silver)">${f.lastUpdated}</span></div>
+  `;
+}
+function editFinance(){
+  const f=getData('finance',defaultFinance);
+  const ytd=prompt('YTD Revenue (e.g. $45K):',f.ytdRevenue);
+  if(ytd===null)return;
+  f.ytdRevenue=ytd;
+  f.annualGoal=prompt('Annual Goal:',f.annualGoal)||f.annualGoal;
+  f.outstanding=prompt('Outstanding / AR:',f.outstanding)||f.outstanding;
+  f.nextInvoice=prompt('Next Invoice Date:',f.nextInvoice)||f.nextInvoice;
+  const pct=prompt('Goal % Complete (0-100):',f.goalPct||0);
+  f.goalPct=pct?Math.min(100,Math.max(0,parseInt(pct))):0;
+  f.lastUpdated=new Date().toLocaleDateString();
+  setData('finance',f);
+  renderFinance();
+  updateKPIs();
+}
+
+// ============================================================
+// KPIs
+// ============================================================
+function updateKPIs(){
+  const engagements=getData('engagements',defaultEngagements);
+  const active=engagements.filter(e=>e.status==='active').length;
+  const pipeline=engagements.filter(e=>['proposal','prospect'].includes(e.status));
+  const el1=document.getElementById('kpiActive');
+  if(el1)el1.textContent=active;
+  const el2=document.getElementById('kpiPipeline');
+  if(el2)el2.textContent=pipeline.length+' open';
+  const f=getData('finance',defaultFinance);
+  const el3=document.getElementById('kpiRevenue');
+  if(el3)el3.textContent=f.ytdRevenue;
+  const tasks=getData('tasks',defaultTasks);
+  const el4=document.getElementById('kpiTasks');
+  if(el4)el4.textContent=tasks.filter(t=>!t.done).length;
+}
+</script>
+</body>
+</html>

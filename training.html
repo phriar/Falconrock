@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Training Guide | FalconRock Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--navy);color:var(--light);overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+  nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,164,78,.15)}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:.7rem;text-decoration:none}
+  .logo-icon{width:36px;height:36px}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s;position:relative}
+  .nav-links a.active{color:var(--accent)}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:1100}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--light);transition:all .3s ease;transform-origin:center}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--deep);z-index:1050;display:flex;flex-direction:column;justify-content:center;padding:3rem 2.5rem;transition:right .35s ease;border-left:1px solid rgba(200,164,78,.15);box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+  .mobile-menu.open{right:0}
+  .mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:0}
+  .mobile-menu ul li{border-bottom:1px solid rgba(200,164,78,.08)}
+  .mobile-menu ul li:first-child{border-top:1px solid rgba(200,164,78,.08)}
+  .mobile-menu ul li a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:2px;text-transform:uppercase;color:var(--light);text-decoration:none;display:block;padding:1.2rem 0;transition:color .2s,padding-left .2s}
+  .mobile-menu ul li a:hover{color:var(--accent);padding-left:.5rem}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1040}
+  .mobile-overlay.open{display:block}
+
+  .page-hero{padding:10rem 5vw 6rem;position:relative;background:radial-gradient(ellipse at 40% 40%,rgba(26,45,74,.7) 0%,transparent 60%),radial-gradient(ellipse at 80% 10%,rgba(200,164,78,.08) 0%,transparent 50%),var(--navy)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(30deg,rgba(200,164,78,.03) 1px,transparent 1px),linear-gradient(-30deg,rgba(200,164,78,.03) 1px,transparent 1px);background-size:60px 60px}
+  .page-hero-content{position:relative;z-index:2;max-width:900px}
+  .section-tag{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+  .section-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
+  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4.5rem);text-transform:uppercase;color:var(--white);line-height:1.0;margin-bottom:1.5rem}
+  .page-title .gold{color:var(--accent)}
+  .page-subtitle{font-size:1.1rem;line-height:1.8;color:var(--silver);max-width:680px;margin-bottom:2.5rem}
+  .hero-actions{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;transition:all .35s ease;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:.6rem}
+  .btn-primary{background:var(--accent);color:var(--navy);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+  .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,78,.25)}
+  .btn-outline{background:transparent;color:var(--light);border:1px solid rgba(200,164,78,.3);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+  /* GUIDE STATS */
+  .guide-meta{background:var(--deep);padding:2rem 5vw;border-bottom:1px solid rgba(200,164,78,.1);display:flex;gap:4rem;justify-content:center;flex-wrap:wrap}
+  .meta-item{text-align:center}
+  .meta-value{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);line-height:1}
+  .meta-label{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--silver);margin-top:.3rem}
+
+  /* TOC */
+  .toc-section{padding:4rem 5vw;background:var(--deep)}
+  .toc-inner{max-width:900px;margin:0 auto}
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+  .toc-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.08);text-decoration:none;transition:all .3s ease;cursor:pointer}
+  .toc-item:hover{border-color:rgba(200,164,78,.25);background:rgba(26,45,74,.6);transform:translateX(4px)}
+  .toc-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:var(--accent);min-width:2rem;line-height:1}
+  .toc-text h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:1px;color:var(--white)}
+  .toc-text p{font-size:.82rem;color:var(--silver);margin-top:.2rem}
+
+  /* CONTENT SECTIONS */
+  .guide-content{max-width:900px;margin:0 auto}
+  .content-section{padding:5rem 5vw}
+  .content-section.alt{background:var(--deep)}
+  .content-section h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);text-transform:uppercase;color:var(--white);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(200,164,78,.15)}
+  .content-section h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin:2rem 0 .8rem}
+  .content-section p{font-size:1rem;line-height:1.85;color:var(--silver);margin-bottom:1.2rem}
+  .content-section ul,.content-section ol{padding-left:1.5rem;margin-bottom:1.2rem}
+  .content-section li{font-size:1rem;line-height:1.8;color:var(--silver);margin-bottom:.4rem}
+  .content-section li::marker{color:var(--accent)}
+  .callout{padding:1.5rem 2rem;background:rgba(200,164,78,.06);border-left:4px solid var(--accent);margin:2rem 0}
+  .callout strong{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);display:block;margin-bottom:.5rem;font-size:.85rem}
+  .callout p{margin:0;font-size:.95rem}
+  .step-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+  .step-card{padding:1.8rem;background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.08);border-top:3px solid var(--accent)}
+  .step-card .step-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:.5rem}
+  .step-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.6rem}
+  .step-card p{font-size:.9rem;color:var(--silver);line-height:1.65}
+  .model-table{width:100%;border-collapse:collapse;margin:2rem 0}
+  .model-table th{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-align:left;padding:.8rem 1rem;border-bottom:2px solid rgba(200,164,78,.2)}
+  .model-table td{font-size:.9rem;color:var(--silver);padding:.8rem 1rem;border-bottom:1px solid rgba(200,164,78,.06);line-height:1.5}
+  .model-table tr:hover td{background:rgba(26,45,74,.3)}
+  .model-table td:first-child{color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.5px}
+  .badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .6rem;background:rgba(200,164,78,.12);border:1px solid rgba(200,164,78,.2);color:var(--accent)}
+  .download-cta{background:linear-gradient(135deg,var(--steel),var(--deep));padding:5rem 5vw;text-align:center;border-top:1px solid rgba(200,164,78,.15)}
+  .download-cta h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;text-transform:uppercase;color:var(--white);letter-spacing:1px;margin-bottom:1rem}
+  .download-cta p{font-size:1.05rem;color:var(--silver);margin-bottom:2rem;max-width:550px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+  footer{background:var(--deep);border-top:1px solid rgba(200,164,78,.1);padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items:center}
+  footer p{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:2px;color:var(--silver)}
+  footer .footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+  footer .footer-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s}
+  footer .footer-links a:hover{color:var(--accent)}
+  .disclaimer{font-size:.7rem;color:var(--silver);opacity:.5;text-align:center;padding:0 5vw 1.5rem;background:var(--deep)}
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  @media(max-width:768px){
+    nav{padding:.9rem 1.2rem}
+    .nav-links{display:none}
+    .hamburger{display:flex}
+    .guide-meta{gap:2rem;padding:1.5rem}
+    .toc-grid{grid-template-columns:1fr}
+    .step-grid{grid-template-columns:1fr}
+    .hero-actions{flex-direction:column}
+    .hero-actions .btn{justify-content:center}
+    footer{flex-direction:column;gap:1rem;text-align:center}
+    .footer-links{justify-content:center}
+    .model-table{font-size:.82rem}
+    .model-table th,.model-table td{padding:.6rem .7rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none"><path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/><path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/><path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/></svg>
+    FalconRock
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#capabilities">Capabilities</a></li>
+    <li><a href="index.html#ai">On-Prem AI</a></li>
+    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="training.html" class="active">AI Guide</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#capabilities" onclick="closeMobileMenu()">Capabilities</a></li>
+    <li><a href="index.html#ai" onclick="closeMobileMenu()">On-Prem AI</a></li>
+    <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Free Resource</div>
+    <h1 class="page-title">Getting Up to Speed<br>on <span class="gold">Anthropic Claude</span><br>& Enterprise AI</h1>
+    <p class="page-subtitle">A practical readiness guide for IT professionals, program managers, and decision-makers who need to understand modern AI capabilities — without the hype. Built from real-world deployment experience in high-security environments.</p>
+    <div class="hero-actions">
+      <a href="#" onclick="downloadGuide(event)" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V10M8 10L5 7M8 10L11 7M3 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Download PDF Guide
+      </a>
+      <a href="#start" class="btn btn-outline">Read Online</a>
+    </div>
+  </div>
+</div>
+
+<div class="guide-meta">
+  <div class="meta-item"><div class="meta-value">6</div><div class="meta-label">Core Modules</div></div>
+  <div class="meta-item"><div class="meta-value">~45</div><div class="meta-label">Minute Read</div></div>
+  <div class="meta-item"><div class="meta-value">Free</div><div class="meta-label">No Sign-Up Required</div></div>
+  <div class="meta-item"><div class="meta-value">2025</div><div class="meta-label">Current Edition</div></div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc-section reveal" id="start">
+  <div class="toc-inner">
+    <div class="section-tag">Contents</div>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);text-transform:uppercase;color:var(--white);margin-bottom:.5rem">What's Inside</h2>
+    <p style="color:var(--silver);font-size:1rem">Six modules covering everything you need to evaluate and deploy AI in a professional or government context.</p>
+    <div class="toc-grid">
+      <a href="#module1" class="toc-item"><div class="toc-num">01</div><div class="toc-text"><h4>What Is Claude?</h4><p>Architecture, capabilities, and how it differs from GPT and Gemini</p></div></a>
+      <a href="#module2" class="toc-item"><div class="toc-num">02</div><div class="toc-text"><h4>Model Families & Tiers</h4><p>Haiku, Sonnet, Opus — when to use each and why</p></div></a>
+      <a href="#module3" class="toc-item"><div class="toc-num">03</div><div class="toc-text"><h4>Deployment Options</h4><p>Cloud API, AWS Bedrock, on-premises, and air-gapped options</p></div></a>
+      <a href="#module4" class="toc-item"><div class="toc-num">04</div><div class="toc-text"><h4>Security & Compliance</h4><p>Data handling, Constitutional AI, and enterprise safeguards</p></div></a>
+      <a href="#module5" class="toc-item"><div class="toc-num">05</div><div class="toc-text"><h4>Prompt Engineering</h4><p>Getting reliable results: techniques that actually work</p></div></a>
+      <a href="#module6" class="toc-item"><div class="toc-num">06</div><div class="toc-text"><h4>Building Your First Use Case</h4><p>From pilot concept to production deployment</p></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 1 -->
+<div class="content-section reveal" id="module1">
+  <div class="guide-content">
+    <div class="section-tag">Module 01</div>
+    <h2>What Is Claude?</h2>
+    <p>Claude is a large language model (LLM) developed by Anthropic, a San Francisco-based AI safety company founded in 2021 by former OpenAI researchers. Unlike many AI products built primarily for consumer engagement, Claude was designed from the ground up with safety, reliability, and institutional deployment in mind.</p>
+    <p>At its core, Claude is a transformer-based neural network trained on large text datasets, then refined using a process Anthropic calls <strong style="color:var(--white)">Constitutional AI (CAI)</strong> — a technique that uses a set of principles (a "constitution") to guide the model's behavior during training, rather than relying solely on human feedback. This approach produces a model that tends to be more consistent, more honest about its limitations, and less likely to produce harmful or misleading outputs.</p>
+    <h3>How Claude Compares to Other Models</h3>
+    <table class="model-table">
+      <thead><tr><th>Characteristic</th><th>Claude</th><th>GPT-4o</th><th>Gemini Pro</th></tr></thead>
+      <tbody>
+        <tr><td>Developer</td><td>Anthropic</td><td>OpenAI / Microsoft</td><td>Google DeepMind</td></tr>
+        <tr><td>Safety Approach</td><td>Constitutional AI</td><td>RLHF + Safety Filters</td><td>RLHF + Safety Filters</td></tr>
+        <tr><td>Context Window</td><td>Up to 200K tokens</td><td>128K tokens</td><td>1M tokens (Gemini 1.5)</td></tr>
+        <tr><td>On-Premises Option</td><td>Yes (via partners)</td><td>Limited</td><td>Vertex AI only</td></tr>
+        <tr><td>API Availability</td><td>Direct + AWS Bedrock</td><td>Direct + Azure</td><td>Google Cloud</td></tr>
+        <tr><td>Best For</td><td>Analysis, writing, safety-critical tasks</td><td>Coding, broad tasks</td><td>Google Workspace integration</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>Key Insight</strong>
+      <p>Claude's 200,000 token context window means you can feed it an entire technical document, contract, or policy corpus and ask questions against it — without chunking or external retrieval infrastructure. For many enterprise use cases, this eliminates the need for a full RAG pipeline.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 2 -->
+<div class="content-section alt reveal" id="module2">
+  <div class="guide-content">
+    <div class="section-tag">Module 02</div>
+    <h2>Model Families & Tiers</h2>
+    <p>Anthropic structures Claude into three capability tiers — Haiku, Sonnet, and Opus — representing a spectrum from fast/economical to most capable. Choosing the right tier is one of the most consequential decisions in building an AI-powered application.</p>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">Haiku</div>
+        <h4>Fast & Economical</h4>
+        <p>Fastest response times, lowest cost. Ideal for high-volume tasks where speed matters more than nuance: classification, routing, simple Q&A, form extraction.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Sonnet</div>
+        <h4>Balanced Performance</h4>
+        <p>The workhorse for most enterprise applications. Strong reasoning, coding, and writing — at a cost and speed profile that works for production deployment.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Opus</div>
+        <h4>Maximum Capability</h4>
+        <p>The most capable model for complex reasoning, long-form synthesis, and tasks requiring deep analysis. Best reserved for high-value, lower-volume use cases.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3.x</div>
+        <h4>Current Generation</h4>
+        <p>Claude 3.5 Sonnet and Claude 3 Opus represent the current production generation. Sonnet 3.5 in particular offers near-Opus quality at Sonnet pricing — often the optimal choice.</p>
+      </div>
+    </div>
+    <h3>Practical Selection Guide</h3>
+    <p>For most organizations starting out, <span class="badge">Claude 3.5 Sonnet</span> is the right default. It delivers exceptional performance for document analysis, code review, summarization, and complex Q&A at a cost point that makes production deployment feasible. Move to Opus only when Sonnet demonstrably falls short for your specific use case.</p>
+  </div>
+</div>
+
+<!-- MODULE 3 -->
+<div class="content-section reveal" id="module3">
+  <div class="guide-content">
+    <div class="section-tag">Module 03</div>
+    <h2>Deployment Options</h2>
+    <p>One of Claude's key advantages for regulated and government users is the range of deployment options. You are not locked into a single cloud provider or a SaaS model that puts your data in Anthropic's systems.</p>
+    <h3>Option A: Anthropic API (Direct)</h3>
+    <p>The simplest starting point. Sign up for API access at console.anthropic.com, generate an API key, and start making calls. Data is processed by Anthropic's infrastructure. <strong style="color:var(--white)">Not suitable for CUI, PHI, or classified data.</strong> Good for internal tooling, public-facing applications, and pilots that don't touch sensitive information.</p>
+    <h3>Option B: Amazon Bedrock</h3>
+    <p>AWS hosts Claude models within Bedrock, allowing access through AWS IAM, inside your VPC, with data processing governed by AWS data processing agreements. For organizations already in AWS GovCloud, this is typically the fastest path to a compliant deployment. Data does not leave your AWS account.</p>
+    <div class="callout">
+      <strong>For GovCloud Users</strong>
+      <p>Claude is available in AWS GovCloud (US) via Bedrock. This provides IL2/IL4 data boundary controls and allows integration with existing GovCloud workloads. Work with your AO to evaluate data categorization requirements before deployment.</p>
+    </div>
+    <h3>Option C: On-Premises / Air-Gapped</h3>
+    <p>For the highest security requirements, FalconRock specializes in deploying open-weight models (Llama, Mistral, and others) using the same interaction patterns as Claude — fully on your hardware, with zero external data calls. While not technically "Claude," these deployments provide equivalent capability for many use cases in a fully isolated environment.</p>
+    <p>The on-prem stack we use: <span class="badge">Ollama</span> for model serving, <span class="badge">OpenWebUI</span> for the user interface, <span class="badge">Docker</span> for containerization, and custom RAG pipelines for document-aware queries. All components are open-source and auditable.</p>
+  </div>
+</div>
+
+<!-- MODULE 4 -->
+<div class="content-section alt reveal" id="module4">
+  <div class="guide-content">
+    <div class="section-tag">Module 04</div>
+    <h2>Security & Compliance</h2>
+    <p>Security concerns are the most common barrier to AI adoption in regulated environments. This module addresses the most frequent questions from security officers, ISSOs, and compliance teams.</p>
+    <h3>Does Anthropic Train on My Data?</h3>
+    <p>By default via the API: <strong style="color:var(--white)">no</strong>. API inputs and outputs are not used to train Claude models. Consumer products (Claude.ai free tier) may be used for training; API and enterprise customers are explicitly excluded. Review Anthropic's current data handling policies and request a Data Processing Agreement (DPA) for enterprise use.</p>
+    <h3>Constitutional AI & Safety Controls</h3>
+    <p>Claude is trained with a hardcoded constitution that governs its behavior — it won't help with weapons of mass destruction, CSAM, or other absolute prohibitions regardless of how a prompt is framed. Beyond that, operators (businesses using the API) can customize Claude's behavior within Anthropic's guidelines using "system prompts" — instructions that shape every interaction within their application.</p>
+    <h3>Questions for Your ISSO / AO</h3>
+    <ul>
+      <li>What is the data classification of the content this system will process?</li>
+      <li>Does the deployment option (Bedrock, direct API, on-prem) satisfy data boundary requirements?</li>
+      <li>Is a P-ATO or agency ATO required, or can we proceed under existing cloud authority?</li>
+      <li>What logging and audit requirements apply to AI-assisted decision-making in this context?</li>
+      <li>Are there applicable policies (DoD Directive 3000.09, AI EO, agency AI governance frameworks) that govern deployment?</li>
+    </ul>
+    <div class="callout">
+      <strong>Practical Guidance</strong>
+      <p>Start with unclassified, non-CUI use cases to build organizational familiarity and establish governance processes. Internal efficiency tools — summarization, search, drafting — are typically the fastest path through the ATO process and generate immediate value.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 5 -->
+<div class="content-section reveal" id="module5">
+  <div class="guide-content">
+    <div class="section-tag">Module 05</div>
+    <h2>Prompt Engineering</h2>
+    <p>The quality of AI outputs is directly determined by the quality of your inputs. "Prompt engineering" is the practice of structuring instructions to reliably get useful results. These are the techniques that matter most in practice.</p>
+    <h3>The System Prompt Is Your Contract</h3>
+    <p>In any production application, the system prompt sets the rules. Use it to define Claude's role, the format of its outputs, what it should and shouldn't do, and how it should handle ambiguous situations. A well-written system prompt is more valuable than any amount of per-query optimization.</p>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h4>Be Explicit About Role</h4>
+        <p>Tell Claude exactly what it is in your application. "You are a technical writer reviewing engineering documents for clarity and accuracy" produces fundamentally different behavior than a blank system prompt.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h4>Specify Output Format</h4>
+        <p>If you need structured output — JSON, a specific section structure, a table — say so explicitly. Claude will follow formatting instructions consistently when they're in the system prompt.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h4>Provide Examples</h4>
+        <p>Few-shot prompting — showing 2–3 examples of input/output pairs — dramatically improves consistency for specialized tasks. This is especially valuable for domain-specific output formats.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h4>Define the Boundaries</h4>
+        <p>Explicitly state what Claude should not do. "Do not speculate beyond the provided document. If the answer is not in the source material, say so." Constraints reduce hallucination risk significantly.</p>
+      </div>
+    </div>
+    <h3>Hallucination Management</h3>
+    <p>LLMs can generate plausible-sounding but incorrect information, especially when asked to recall specific facts. Mitigation strategies: constrain Claude to only reference provided documents; instruct it to cite sources; ask it to express uncertainty explicitly; and implement human review for high-stakes outputs. RAG (Retrieval-Augmented Generation) architectures dramatically reduce hallucination by grounding responses in specific retrieved documents.</p>
+  </div>
+</div>
+
+<!-- MODULE 6 -->
+<div class="content-section alt reveal" id="module6">
+  <div class="guide-content">
+    <div class="section-tag">Module 06</div>
+    <h2>Building Your First Use Case</h2>
+    <p>The most common mistake in enterprise AI adoption is starting too big. Successful deployments begin with a narrow, well-defined problem where success is easy to measure and failure is recoverable.</p>
+    <h3>Selecting a Pilot Use Case</h3>
+    <p>Good pilot characteristics: clearly defined input and output, existing human process to compare against, tolerant of occasional errors, low regulatory risk, and a small group of motivated users. Common winning starting points: document summarization, meeting notes processing, policy Q&A assistants, and technical writing assistance.</p>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h4>Define Success</h4>
+        <p>Before writing a single prompt, define what "good" looks like. Time saved per task? Reduction in errors? User satisfaction score? You need a baseline to measure against.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h4>Start With the API</h4>
+        <p>Don't build a full application to test a concept. Use the Anthropic console or a simple script to manually validate that Claude can do what you need it to do with your actual data.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h4>Build the Evaluation Set</h4>
+        <p>Collect 20–50 representative examples of your task with known-good outputs. Every prompt change should be evaluated against this set to catch regressions before they reach users.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h4>Plan for Production</h4>
+        <p>Early in the pilot, think about: API key management, cost monitoring, logging for audit, error handling, and what happens when the model is wrong. These are easier to design in than retrofit.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>FalconRock Can Help</strong>
+      <p>If you're evaluating AI for a program or organization and need experienced guidance — particularly for on-premises deployment, compliance assessment, or integration with existing infrastructure — reach out. We've been through this process in demanding environments and can significantly accelerate your timeline.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD CTA -->
+<div class="download-cta reveal">
+  <h2>Download the Full Guide</h2>
+  <p>Save a copy of this guide as a printable PDF — formatted for easy sharing with your team, PM, or program office.</p>
+  <a href="#" onclick="downloadGuide(event)" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:.6rem">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V10M8 10L5 7M8 10L11 7M3 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Download PDF
+  </a>
+  <p style="font-size:.85rem;color:var(--silver);margin-top:1.5rem;opacity:.7">No email required. No signup. Just the guide.</p>
+</div>
+
+<!-- CONSULT CTA -->
+<div style="background:var(--navy);padding:4rem 5vw;text-align:center;border-top:1px solid rgba(200,164,78,.1)">
+  <div class="section-tag" style="justify-content:center;margin-bottom:1rem">Ready to Deploy?</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.5rem);text-transform:uppercase;color:var(--white);margin-bottom:1rem">Need Help Going Further?</h2>
+  <p style="color:var(--silver);font-size:1rem;max-width:550px;margin:0 auto 2rem;line-height:1.7">FalconRock specializes in on-premises AI deployment for organizations that can't use cloud services. If this guide raised more questions than it answered, we're happy to talk.</p>
+  <a href="contact.html" class="btn btn-primary">Talk to FalconRock</a>
+</div>
+
+<footer>
+  <p>&copy; 2025 Wisebird Holdings LLC d/b/a Falcon Rock Consulting. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="index.html#capabilities">Capabilities</a>
+    <a href="contact.html">Contact</a>
+    <a href="training.html">AI Training Guide</a>
+  </div>
+</footer>
+<p class="disclaimer">This guide is provided for informational purposes. Product capabilities and pricing referenced are subject to change. Consult current Anthropic documentation for the latest information.</p>
+
+<script>
+  const reveals=document.querySelectorAll('.reveal');
+  const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*100);observer.unobserve(entry.target)}})},{threshold:.15});
+  reveals.forEach(el=>observer.observe(el));
+
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  const mobileOverlay=document.getElementById('mobileOverlay');
+  function closeMobileMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow=''}
+  hamburger.addEventListener('click',()=>{const isOpen=mobileMenu.classList.contains('open');if(isOpen){closeMobileMenu()}else{hamburger.classList.add('open');mobileMenu.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden'}});
+  mobileOverlay.addEventListener('click',closeMobileMenu);
+
+  function downloadGuide(e){
+    e.preventDefault();
+    window.print();
+  }
+</script>
+<style>
+@media print{
+  nav,footer,.disclaimer,.download-cta,button,.hamburger,.mobile-menu,.mobile-overlay{display:none!important}
+  body{background:#fff;color:#000}
+  body::before{display:none}
+  .page-hero{padding:2rem 0;background:none}
+  .page-hero .hero-grid{display:none}
+  .page-title{color:#0a1628;font-size:2rem}
+  .page-subtitle{color:#444}
+  .section-tag{color:#c8a44e}
+  .section-tag::before{background:#c8a44e}
+  .guide-meta{background:#f5f5f5;padding:1rem}
+  .meta-value{color:#c8a44e}
+  .meta-label{color:#666}
+  .toc-section,.content-section{padding:1.5rem 0}
+  .content-section.alt{background:#f9f9f9;padding:1.5rem}
+  h2{color:#0a1628}
+  h3{color:#1a2d4a}
+  p,li{color:#444;font-size:.9rem}
+  .callout{background:#fffbf0;border-left:4px solid #c8a44e}
+  .callout p{color:#444}
+  .model-table th{color:#c8a44e}
+  .model-table td{color:#444}
+  .step-card{background:#f5f5f5;border:1px solid #ddd;break-inside:avoid}
+  .step-card h4,.step-card .step-num{color:#0a1628}
+  .step-card p{color:#444}
+  .toc-item{background:#f5f5f5;border:1px solid #ddd;break-inside:avoid}
+  .toc-num{color:#c8a44e}
+  .toc-text h4{color:#0a1628}
+  .toc-text p{color:#666}
+  .badge{background:#f0e8d0;color:#8a6a20}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</body>
+</html>
