@@ -90,6 +90,9 @@
   .success-msg h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.8rem;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
   .success-msg p{font-size:1rem;color:var(--silver)}
 
+  /* Loading state for button */
+  .btn-primary.loading{opacity:.7;cursor:not-allowed;pointer-events:none}
+
   @media(max-width:1024px){.contact-grid{grid-template-columns:1fr;gap:3rem}}
   @media(max-width:768px){
     nav{padding:.9rem 1.2rem}
@@ -150,7 +153,7 @@
       <h3>Direct Contact</h3>
       <div class="contact-method">
         <div class="label">Email</div>
-        <a href="/cdn-cgi/l/email-protection#a0c3cfced4c1c3d4e0c6c1ccc3cfced2cfc3cbc3cfced3d5ccd4c9cec78ec3cfcd"><span class="__cf_email__" data-cfemail="fa9995948e9b998eba9c9b9699959488959991999594898f968e93949dd4999597">[email&#160;protected]</span></a>
+        <a href="mailto:info@falconrockconsulting.com">info@falconrockconsulting.com</a>
       </div>
       <div class="contact-method">
         <div class="label">Engagement Models</div>
@@ -190,11 +193,11 @@
           <label for="interest">Area of Interest</label>
           <select id="interest" name="interest">
             <option value="">Select one...</option>
-            <option>System Architecture & Engineering</option>
+            <option>System Architecture &amp; Engineering</option>
             <option>On-Premises AI / LLM Deployment</option>
-            <option>Virtualization & VDI</option>
+            <option>Virtualization &amp; VDI</option>
             <option>Network Architecture</option>
-            <option>Security & Compliance (RMF/ATO)</option>
+            <option>Security &amp; Compliance (RMF/ATO)</option>
             <option>Staff Augmentation</option>
             <option>General Inquiry</option>
           </select>
@@ -203,7 +206,7 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell us about your requirements..."></textarea>
         </div>
-        <button type="button" class="btn btn-primary" onclick="handleSubmit()">Send Message</button>
+        <button type="button" class="btn btn-primary" id="submitBtn" onclick="handleSubmit()">Send Message</button>
         <p class="form-note">All communications are handled with discretion. No information is shared with third parties.</p>
       </div>
       <div class="success-msg" id="successMsg">
@@ -212,7 +215,7 @@
       </div>
       <div class="email-fallback">
         <p>Prefer email directly?</p>
-        <a href="/cdn-cgi/l/email-protection#13707c7d677270675375727f707c7d617c7078707c7d60667f677a7d743d707c7e"><span class="__cf_email__" data-cfemail="dfbcb0b1abbebcab9fb9beb3bcb0b1adb0bcb4bcb0b1acaab3abb6b1b8f1bcb0b2">[email&#160;protected]</span></a>
+        <a href="mailto:info@falconrockconsulting.com">info@falconrockconsulting.com</a>
       </div>
     </div>
   </div>
@@ -236,20 +239,85 @@
 </footer>
 <p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners.</p>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const reveals=document.querySelectorAll('.reveal');
-  const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*100);observer.unobserve(entry.target)}})},{threshold:.15});
-  reveals.forEach(el=>observer.observe(el));
-  const hamburger=document.getElementById('hamburger');
-  const mobileMenu=document.getElementById('mobileMenu');
-  const mobileOverlay=document.getElementById('mobileOverlay');
-  function closeMobileMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow=''}
-  hamburger.addEventListener('click',()=>{const isOpen=mobileMenu.classList.contains('open');if(isOpen){closeMobileMenu()}else{hamburger.classList.add('open');mobileMenu.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden'}});
-  mobileOverlay.addEventListener('click',closeMobileMenu);
-  async function handleSubmit(){
-    const n=document.getElementById('name').value;
-    const e=document.getElementById('email').value;
-    if(!n||!e){alert('Please fill in at least your name and email.');return}
-    try{
-      const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,organization:document.getElementById('org').value,interest:document.getElementById('interest').value,message:document.getElementById('message').value})});
-  
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      hamburger.classList.add('open');
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+
+  // Form submission via Formspree
+  // TODO: Replace YOUR_FORM_ID with your actual Formspree form ID
+  async function handleSubmit() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!name || !email) {
+      alert('Please fill in at least your name and email.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.classList.add('loading');
+    btn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          organization: document.getElementById('org').value,
+          interest: document.getElementById('interest').value,
+          message: document.getElementById('message').value
+        })
+      });
+
+      if (res.ok) {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      alert('There was a problem sending your message. Please email us directly.');
+      btn.classList.remove('loading');
+      btn.textContent = 'Send Message';
+    }
+  }
+</script>
+</body>
+</html>
