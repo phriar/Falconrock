@@ -307,4 +307,17 @@
       });
 
       if (res.ok) {
-        do
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('successMsg').classList.add('show');
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      alert('There was a problem sending your message. Please email us directly.');
+      btn.classList.remove('loading');
+      btn.textContent = 'Send Message';
+    }
+  }
+</script>
+</body>
+</html>
