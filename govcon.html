@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Contractor Profile | FalconRock Consulting</title>
+<meta name="description" content="SAM-registered IT infrastructure and systems architecture firm. CAGE Code, NAICS codes, past performance, and teaming information for federal procurement officers and prime contractors.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── BASE (copied verbatim from site) ── */
+  :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Source Serif 4',Georgia,serif;background:var(--navy);color:var(--light);overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+  /* ── NAV (exact match) ── */
+  nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,164,78,.15)}
+  .logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0}
+  .logo-icon{width:36px;height:36px}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s;position:relative}
+  .nav-links a.active{color:var(--accent)}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1100;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-width:40px;min-height:40px;position:relative}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--light);transition:all .3s ease;transform-origin:center;pointer-events:none}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--deep);z-index:1050;display:flex;flex-direction:column;justify-content:center;padding:3rem 2.5rem;transition:right .35s ease;border-left:1px solid rgba(200,164,78,.15);box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+  .mobile-menu.open{right:0}
+  .mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:0}
+  .mobile-menu ul li{border-bottom:1px solid rgba(200,164,78,.08)}
+  .mobile-menu ul li:first-child{border-top:1px solid rgba(200,164,78,.08)}
+  .mobile-menu ul li a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:2px;text-transform:uppercase;color:var(--light);text-decoration:none;display:block;padding:1.2rem 0;transition:color .2s,padding-left .2s}
+  .mobile-menu ul li a:hover{color:var(--accent);padding-left:.5rem}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1040}
+  .mobile-overlay.open{display:block}
+
+  /* ── PAGE HERO (matches about.html pattern) ── */
+  .page-hero{padding:10rem 5vw 5rem;position:relative;background:radial-gradient(ellipse at 30% 40%,rgba(26,45,74,.6) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(200,164,78,.06) 0%,transparent 50%),var(--navy)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(30deg,rgba(200,164,78,.03) 1px,transparent 1px),linear-gradient(-30deg,rgba(200,164,78,.03) 1px,transparent 1px);background-size:60px 60px}
+  .page-hero-content{position:relative;z-index:2;max-width:900px}
+  .section-tag{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+  .section-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
+  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4rem);text-transform:uppercase;color:var(--white);line-height:1.05;margin-bottom:1.5rem}
+  .page-title .gold{color:var(--accent)}
+  .page-subtitle{font-size:1.15rem;line-height:1.8;color:var(--silver);max-width:650px;margin-bottom:2.5rem}
+
+  /* ── ID STRIP ── */
+  .id-strip{display:flex;flex-wrap:wrap;gap:0;border:1px solid rgba(200,164,78,.2);width:fit-content;margin-top:2rem;background:rgba(26,45,74,.3)}
+  .id-field{padding:1rem 1.8rem;border-right:1px solid rgba(200,164,78,.12)}
+  .id-field:last-child{border-right:none}
+  .id-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);display:block;margin-bottom:.25rem}
+  .id-value{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--accent-light);letter-spacing:.05em}
+
+  /* ── STATUS BADGES ── */
+  .badge-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+  .badge{font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid;display:inline-flex;align-items:center;gap:.5rem}
+  .badge-active{border-color:#4caf7d;color:#4caf7d;background:rgba(76,175,125,.08)}
+  .badge-active::before{content:'';width:6px;height:6px;border-radius:50%;background:#4caf7d;animation:blink 1.5s ease-in-out infinite}
+  .badge-info{border-color:rgba(200,164,78,.4);color:var(--accent-light);background:rgba(200,164,78,.06)}
+  .badge-steel{border-color:rgba(138,155,181,.3);color:var(--silver);background:rgba(138,155,181,.06)}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* ── SHARED SECTION STYLES ── */
+  section{padding:5rem 5vw;position:relative}
+  .bg-deep{background:var(--deep)}
+  .bg-navy{background:var(--navy)}
+  .section-header{margin-bottom:2.5rem}
+  .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.5rem);text-transform:uppercase;color:var(--white);line-height:1.1}
+
+  /* ── CAPABILITIES GRID (matches index.html style) ── */
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .cap-card{padding:2rem 2.5rem;background:linear-gradient(135deg,rgba(13,31,60,.8),rgba(26,45,74,.4));border:1px solid rgba(200,164,78,.08);position:relative;overflow:hidden;transition:all .4s ease}
+  .cap-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .4s}
+  .cap-card:hover{border-color:rgba(200,164,78,.2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+  .cap-card:hover::after{opacity:1}
+  .cap-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
+  .cap-card p{font-size:.9rem;line-height:1.7;color:var(--silver)}
+  .cap-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+  .cap-tag{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border:1px solid rgba(200,164,78,.2);color:var(--silver)}
+
+  /* ── NAICS TABLE ── */
+  .naics-table{width:100%;border-collapse:collapse;font-size:.92rem}
+  .naics-table thead tr{border-bottom:1px solid rgba(200,164,78,.3)}
+  .naics-table th{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);padding:.75rem 1.2rem;text-align:left;font-weight:600}
+  .naics-table tbody tr{border-bottom:1px solid rgba(200,164,78,.07);transition:background .15s}
+  .naics-table tbody tr:hover{background:rgba(26,45,74,.4)}
+  .naics-table td{padding:1rem 1.2rem;color:var(--silver)}
+  .naics-code{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--accent-light) !important;letter-spacing:.04em}
+  .naics-primary{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .5rem;background:rgba(200,164,78,.15);border:1px solid rgba(200,164,78,.35);color:var(--accent);margin-left:.5rem;vertical-align:middle}
+
+  /* ── PAST PERFORMANCE ── */
+  .perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .perf-card{padding:2rem 2.5rem;background:rgba(26,45,74,.35);border:1px solid rgba(200,164,78,.08);border-left:3px solid var(--accent);transition:all .3s ease}
+  .perf-card:hover{border-color:rgba(200,164,78,.25);transform:translateX(4px)}
+  .perf-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem}
+  .perf-agency{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);margin-bottom:.3rem}
+  .perf-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.5px;color:var(--white);line-height:1.2}
+  .perf-type{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:1px;color:var(--accent);white-space:nowrap;margin-left:1rem}
+  .perf-desc{font-size:.9rem;line-height:1.7;color:var(--silver);margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(200,164,78,.08)}
+  .perf-meta{display:flex;gap:1.5rem;margin-top:.75rem;font-family:'Barlow Condensed',sans-serif;font-size:.75rem;letter-spacing:.05em;color:var(--silver)}
+  .perf-meta span{opacity:.7}
+
+  /* ── TEAMING ── */
+  .teaming-box{background:linear-gradient(135deg,rgba(13,31,60,.9),rgba(26,45,74,.5));border:1px solid rgba(200,164,78,.15);padding:3rem;position:relative;overflow:hidden}
+  .teaming-box::before{content:'TEAMING';position:absolute;right:2rem;top:1rem;font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:800;letter-spacing:.3em;color:rgba(200,164,78,.04);pointer-events:none}
+  .teaming-intro{font-size:1.05rem;line-height:1.8;color:var(--silver);max-width:700px;margin-bottom:2rem;font-family:'Source Serif 4',Georgia,serif}
+  .teaming-intro strong{color:var(--light)}
+  .teaming-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+  .teaming-col h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+  .teaming-col h3::after{content:'';flex:1;height:1px;background:rgba(200,164,78,.15)}
+  .teaming-list{list-style:none}
+  .teaming-list li{padding:.75rem 0;border-bottom:1px solid rgba(200,164,78,.07);font-size:.9rem;color:var(--silver);display:flex;align-items:flex-start;gap:.75rem;line-height:1.5}
+  .teaming-list li::before{content:'→';color:var(--accent);flex-shrink:0;margin-top:.05rem}
+
+  /* ── CONTACT / CAPABILITY ── */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .contact-cta h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;color:var(--white);letter-spacing:-.5px;line-height:1.05;margin-bottom:1rem}
+  .contact-cta p{font-size:1rem;line-height:1.8;color:var(--silver);margin-bottom:2rem;max-width:380px}
+  .contact-links{display:flex;flex-direction:column;gap:.75rem}
+  .contact-link{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;border:1px solid rgba(200,164,78,.12);background:rgba(26,45,74,.3);font-size:.9rem;color:var(--silver);text-decoration:none;transition:all .2s}
+  .contact-link:hover{border-color:rgba(200,164,78,.3);color:var(--light);background:rgba(26,45,74,.5);transform:translateX(4px)}
+  .contact-link-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);opacity:.6;min-width:56px}
+  .cap-statement-box{background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.1);padding:2.5rem}
+  .cap-statement-box h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--white);margin-bottom:.75rem}
+  .cap-statement-box p{font-size:.9rem;line-height:1.7;color:var(--silver);margin-bottom:1.5rem}
+  .btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;transition:all .35s ease;cursor:pointer;border:none;display:inline-block}
+  .btn-primary{background:var(--accent);color:var(--navy);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+  .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,78,.25)}
+  .quick-ref{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(200,164,78,.1)}
+  .ref-item label{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);opacity:.6;display:block;margin-bottom:.2rem}
+  .ref-item span{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:600;color:var(--light)}
+
+  /* ── CTA BANNER (matches site) ── */
+  .cta-banner{background:linear-gradient(90deg,var(--steel),var(--deep));padding:4rem 5vw;text-align:center;border-top:1px solid rgba(200,164,78,.15)}
+  .cta-banner h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;text-transform:uppercase;color:var(--white);letter-spacing:2px;margin-bottom:1rem}
+  .cta-banner p{font-size:1.05rem;color:var(--silver);margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+  /* ── FOOTER (exact match) ── */
+  footer{background:var(--deep);border-top:1px solid rgba(200,164,78,.1);padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items:center}
+  footer p{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:2px;color:var(--silver)}
+  footer .footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+  footer .footer-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s}
+  footer .footer-links a:hover{color:var(--accent)}
+  .disclaimer{font-size:.7rem;color:var(--silver);opacity:.5;text-align:center;padding:0 5vw 1.5rem;background:var(--deep)}
+
+  /* ── REVEAL ── */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1024px){
+    .cap-grid{grid-template-columns:repeat(2,1fr)}
+    .perf-grid{grid-template-columns:1fr}
+    .teaming-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .nav-links{display:none!important}
+    .hamburger{display:flex!important}
+    nav{padding:.9rem 1.5rem}
+  }
+  @media(max-width:768px){
+    nav{padding:.9rem 1.2rem}
+    .nav-links{display:none!important}
+    .hamburger{display:flex!important}
+    section{padding:3rem 1.2rem}
+    .page-hero{padding:7rem 1.2rem 3rem}
+    .cap-grid{grid-template-columns:1fr}
+    .id-strip{width:100%}
+    .id-field{border-right:none;border-bottom:1px solid rgba(200,164,78,.12);width:100%}
+    .id-field:last-child{border-bottom:none}
+    .teaming-box{padding:1.5rem}
+    footer{flex-direction:column;gap:1rem;text-align:center}
+    .footer-links{justify-content:center}
+    .perf-card:hover{transform:none}
+    .contact-link:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+      <path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/>
+      <path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/>
+      <path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/>
+    </svg>
+    FalconRock
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#capabilities">Capabilities</a></li>
+    <li><a href="index.html#ai">On-Prem AI</a></li>
+    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="training.html">AI Guide</a></li>
+    <li><a href="govcon.html" class="active">GovCon Profile</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#capabilities" onclick="closeMobileMenu()">Capabilities</a></li>
+    <li><a href="index.html#ai" onclick="closeMobileMenu()">On-Prem AI</a></li>
+    <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+  </ul>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag">Federal Contractor Profile</div>
+    <h1 class="page-title">SAM Registered.<br><span class="gold">Cleared.</span><br>Ready to Team.</h1>
+    <p class="page-subtitle">This page provides contracting officers, prime BD leads, and procurement teams with FalconRock's registration details, NAICS codes, past performance, and teaming information in one place.</p>
+
+    <!-- LEGAL ENTITY NOTE -->
+    <div style="background:rgba(200,164,78,.06);border:1px solid rgba(200,164,78,.2);border-left:3px solid var(--accent);padding:1rem 1.5rem;margin-bottom:1.5rem;max-width:700px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem;">Legal Entity Note</div>
+      <p style="font-size:.9rem;line-height:1.6;color:var(--silver);font-family:'Source Serif 4',Georgia,serif;">FalconRock Consulting is a <strong style="color:var(--light)">trade name (DBA) of Wisebird Holdings LLC</strong>. All SAM registration, CAGE code, UEI, and federal procurement activity is conducted under <strong style="color:var(--light)">Wisebird Holdings LLC</strong>. When searching SAM.gov or verifying contractor status, use the Wisebird Holdings LLC legal name.</p>
+    </div>
+
+    <div class="id-strip">
+      <div class="id-field">
+        <span class="id-label">Legal Entity</span>
+        <span class="id-value">Wisebird Holdings LLC</span>
+      </div>
+      <div class="id-field">
+        <span class="id-label">DBA / Trade Name</span>
+        <span class="id-value">FalconRock Consulting</span>
+      </div>
+      <div class="id-field">
+        <span class="id-label">CAGE Code</span>
+        <span class="id-value">XXXXX</span>
+      </div>
+      <div class="id-field">
+        <span class="id-label">UEI</span>
+        <span class="id-value">XXXXXXXXXXXX</span>
+      </div>
+      <div class="id-field">
+        <span class="id-label">Entity Type</span>
+        <span class="id-value">LLC / SB</span>
+      </div>
+      <div class="id-field">
+        <span class="id-label">SAM Status</span>
+        <span class="id-value">Active 2026</span>
+      </div>
+    </div>
+
+    <div class="badge-row">
+      <span class="badge badge-active">SAM Registration Active</span>
+      <span class="badge badge-info">Small Business</span>
+      <span class="badge badge-info">TS/SCI Personnel Available</span>
+      <span class="badge badge-steel">C2C / Prime / Sub</span>
+      <span class="badge badge-steel">Primary NAICS: 541512</span>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<section class="bg-deep" id="capabilities">
+  <div class="section-header reveal">
+    <div class="section-tag">01 — What We Deliver</div>
+    <h2 class="section-title">Core Technical Capabilities</h2>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card reveal">
+      <h3>Systems Architecture</h3>
+      <p>Senior-level design and implementation of enterprise IT infrastructure across classified and unclassified environments. 25+ years across DoD programs requiring high availability and zero-tolerance operations.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">VMware NSX-T</span>
+        <span class="cap-tag">vSphere</span>
+        <span class="cap-tag">Citrix CVAD</span>
+        <span class="cap-tag">Air-Gap</span>
+        <span class="cap-tag">Hyper-V</span>
+      </div>
+    </div>
+    <div class="cap-card reveal">
+      <h3>Network & SD-WAN</h3>
+      <p>Enterprise LAN/WAN design, cross-domain solutions, and secure enclave networking. Deployment and operations support for SD-WAN, zero-trust micro-segmentation, and DDI infrastructure.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Infoblox</span>
+        <span class="cap-tag">Versa SD-WAN</span>
+        <span class="cap-tag">BGP/OSPF</span>
+        <span class="cap-tag">Zero Trust</span>
+        <span class="cap-tag">NSX-T</span>
+      </div>
+    </div>
+    <div class="cap-card reveal">
+      <h3>On-Prem AI / RAG</h3>
+      <p>Air-gap compatible document intelligence and infrastructure automation platforms. Locally-hosted LLM pipelines for regulated environments with no cloud dependencies and full data sovereignty.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Ollama</span>
+        <span class="cap-tag">LanceDB</span>
+        <span class="cap-tag">AnythingLLM</span>
+        <span class="cap-tag">CMMC 2.0</span>
+        <span class="cap-tag">RAG</span>
+      </div>
+    </div>
+    <div class="cap-card reveal">
+      <h3>Infrastructure Automation</h3>
+      <p>Ansible playbooks, PowerShell automation, and infrastructure-as-code for repeatable, auditable deployments. Builds include testing pipelines, isolated validation environments, and GitOps workflows.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Ansible</span>
+        <span class="cap-tag">PowerShell</span>
+        <span class="cap-tag">Terraform</span>
+        <span class="cap-tag">GitOps</span>
+      </div>
+    </div>
+    <div class="cap-card reveal">
+      <h3>Security & Compliance</h3>
+      <p>CMMC 2.0 readiness, STIG hardening, PKI/TLS certificate lifecycle management, and RMF accreditation support aligned to NIST 800-53 and DISA requirements for DoD program environments.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">CMMC 2.0</span>
+        <span class="cap-tag">STIG</span>
+        <span class="cap-tag">PKI / TLS</span>
+        <span class="cap-tag">RMF</span>
+        <span class="cap-tag">NIST 800-53</span>
+      </div>
+    </div>
+    <div class="cap-card reveal">
+      <h3>VDI & End User Computing</h3>
+      <p>Citrix Virtual Apps & Desktops architecture, migration, and lifecycle management. StoreFront, Delivery Controller, PVS/MCS configuration for thin-client and CAC-integrated environments.</p>
+      <div class="cap-tags">
+        <span class="cap-tag">Citrix CVAD</span>
+        <span class="cap-tag">StoreFront</span>
+        <span class="cap-tag">PVS / MCS</span>
+        <span class="cap-tag">CAC Auth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAICS -->
+<section class="bg-navy" id="naics">
+  <div class="section-header reveal">
+    <div class="section-tag">02 — Classification Codes</div>
+    <h2 class="section-title">NAICS Codes & Size Standards</h2>
+  </div>
+  <table class="naics-table reveal">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th>SB Size Standard</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="naics-code">541512 <span class="naics-primary">Primary</span></td>
+        <td>Computer Systems Design Services</td>
+        <td>$34M avg annual receipts</td>
+        <td>Eligible</td>
+      </tr>
+      <tr>
+        <td class="naics-code">541519</td>
+        <td>Other Computer Related Services</td>
+        <td>$34M avg annual receipts</td>
+        <td>Eligible</td>
+      </tr>
+      <tr>
+        <td class="naics-code">541611</td>
+        <td>Administrative Management &amp; General Consulting</td>
+        <td>$24.5M avg annual receipts</td>
+        <td>Eligible</td>
+      </tr>
+      <tr>
+        <td class="naics-code">541330</td>
+        <td>Engineering Services</td>
+        <td>$25.5M avg annual receipts</td>
+        <td>Eligible</td>
+      </tr>
+      <tr>
+        <td class="naics-code">518210</td>
+        <td>Data Processing, Hosting and Related Services</td>
+        <td>$47M avg annual receipts</td>
+        <td>Eligible</td>
+      </tr>
+      <tr>
+        <td class="naics-code">541715</td>
+        <td>Research &amp; Development in Physical, Engineering Sciences</td>
+        <td>1,000 employees</td>
+        <td>Eligible</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PAST PERFORMANCE -->
+<section class="bg-deep" id="performance">
+  <div class="section-header reveal">
+    <div class="section-tag">03 — Track Record</div>
+    <h2 class="section-title">Past Performance Highlights</h2>
+  </div>
+  <div class="perf-grid">
+    <div class="perf-card reveal">
+      <div class="perf-header">
+        <div>
+          <div class="perf-agency">DoD Program / BAH Prime</div>
+          <div class="perf-title">Senior Systems Architect — TS/SCI Program</div>
+        </div>
+        <div class="perf-type">C2C</div>
+      </div>
+      <div class="perf-desc">Embedded senior architect supporting a classified DoD program via Booz Allen Hamilton. Responsible for network segmentation design, VDI platform lifecycle, NSX-T microsegmentation policy, and infrastructure automation across multi-domain environment.</div>
+      <div class="perf-meta">
+        <span>2024–Present</span>
+        <span>TS/SCI Required</span>
+        <span>NSX-T · Citrix · Infoblox</span>
+      </div>
+    </div>
+    <div class="perf-card reveal">
+      <div class="perf-header">
+        <div>
+          <div class="perf-agency">Enterprise Infrastructure</div>
+          <div class="perf-title">NSX-T Isolated Dev/Test Environment Build</div>
+        </div>
+        <div class="perf-type">SoW</div>
+      </div>
+      <div class="perf-desc">Designed and implemented a repeatable isolated T1 segment workflow for pre-production validation of VMware infrastructure upgrades. Includes FSMO/RID pool remediation for cloned domain controllers and a reusable PowerShell automation suite.</div>
+      <div class="perf-meta">
+        <span>2024</span>
+        <span>Unclassified</span>
+        <span>VMware · PowerShell · AD DS</span>
+      </div>
+    </div>
+    <div class="perf-card reveal">
+      <div class="perf-header">
+        <div>
+          <div class="perf-agency">Citrix Environment Migration</div>
+          <div class="perf-title">HTTPS/TLS Migration — Citrix CVAD 2507</div>
+        </div>
+        <div class="perf-type">TL</div>
+      </div>
+      <div class="perf-desc">Full runbook development and execution for StoreFront and Delivery Controller certificate migration in a multi-site CVAD 2507 deployment. Coordinated PKI provisioning, IIS binding updates, STA reconfiguration, and post-migration validation testing.</div>
+      <div class="perf-meta">
+        <span>2025</span>
+        <span>Enterprise</span>
+        <span>Citrix · PKI · IIS · TLS 1.2/1.3</span>
+      </div>
+    </div>
+    <div class="perf-card reveal">
+      <div class="perf-header">
+        <div>
+          <div class="perf-agency">Infrastructure Intelligence Platform</div>
+          <div class="perf-title">VaultAI — On-Prem RAG Document Intelligence</div>
+        </div>
+        <div class="perf-type">IP</div>
+      </div>
+      <div class="perf-desc">Proprietary air-gap compatible document intelligence platform targeting regulated and cleared environments. Full stack: Ollama + LanceDB + AnythingLLM. Semantic search over enterprise CLI and policy document corpus. CMMC 2.0 architecture aligned.</div>
+      <div class="perf-meta">
+        <span>2025–Present</span>
+        <span>CMMC Aligned</span>
+        <span>Ollama · LanceDB · React · Ubuntu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAMING -->
+<section class="bg-navy" id="teaming">
+  <div class="section-header reveal">
+    <div class="section-tag">04 — Partnerships</div>
+    <h2 class="section-title">Teaming & Subcontracting</h2>
+  </div>
+  <div class="teaming-box reveal">
+    <p class="teaming-intro">FalconRock Consulting (a trade name of <strong>Wisebird Holdings LLC</strong>) is available as a <strong>subcontractor, C2C resource, or teaming partner</strong> on federal programs requiring cleared IT infrastructure expertise. We are particularly well-positioned for prime contractors seeking to fulfill small business subcontracting plan obligations on DoD and IC programs. Existing supplier portal registration with Booz Allen Hamilton under Wisebird Holdings LLC — reduced onboarding friction for BAH-primed work.</p>
+    <div class="teaming-grid">
+      <div class="teaming-col">
+        <h3>What We Bring</h3>
+        <ul class="teaming-list">
+          <li>TS/SCI cleared senior architect available for direct placement</li>
+          <li>25+ years of hands-on DoD and classified environment experience</li>
+          <li>Deep VMware NSX-T, Citrix CVAD, and Infoblox DDI expertise</li>
+          <li>Proprietary on-prem AI tooling (VaultAI) deployable in air-gapped environments</li>
+          <li>Existing BAH supplier portal registration — reduced onboarding friction</li>
+          <li>Lean, responsive engagement with no overhead drag or staffing delays</li>
+          <li>Infrastructure automation library (Ansible, PowerShell) ready to deploy</li>
+        </ul>
+      </div>
+      <div class="teaming-col">
+        <h3>Ideal Partner Profiles</h3>
+        <ul class="teaming-list">
+          <li>Large primes with mandatory small business subcontracting plan obligations</li>
+          <li>DoD IT modernization program contractors needing cleared infrastructure resources</li>
+          <li>Firms pursuing Citrix, VMware, or NSX-T task order re-competes</li>
+          <li>CMMC advisory firms needing deep technical implementation capability</li>
+          <li>Primes bidding on network infrastructure, VDI, or cloud migration vehicles</li>
+          <li>AI/ML integration firms requiring air-gap or classified environment deployment experience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="bg-deep" id="contact">
+  <div class="section-header reveal">
+    <div class="section-tag">05 — Get in Touch</div>
+    <h2 class="section-title">Contact & Capability Statement</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-cta reveal">
+      <h2>Start a<br>Conversation</h2>
+      <p>Contracting officers, prime BD leads, and program managers are welcome to reach out directly. FalconRock responds within one business day.</p>
+      <div class="contact-links">
+        <a href="mailto:contact@falconrockconsulting.com" class="contact-link">
+          <span class="contact-link-label">Email</span>
+          contact@falconrockconsulting.com
+        </a>
+        <a href="https://falconrockconsulting.com" target="_blank" class="contact-link">
+          <span class="contact-link-label">Web</span>
+          falconrockconsulting.com
+        </a>
+        <a href="https://sam.gov" target="_blank" class="contact-link">
+          <span class="contact-link-label">SAM.gov</span>
+          Search UEI: XXXXXXXXXXXX
+        </a>
+        <a href="contact.html" class="contact-link">
+          <span class="contact-link-label">Form</span>
+          Secure contact form →
+        </a>
+      </div>
+    </div>
+    <div class="cap-statement-box reveal">
+      <h3>One-Page Capability Statement</h3>
+      <p>Our capability statement provides NAICS codes, differentiators, past performance highlights, and key personnel information — formatted for contracting officer review and prime BD outreach.</p>
+      <a href="#" class="btn btn-primary">Download Capability Statement</a>
+      <div class="quick-ref">
+        <div class="ref-item"><label>Legal Entity</label><span>Wisebird Holdings LLC</span></div>
+        <div class="ref-item"><label>DBA / Trade Name</label><span>FalconRock Consulting</span></div>
+        <div class="ref-item"><label>Entity Type</label><span>LLC · Small Business</span></div>
+        <div class="ref-item"><label>Set-Asides</label><span>Small Business</span></div>
+        <div class="ref-item"><label>Clearance</label><span>TS/SCI (personnel)</span></div>
+        <div class="ref-item"><label>Primary NAICS</label><span>541512</span></div>
+        <div class="ref-item"><label>GSA Schedule</label><span>In Progress</span></div>
+        <div class="ref-item"><label>SAM Search As</label><span>Wisebird Holdings LLC</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner reveal">
+  <h3>Ready to Work Together?</h3>
+  <p>Whether you're a prime looking for a cleared subcontractor, a CO sourcing a small business, or a program needing senior infrastructure expertise — let's talk.</p>
+  <a href="contact.html" class="btn btn-primary">Contact FalconRock</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="index.html#capabilities">Capabilities</a>
+    <a href="govcon.html">GovCon Profile</a>
+    <a href="contact.html">Contact</a>
+    <a href="training.html">AI Training Guide</a>
+  </div>
+</footer>
+<p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners. FalconRock Consulting is an independent consultancy and is not affiliated with or endorsed by any referenced vendor or government agency.</p>
+
+<script>
+  // Scroll reveal (exact match from site)
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Burger menu (exact match from site)
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    if (isOpen) { closeMobileMenu(); }
+    else {
+      hamburger.classList.add('open');
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+  mobileOverlay.addEventListener('click', closeMobileMenu);
+</script>
+</body>
+</html>
