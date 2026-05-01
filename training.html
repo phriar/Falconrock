@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Readiness Training Guide | FalconRock Consulting</title>
+<title>On-Premises AI for Small Business | FalconRock Consulting</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6}
+  :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6;--red:#c84e4e;--green:#6ec87a}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Source Serif 4',Georgia,serif;background:var(--navy);color:var(--light);overflow-x:hidden}
@@ -51,13 +51,11 @@
   .btn-outline{background:transparent;color:var(--light);border:1px solid rgba(200,164,78,.3);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
   .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 
-  /* GUIDE STATS */
   .guide-meta{background:var(--deep);padding:2rem 5vw;border-bottom:1px solid rgba(200,164,78,.1);display:flex;gap:4rem;justify-content:center;flex-wrap:wrap}
   .meta-item{text-align:center}
   .meta-value{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);line-height:1}
   .meta-label{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--silver);margin-top:.3rem}
 
-  /* TOC */
   .toc-section{padding:4rem 5vw;background:var(--deep)}
   .toc-inner{max-width:900px;margin:0 auto}
   .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
@@ -67,7 +65,6 @@
   .toc-text h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:1px;color:var(--white)}
   .toc-text p{font-size:.82rem;color:var(--silver);margin-top:.2rem}
 
-  /* CONTENT SECTIONS */
   .guide-content{max-width:900px;margin:0 auto}
   .content-section{padding:5rem 5vw}
   .content-section.alt{background:var(--deep)}
@@ -80,17 +77,32 @@
   .callout{padding:1.5rem 2rem;background:rgba(200,164,78,.06);border-left:4px solid var(--accent);margin:2rem 0}
   .callout strong{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);display:block;margin-bottom:.5rem;font-size:.85rem}
   .callout p{margin:0;font-size:.95rem}
+  .callout.danger{background:rgba(200,78,78,.06);border-left-color:var(--red)}
+  .callout.danger strong{color:var(--red)}
   .step-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
   .step-card{padding:1.8rem;background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.08);border-top:3px solid var(--accent)}
   .step-card .step-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:.5rem}
   .step-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.6rem}
   .step-card p{font-size:.9rem;color:var(--silver);line-height:1.65}
-  .model-table{width:100%;border-collapse:collapse;margin:2rem 0}
-  .model-table th{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-align:left;padding:.8rem 1rem;border-bottom:2px solid rgba(200,164,78,.2)}
-  .model-table td{font-size:.9rem;color:var(--silver);padding:.8rem 1rem;border-bottom:1px solid rgba(200,164,78,.06);line-height:1.5}
-  .model-table tr:hover td{background:rgba(26,45,74,.3)}
-  .model-table td:first-child{color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.5px}
+  .compare-table{width:100%;border-collapse:collapse;margin:2rem 0}
+  .compare-table th{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-align:left;padding:.8rem 1rem;border-bottom:2px solid rgba(200,164,78,.2)}
+  .compare-table td{font-size:.9rem;color:var(--silver);padding:.8rem 1rem;border-bottom:1px solid rgba(200,164,78,.06);line-height:1.5}
+  .compare-table tr:hover td{background:rgba(26,45,74,.3)}
+  .compare-table td:first-child{color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.5px}
+  .good{color:#6ec87a}
+  .bad{color:#c84e4e}
+  .mid{color:#c8a44e}
   .badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .6rem;background:rgba(200,164,78,.12);border:1px solid rgba(200,164,78,.2);color:var(--accent)}
+  .threat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:2rem 0}
+  .threat-card{padding:1.4rem;background:rgba(200,78,78,.05);border:1px solid rgba(200,78,78,.15);border-top:3px solid var(--red)}
+  .threat-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:.5rem}
+  .threat-card p{font-size:.85rem;color:var(--silver);line-height:1.6}
+  .use-case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+  .use-case-card{padding:1.8rem;background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.08)}
+  .use-case-card .icon{font-size:1.8rem;margin-bottom:.8rem;display:block}
+  .use-case-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.5rem}
+  .use-case-card p{font-size:.88rem;color:var(--silver);line-height:1.65}
+  .use-case-card .example{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-top:.8rem;display:block}
   .download-cta{background:linear-gradient(135deg,var(--steel),var(--deep));padding:5rem 5vw;text-align:center;border-top:1px solid rgba(200,164,78,.15)}
   .download-cta h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;text-transform:uppercase;color:var(--white);letter-spacing:1px;margin-bottom:1rem}
   .download-cta p{font-size:1.05rem;color:var(--silver);margin-bottom:2rem;max-width:550px;margin-left:auto;margin-right:auto;line-height:1.7}
@@ -104,19 +116,23 @@
   .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
 
-  @media(max-width:768px){
+  @media(max-width:1024px){
     nav{padding:.9rem 1.2rem}
     .nav-links{display:none!important}
     .hamburger{display:flex!important}
+  }
+  @media(max-width:768px){
     .guide-meta{gap:2rem;padding:1.5rem}
     .toc-grid{grid-template-columns:1fr}
     .step-grid{grid-template-columns:1fr}
+    .threat-grid{grid-template-columns:1fr}
+    .use-case-grid{grid-template-columns:1fr}
     .hero-actions{flex-direction:column}
     .hero-actions .btn{justify-content:center}
     footer{flex-direction:column;gap:1rem;text-align:center}
     .footer-links{justify-content:center}
-    .model-table{font-size:.82rem}
-    .model-table th,.model-table td{padding:.6rem .7rem}
+    .compare-table{font-size:.82rem}
+    .compare-table th,.compare-table td{padding:.6rem .7rem}
   }
 </style>
 </head>
@@ -132,7 +148,7 @@
     <li><a href="index.html#ai">On-Prem AI</a></li>
     <li><a href="index.html#engage">Engagement</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="training.html" class="active">AI Guide</a></li>
+    <li><a href="training.html" class="active">On-Prem AI Guide</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -148,16 +164,17 @@
     <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
     <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
-    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">On-Prem AI Guide</a></li>
   </ul>
 </div>
 
+<!-- HERO -->
 <div class="page-hero">
   <div class="hero-grid"></div>
   <div class="page-hero-content">
     <div class="section-tag">Free Resource</div>
-    <h1 class="page-title">Getting Up to Speed<br>on <span class="gold">Anthropic Claude</span><br>& Enterprise AI</h1>
-    <p class="page-subtitle">A practical readiness guide for IT professionals, program managers, and decision-makers who need to understand modern AI capabilities — without the hype. Built from real-world deployment experience in high-security environments.</p>
+    <h1 class="page-title">Your Data Stays<br><span class="gold">Yours.</span><br>AI That Never Phones Home.</h1>
+    <p class="page-subtitle">Cloud AI is powerful — but every prompt you send is a data transfer you don't fully control. This guide explains why small businesses with sensitive operations are switching to on-premises AI, what it actually takes to deploy, and how to get started without an enterprise IT budget.</p>
     <div class="hero-actions">
       <a href="#" onclick="downloadGuide(event)" class="btn btn-primary">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V10M8 10L5 7M8 10L11 7M3 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -169,8 +186,8 @@
 </div>
 
 <div class="guide-meta">
-  <div class="meta-item"><div class="meta-value">6</div><div class="meta-label">Core Modules</div></div>
-  <div class="meta-item"><div class="meta-value">~45</div><div class="meta-label">Minute Read</div></div>
+  <div class="meta-item"><div class="meta-value">6</div><div class="meta-label">Core Sections</div></div>
+  <div class="meta-item"><div class="meta-value">Zero</div><div class="meta-label">Cloud Dependency</div></div>
   <div class="meta-item"><div class="meta-value">Free</div><div class="meta-label">No Sign-Up Required</div></div>
   <div class="meta-item"><div class="meta-value">2025</div><div class="meta-label">Current Edition</div></div>
 </div>
@@ -180,14 +197,14 @@
   <div class="toc-inner">
     <div class="section-tag">Contents</div>
     <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);text-transform:uppercase;color:var(--white);margin-bottom:.5rem">What's Inside</h2>
-    <p style="color:var(--silver);font-size:1rem">Six modules covering everything you need to evaluate and deploy AI in a professional or government context.</p>
+    <p style="color:var(--silver);font-size:1rem">Six sections covering the real risks of cloud AI for sensitive businesses — and a practical path to running AI entirely on your own hardware.</p>
     <div class="toc-grid">
-      <a href="#module1" class="toc-item"><div class="toc-num">01</div><div class="toc-text"><h4>What Is Claude?</h4><p>Architecture, capabilities, and how it differs from GPT and Gemini</p></div></a>
-      <a href="#module2" class="toc-item"><div class="toc-num">02</div><div class="toc-text"><h4>Model Families & Tiers</h4><p>Haiku, Sonnet, Opus — when to use each and why</p></div></a>
-      <a href="#module3" class="toc-item"><div class="toc-num">03</div><div class="toc-text"><h4>Deployment Options</h4><p>Cloud API, AWS Bedrock, on-premises, and air-gapped options</p></div></a>
-      <a href="#module4" class="toc-item"><div class="toc-num">04</div><div class="toc-text"><h4>Security & Compliance</h4><p>Data handling, Constitutional AI, and enterprise safeguards</p></div></a>
-      <a href="#module5" class="toc-item"><div class="toc-num">05</div><div class="toc-text"><h4>Prompt Engineering</h4><p>Getting reliable results: techniques that actually work</p></div></a>
-      <a href="#module6" class="toc-item"><div class="toc-num">06</div><div class="toc-text"><h4>Building Your First Use Case</h4><p>From pilot concept to production deployment</p></div></a>
+      <a href="#module1" class="toc-item"><div class="toc-num">01</div><div class="toc-text"><h4>The Cloud AI Data Problem</h4><p>What actually happens to your data when you use ChatGPT or Copilot</p></div></a>
+      <a href="#module2" class="toc-item"><div class="toc-num">02</div><div class="toc-text"><h4>What On-Prem AI Actually Is</h4><p>How local models work, what they can do, and what the tradeoffs are</p></div></a>
+      <a href="#module3" class="toc-item"><div class="toc-num">03</div><div class="toc-text"><h4>Privacy &amp; Compliance Advantages</h4><p>HIPAA, attorney-client privilege, NDAs, and trade secrets — protected</p></div></a>
+      <a href="#module4" class="toc-item"><div class="toc-num">04</div><div class="toc-text"><h4>Real Business Use Cases</h4><p>Document analysis, client comms, contracts, internal Q&amp;A — all local</p></div></a>
+      <a href="#module5" class="toc-item"><div class="toc-num">05</div><div class="toc-text"><h4>The Stack: What It Takes</h4><p>Hardware requirements, open-source tools, and realistic cost estimates</p></div></a>
+      <a href="#module6" class="toc-item"><div class="toc-num">06</div><div class="toc-text"><h4>Working With FalconRock</h4><p>How we deploy, configure, and hand off on-prem AI systems</p></div></a>
     </div>
   </div>
 </div>
@@ -195,103 +212,163 @@
 <!-- MODULE 1 -->
 <div class="content-section reveal" id="module1">
   <div class="guide-content">
-    <div class="section-tag">Module 01</div>
-    <h2>What Is Claude?</h2>
-    <p>Claude is a large language model (LLM) developed by Anthropic, a San Francisco-based AI safety company founded in 2021 by former OpenAI researchers. Unlike many AI products built primarily for consumer engagement, Claude was designed from the ground up with safety, reliability, and institutional deployment in mind.</p>
-    <p>At its core, Claude is a transformer-based neural network trained on large text datasets, then refined using a process Anthropic calls <strong style="color:var(--white)">Constitutional AI (CAI)</strong> — a technique that uses a set of principles (a "constitution") to guide the model's behavior during training, rather than relying solely on human feedback. This approach produces a model that tends to be more consistent, more honest about its limitations, and less likely to produce harmful or misleading outputs.</p>
-    <h3>How Claude Compares to Other Models</h3>
-    <table class="model-table">
-      <thead><tr><th>Characteristic</th><th>Claude</th><th>GPT-4o</th><th>Gemini Pro</th></tr></thead>
-      <tbody>
-        <tr><td>Developer</td><td>Anthropic</td><td>OpenAI / Microsoft</td><td>Google DeepMind</td></tr>
-        <tr><td>Safety Approach</td><td>Constitutional AI</td><td>RLHF + Safety Filters</td><td>RLHF + Safety Filters</td></tr>
-        <tr><td>Context Window</td><td>Up to 200K tokens</td><td>128K tokens</td><td>1M tokens (Gemini 1.5)</td></tr>
-        <tr><td>On-Premises Option</td><td>Yes (via partners)</td><td>Limited</td><td>Vertex AI only</td></tr>
-        <tr><td>API Availability</td><td>Direct + AWS Bedrock</td><td>Direct + Azure</td><td>Google Cloud</td></tr>
-        <tr><td>Best For</td><td>Analysis, writing, safety-critical tasks</td><td>Coding, broad tasks</td><td>Google Workspace integration</td></tr>
-      </tbody>
-    </table>
-    <div class="callout">
-      <strong>Key Insight</strong>
-      <p>Claude's 200,000 token context window means you can feed it an entire technical document, contract, or policy corpus and ask questions against it — without chunking or external retrieval infrastructure. For many enterprise use cases, this eliminates the need for a full RAG pipeline.</p>
+    <div class="section-tag">Section 01</div>
+    <h2>The Cloud AI Data Problem</h2>
+    <p>When you type a question into ChatGPT, Copilot, or Gemini, that text leaves your device, travels to a server you don't control, gets processed by a company you don't have a contract with, and may be logged, reviewed by employees, or used to improve future models. For many users, that's an acceptable tradeoff. For businesses handling sensitive information, it isn't.</p>
+    <p>The issue isn't that these companies are malicious — it's that their business model depends on data retention and model improvement in ways that are fundamentally incompatible with client confidentiality, regulated data, or competitive trade secrets.</p>
+
+    <h3>What's Actually at Risk</h3>
+    <div class="threat-grid">
+      <div class="threat-card">
+        <h4>Client Data &amp; PII</h4>
+        <p>Medical records, financial details, legal matters, or any personally identifiable information pasted into a cloud AI prompt has left your controlled environment — potentially permanently.</p>
+      </div>
+      <div class="threat-card">
+        <h4>Trade Secrets</h4>
+        <p>Proprietary formulas, pricing strategies, unreleased product specs, or competitive intelligence submitted to a cloud model may end up in training datasets accessible to your competitors.</p>
+      </div>
+      <div class="threat-card">
+        <h4>Regulatory Exposure</h4>
+        <p>HIPAA, GLBA, attorney-client privilege, CUI handling requirements, and state privacy laws don't pause because you used a convenient AI tool. Violations carry real penalties.</p>
+      </div>
     </div>
+
+    <div class="callout danger">
+      <strong>Real Example</strong>
+      <p>In 2023, Samsung engineers leaked internal source code and meeting notes by pasting them into ChatGPT. The data was absorbed by OpenAI systems before Samsung could act — leading Samsung to ban cloud AI tools company-wide. Your business may not have Samsung's legal resources when the same thing happens to you.</p>
+    </div>
+
+    <h3>The Fine Print Nobody Reads</h3>
+    <p>Most cloud AI terms of service grant the provider broad rights to process, retain, and in some cases use your inputs. "Opt-out" of training is often available — but it doesn't retroactively remove data already submitted, and it's not the default. Enterprise tiers with stronger data handling guarantees exist, but they typically start at thousands of dollars per month and still require trusting a third party with your most sensitive operations.</p>
+    <p>The question for your business is simple: <strong style="color:var(--white)">what is the cost of a data breach or compliance violation versus the cost of keeping AI on your own hardware?</strong> For most small businesses handling client data, the math isn't close.</p>
   </div>
 </div>
 
 <!-- MODULE 2 -->
 <div class="content-section alt reveal" id="module2">
   <div class="guide-content">
-    <div class="section-tag">Module 02</div>
-    <h2>Model Families & Tiers</h2>
-    <p>Anthropic structures Claude into three capability tiers — Haiku, Sonnet, and Opus — representing a spectrum from fast/economical to most capable. Choosing the right tier is one of the most consequential decisions in building an AI-powered application.</p>
-    <div class="step-grid">
-      <div class="step-card">
-        <div class="step-num">Haiku</div>
-        <h4>Fast & Economical</h4>
-        <p>Fastest response times, lowest cost. Ideal for high-volume tasks where speed matters more than nuance: classification, routing, simple Q&A, form extraction.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">Sonnet</div>
-        <h4>Balanced Performance</h4>
-        <p>The workhorse for most enterprise applications. Strong reasoning, coding, and writing — at a cost and speed profile that works for production deployment.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">Opus</div>
-        <h4>Maximum Capability</h4>
-        <p>The most capable model for complex reasoning, long-form synthesis, and tasks requiring deep analysis. Best reserved for high-value, lower-volume use cases.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">3.x</div>
-        <h4>Current Generation</h4>
-        <p>Claude 3.5 Sonnet and Claude 3 Opus represent the current production generation. Sonnet 3.5 in particular offers near-Opus quality at Sonnet pricing — often the optimal choice.</p>
-      </div>
+    <div class="section-tag">Section 02</div>
+    <h2>What On-Premises AI Actually Is</h2>
+    <p>On-premises AI means running a language model entirely on hardware you own and control — in your office, your server room, or a private data center. No data ever leaves your environment. No API calls to external services. No subscriptions to third-party AI providers. The model runs locally, processes locally, and stays local.</p>
+    <p>This was technically impractical for most businesses just two years ago. Today, a generation of open-weight models — Llama, Mistral, Phi, Gemma, and others — have made local AI genuinely capable for real business tasks. The same capabilities that made cloud AI compelling are now available in a package that runs on a capable workstation or small server.</p>
+
+    <h3>Cloud AI vs. On-Premises: A Direct Comparison</h3>
+    <table class="compare-table">
+      <thead><tr><th>Factor</th><th>Cloud AI (ChatGPT, Copilot, etc.)</th><th>On-Premises AI</th></tr></thead>
+      <tbody>
+        <tr><td>Data Control</td><td class="bad">Leaves your environment</td><td class="good">Never leaves your hardware</td></tr>
+        <tr><td>Compliance Risk</td><td class="bad">High — third-party data handling</td><td class="good">Minimal — fully auditable</td></tr>
+        <tr><td>Monthly Cost</td><td class="mid">$20–$30+/user, scales with usage</td><td class="good">Hardware only, no recurring fees</td></tr>
+        <tr><td>Customization</td><td class="mid">Limited — provider controls behavior</td><td class="good">Full — tuned to your data &amp; workflow</td></tr>
+        <tr><td>Internet Dependency</td><td class="bad">Required</td><td class="good">None — runs fully offline</td></tr>
+        <tr><td>Model Capability</td><td class="good">Highest available (GPT-4o, Claude)</td><td class="mid">Excellent for most tasks; gap is narrowing fast</td></tr>
+        <tr><td>Setup Complexity</td><td class="good">Zero — sign up and go</td><td class="mid">Moderate — requires initial deployment</td></tr>
+        <tr><td>Uptime / Reliability</td><td class="mid">Subject to provider outages</td><td class="good">Under your control</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>The Capability Gap Is Closing Fast</strong>
+      <p>In 2024, open-weight models reached GPT-3.5-level capability — already strong for most business tasks. By 2025, models like Llama 3.3 70B are competitive with early GPT-4 on the vast majority of real-world use cases. The frontier models still lead on complex reasoning — but 90% of day-to-day business AI tasks don't require frontier performance.</p>
     </div>
-    <h3>Practical Selection Guide</h3>
-    <p>For most organizations starting out, <span class="badge">Claude 3.5 Sonnet</span> is the right default. It delivers exceptional performance for document analysis, code review, summarization, and complex Q&A at a cost point that makes production deployment feasible. Move to Opus only when Sonnet demonstrably falls short for your specific use case.</p>
   </div>
 </div>
 
 <!-- MODULE 3 -->
 <div class="content-section reveal" id="module3">
   <div class="guide-content">
-    <div class="section-tag">Module 03</div>
-    <h2>Deployment Options</h2>
-    <p>One of Claude's key advantages for regulated and government users is the range of deployment options. You are not locked into a single cloud provider or a SaaS model that puts your data in Anthropic's systems.</p>
-    <h3>Option A: Anthropic API (Direct)</h3>
-    <p>The simplest starting point. Sign up for API access at console.anthropic.com, generate an API key, and start making calls. Data is processed by Anthropic's infrastructure. <strong style="color:var(--white)">Not suitable for CUI, PHI, or classified data.</strong> Good for internal tooling, public-facing applications, and pilots that don't touch sensitive information.</p>
-    <h3>Option B: Amazon Bedrock</h3>
-    <p>AWS hosts Claude models within Bedrock, allowing access through AWS IAM, inside your VPC, with data processing governed by AWS data processing agreements. For organizations already in AWS GovCloud, this is typically the fastest path to a compliant deployment. Data does not leave your AWS account.</p>
-    <div class="callout">
-      <strong>For GovCloud Users</strong>
-      <p>Claude is available in AWS GovCloud (US) via Bedrock. This provides IL2/IL4 data boundary controls and allows integration with existing GovCloud workloads. Work with your AO to evaluate data categorization requirements before deployment.</p>
+    <div class="section-tag">Section 03</div>
+    <h2>Privacy &amp; Compliance Advantages</h2>
+    <p>For regulated industries and businesses handling sensitive client relationships, on-premises AI isn't just a preference — it's often the only legally defensible option. Here's how local deployment maps to the compliance frameworks your business actually operates under.</p>
+
+    <h3>HIPAA — Healthcare &amp; Medical Businesses</h3>
+    <p>Protected Health Information (PHI) cannot be transmitted to a third-party AI provider without a signed Business Associate Agreement (BAA) that satisfies HIPAA's technical safeguard requirements. Most consumer AI tools don't offer BAAs. Even those that do still transmit your data to external infrastructure. On-premises AI eliminates the transmission entirely — no BAA needed because there's no third party involved. Medical practices, billing companies, home health agencies, and anyone else handling PHI can use AI without HIPAA exposure.</p>
+
+    <h3>Legal &amp; Professional Services</h3>
+    <p>Attorney-client privilege is one of the most absolute protections in the legal system — and it can be waived by disclosing privileged communications to third parties. Submitting client matter details to a cloud AI tool is a disclosure to a third party. The same logic applies to accountant-client privilege and similar professional confidentiality protections. Local AI lets firms automate document review, drafting, and research without touching the privilege question at all.</p>
+
+    <h3>Trade Secrets &amp; NDA-Governed Information</h3>
+    <p>If your employees have signed NDAs, or if you've received confidential business information under NDA, you may be obligated to prevent that information from being disclosed to outside parties. Using a cloud AI tool to process NDA-governed content may constitute a breach — putting your business at legal risk even if no data leak occurs. On-premises AI is provably internal: no transmission, no disclosure, no breach.</p>
+
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">CUI</div>
+        <h4>Controlled Unclassified Info</h4>
+        <p>Government contractors handling CUI under NIST 800-171 or CMMC requirements cannot send that data to commercial cloud AI services. Local deployment is the compliant path.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">GLBA</div>
+        <h4>Financial Services</h4>
+        <p>The Gramm-Leach-Bliley Act requires financial institutions to protect customer financial data. Banks, mortgage brokers, and financial advisors all have obligations that local AI satisfies cleanly.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">SOC 2</div>
+        <h4>SaaS &amp; Tech Companies</h4>
+        <p>Companies pursuing SOC 2 Type II certification need demonstrable control over how customer data flows. Local AI keeps customer data in an auditable, controlled environment.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">State</div>
+        <h4>CCPA, VCDPA &amp; More</h4>
+        <p>An expanding patchwork of state privacy laws restricts how consumer data can be shared with third parties. On-premises AI sidesteps the question by eliminating third-party data sharing entirely.</p>
+      </div>
     </div>
-    <h3>Option C: On-Premises / Air-Gapped</h3>
-    <p>For the highest security requirements, FalconRock specializes in deploying open-weight models (Llama, Mistral, and others) using the same interaction patterns as Claude — fully on your hardware, with zero external data calls. While not technically "Claude," these deployments provide equivalent capability for many use cases in a fully isolated environment.</p>
-    <p>The on-prem stack we use: <span class="badge">Ollama</span> for model serving, <span class="badge">OpenWebUI</span> for the user interface, <span class="badge">Docker</span> for containerization, and custom RAG pipelines for document-aware queries. All components are open-source and auditable.</p>
+
+    <div class="callout">
+      <strong>The Audit Advantage</strong>
+      <p>When a regulator, client, or partner asks how you protect their data, "we run AI on our own servers — no external transmission, ever" is a far stronger answer than "we use a cloud service and opted out of their training program." Auditability and demonstrable control are exactly what regulators and sophisticated clients want to see.</p>
+    </div>
   </div>
 </div>
 
 <!-- MODULE 4 -->
 <div class="content-section alt reveal" id="module4">
   <div class="guide-content">
-    <div class="section-tag">Module 04</div>
-    <h2>Security & Compliance</h2>
-    <p>Security concerns are the most common barrier to AI adoption in regulated environments. This module addresses the most frequent questions from security officers, ISSOs, and compliance teams.</p>
-    <h3>Does Anthropic Train on My Data?</h3>
-    <p>By default via the API: <strong style="color:var(--white)">no</strong>. API inputs and outputs are not used to train Claude models. Consumer products (Claude.ai free tier) may be used for training; API and enterprise customers are explicitly excluded. Review Anthropic's current data handling policies and request a Data Processing Agreement (DPA) for enterprise use.</p>
-    <h3>Constitutional AI & Safety Controls</h3>
-    <p>Claude is trained with a hardcoded constitution that governs its behavior — it won't help with weapons of mass destruction, CSAM, or other absolute prohibitions regardless of how a prompt is framed. Beyond that, operators (businesses using the API) can customize Claude's behavior within Anthropic's guidelines using "system prompts" — instructions that shape every interaction within their application.</p>
-    <h3>Questions for Your ISSO / AO</h3>
-    <ul>
-      <li>What is the data classification of the content this system will process?</li>
-      <li>Does the deployment option (Bedrock, direct API, on-prem) satisfy data boundary requirements?</li>
-      <li>Is a P-ATO or agency ATO required, or can we proceed under existing cloud authority?</li>
-      <li>What logging and audit requirements apply to AI-assisted decision-making in this context?</li>
-      <li>Are there applicable policies (DoD Directive 3000.09, AI EO, agency AI governance frameworks) that govern deployment?</li>
-    </ul>
+    <div class="section-tag">Section 04</div>
+    <h2>Real Business Use Cases</h2>
+    <p>On-premises AI isn't a proof of concept — it's a production-ready toolkit for the work small businesses actually do every day. These are the highest-value applications we deploy for clients.</p>
+
+    <div class="use-case-grid">
+      <div class="use-case-card">
+        <span class="icon">📄</span>
+        <h4>Document Review &amp; Summarization</h4>
+        <p>Feed contracts, reports, or policy documents to a local model and get instant summaries, key term extraction, or clause-by-clause analysis — without sending client materials outside your walls.</p>
+        <span class="example">→ Law firms, insurance, real estate, HR</span>
+      </div>
+      <div class="use-case-card">
+        <span class="icon">💬</span>
+        <h4>Internal Knowledge Q&amp;A</h4>
+        <p>Index your internal documentation, SOPs, and institutional knowledge into a local AI that employees can query in plain English. Accurate answers to operational questions, instantly.</p>
+        <span class="example">→ Any business with operational complexity</span>
+      </div>
+      <div class="use-case-card">
+        <span class="icon">✍️</span>
+        <h4>Draft Generation</h4>
+        <p>Proposals, client emails, incident reports, meeting summaries — a local model configured with your templates and tone can generate polished first drafts that require minimal editing.</p>
+        <span class="example">→ Consulting, professional services, agencies</span>
+      </div>
+      <div class="use-case-card">
+        <span class="icon">🩺</span>
+        <h4>Clinical &amp; Case Documentation</h4>
+        <p>Turn voice or text notes into structured SOAP notes, intake summaries, or referral letters. No PHI ever leaves the clinic. Dramatically reduces documentation burden for clinical staff.</p>
+        <span class="example">→ Medical, therapy, behavioral health, dental</span>
+      </div>
+      <div class="use-case-card">
+        <span class="icon">🔎</span>
+        <h4>Contract &amp; Compliance Review</h4>
+        <p>Flag non-standard clauses, identify obligations, compare against templates — AI-assisted review that would take a paralegal hours can be completed in minutes, on your hardware.</p>
+        <span class="example">→ Legal, procurement, government contracting</span>
+      </div>
+      <div class="use-case-card">
+        <span class="icon">📊</span>
+        <h4>Financial Data Analysis</h4>
+        <p>Analyze P&amp;L statements, identify anomalies in transaction data, or summarize audit findings. All financial data stays on your systems — no cloud exposure, no compliance risk.</p>
+        <span class="example">→ Accounting, financial advisory, banking</span>
+      </div>
+    </div>
+
     <div class="callout">
-      <strong>Practical Guidance</strong>
-      <p>Start with unclassified, non-CUI use cases to build organizational familiarity and establish governance processes. Internal efficiency tools — summarization, search, drafting — are typically the fastest path through the ATO process and generate immediate value.</p>
+      <strong>Common Question</strong>
+      <p>Can a local model handle my industry-specific terminology? Yes — and it can be improved over time. Models can be fine-tuned or prompted using your internal documents, terminology, and output formats. A deployment configured against examples of your actual work performs significantly better than a generic out-of-the-box setup.</p>
     </div>
   </div>
 </div>
@@ -299,79 +376,95 @@
 <!-- MODULE 5 -->
 <div class="content-section reveal" id="module5">
   <div class="guide-content">
-    <div class="section-tag">Module 05</div>
-    <h2>Prompt Engineering</h2>
-    <p>The quality of AI outputs is directly determined by the quality of your inputs. "Prompt engineering" is the practice of structuring instructions to reliably get useful results. These are the techniques that matter most in practice.</p>
-    <h3>The System Prompt Is Your Contract</h3>
-    <p>In any production application, the system prompt sets the rules. Use it to define Claude's role, the format of its outputs, what it should and shouldn't do, and how it should handle ambiguous situations. A well-written system prompt is more valuable than any amount of per-query optimization.</p>
+    <div class="section-tag">Section 05</div>
+    <h2>The Stack: What It Takes to Deploy</h2>
+    <p>The biggest misconception about on-premises AI is that it requires a data center, a DevOps team, and a seven-figure infrastructure budget. For most small business use cases, a capable workstation or entry-level server is sufficient. Here's what a practical deployment actually looks like.</p>
+
+    <h3>Hardware Requirements</h3>
+    <p>The critical variable is GPU VRAM — this determines which model sizes you can run and at what speed. Most small business deployments fall into one of two tiers:</p>
+
     <div class="step-grid">
       <div class="step-card">
-        <div class="step-num">01</div>
-        <h4>Be Explicit About Role</h4>
-        <p>Tell Claude exactly what it is in your application. "You are a technical writer reviewing engineering documents for clarity and accuracy" produces fundamentally different behavior than a blank system prompt.</p>
+        <div class="step-num">Tier 1</div>
+        <h4>Entry Level — $800–$2,500</h4>
+        <p>A modern workstation with 16–24GB GPU VRAM (NVIDIA RTX 4070–4090) or a Mac mini M4 Pro. Runs 7B–14B parameter models with excellent performance for document tasks, drafting, and Q&amp;A. Right-sized for most small businesses with 1–10 users.</p>
       </div>
       <div class="step-card">
-        <div class="step-num">02</div>
-        <h4>Specify Output Format</h4>
-        <p>If you need structured output — JSON, a specific section structure, a table — say so explicitly. Claude will follow formatting instructions consistently when they're in the system prompt.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h4>Provide Examples</h4>
-        <p>Few-shot prompting — showing 2–3 examples of input/output pairs — dramatically improves consistency for specialized tasks. This is especially valuable for domain-specific output formats.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <h4>Define the Boundaries</h4>
-        <p>Explicitly state what Claude should not do. "Do not speculate beyond the provided document. If the answer is not in the source material, say so." Constraints reduce hallucination risk significantly.</p>
+        <div class="step-num">Tier 2</div>
+        <h4>Business Server — $4,000–$12,000</h4>
+        <p>Dual-GPU workstation or dedicated server with 48–80GB VRAM. Runs 34B–70B models — approaching frontier-level performance for complex reasoning. Supports concurrent users and heavier sustained workloads.</p>
       </div>
     </div>
-    <h3>Hallucination Management</h3>
-    <p>LLMs can generate plausible-sounding but incorrect information, especially when asked to recall specific facts. Mitigation strategies: constrain Claude to only reference provided documents; instruct it to cite sources; ask it to express uncertainty explicitly; and implement human review for high-stakes outputs. RAG (Retrieval-Augmented Generation) architectures dramatically reduce hallucination by grounding responses in specific retrieved documents.</p>
+
+    <h3>The Software Stack (All Open-Source, No Licensing Fees)</h3>
+    <table class="compare-table">
+      <thead><tr><th>Component</th><th>Tool</th><th>What It Does</th></tr></thead>
+      <tbody>
+        <tr><td>Model Serving</td><td><span class="badge">Ollama</span></td><td>Manages model downloads, loading, and local API endpoints. One-command model switching.</td></tr>
+        <tr><td>User Interface</td><td><span class="badge">Open WebUI</span></td><td>Browser-based chat interface. Looks and feels like ChatGPT — the transition is seamless for users already familiar with cloud AI.</td></tr>
+        <tr><td>Document RAG</td><td><span class="badge">AnythingLLM</span></td><td>Connects your local model to internal documents. Query your own files in plain English — indexed and processed locally.</td></tr>
+        <tr><td>Containerization</td><td><span class="badge">Docker</span></td><td>Isolates each component, simplifies updates, and makes the whole stack portable and reproducible.</td></tr>
+        <tr><td>Remote Access</td><td><span class="badge">Tailscale</span></td><td>Securely extends access to the AI system for remote employees — without opening firewall ports to the internet.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Realistic 3-Year Cost Comparison</h3>
+    <p>Consider a 10-person team where each person uses AI regularly. Cloud AI at $30/user/month costs $3,600/year — $10,800 over three years, plus ongoing compliance risk and data exposure. A Tier 1 on-premises deployment runs $2,000–$3,500 upfront with no monthly fees, and the hardware depreciates over 5+ years. Typical break-even is 12–18 months. After that, it's pure savings.</p>
+
+    <div class="callout">
+      <strong>What FalconRock Handles</strong>
+      <p>Hardware selection, procurement guidance, OS and driver configuration, model selection and tuning, Open WebUI setup, RAG pipeline integration for your documents, user onboarding, and ongoing support. We don't hand you a server — we hand you a working system your team can use on day one, with documentation written for non-technical staff.</p>
+    </div>
   </div>
 </div>
 
 <!-- MODULE 6 -->
 <div class="content-section alt reveal" id="module6">
   <div class="guide-content">
-    <div class="section-tag">Module 06</div>
-    <h2>Building Your First Use Case</h2>
-    <p>The most common mistake in enterprise AI adoption is starting too big. Successful deployments begin with a narrow, well-defined problem where success is easy to measure and failure is recoverable.</p>
-    <h3>Selecting a Pilot Use Case</h3>
-    <p>Good pilot characteristics: clearly defined input and output, existing human process to compare against, tolerant of occasional errors, low regulatory risk, and a small group of motivated users. Common winning starting points: document summarization, meeting notes processing, policy Q&A assistants, and technical writing assistance.</p>
+    <div class="section-tag">Section 06</div>
+    <h2>Working with FalconRock</h2>
+    <p>FalconRock was built around one core capability: deploying advanced technology in environments where security and data control aren't optional. We've done this in DoD and federal contexts where the consequences of data exposure are severe. That same discipline applies directly to small businesses that need to protect client data, maintain regulatory compliance, or simply retain ownership of their operations.</p>
+    <p>We're not a software vendor. We're not an AI subscription service. We're a consulting firm — which means our goal is to build you a system that works, hand it over, and make you self-sufficient. Your success after we leave is the measure of a good engagement.</p>
+
+    <h3>How an Engagement Works</h3>
     <div class="step-grid">
       <div class="step-card">
-        <div class="step-num">1</div>
-        <h4>Define Success</h4>
-        <p>Before writing a single prompt, define what "good" looks like. Time saved per task? Reduction in errors? User satisfaction score? You need a baseline to measure against.</p>
+        <div class="step-num">01</div>
+        <h4>Discovery Call</h4>
+        <p>We understand your use case, data environment, compliance requirements, and existing hardware. No obligation. Most businesses know within 30 minutes whether on-prem AI is the right fit for their situation.</p>
       </div>
       <div class="step-card">
-        <div class="step-num">2</div>
-        <h4>Start With the API</h4>
-        <p>Don't build a full application to test a concept. Use the Anthropic console or a simple script to manually validate that Claude can do what you need it to do with your actual data.</p>
+        <div class="step-num">02</div>
+        <h4>System Design</h4>
+        <p>We spec the hardware, select the appropriate model(s), and design the deployment architecture. You receive a detailed proposal with itemized costs — no vague estimates or scope creep.</p>
       </div>
       <div class="step-card">
-        <div class="step-num">3</div>
-        <h4>Build the Evaluation Set</h4>
-        <p>Collect 20–50 representative examples of your task with known-good outputs. Every prompt change should be evaluated against this set to catch regressions before they reach users.</p>
+        <div class="step-num">03</div>
+        <h4>Deployment</h4>
+        <p>We configure, test, and validate the system in your environment. Document indexing, user accounts, access controls, and remote access (if needed) are all handled before handoff.</p>
       </div>
       <div class="step-card">
-        <div class="step-num">4</div>
-        <h4>Plan for Production</h4>
-        <p>Early in the pilot, think about: API key management, cost monitoring, logging for audit, error handling, and what happens when the model is wrong. These are easier to design in than retrofit.</p>
+        <div class="step-num">04</div>
+        <h4>Handoff &amp; Support</h4>
+        <p>Staff training, user documentation, and a defined support arrangement. We want your team using the system independently — not calling us for every question.</p>
       </div>
     </div>
+
+    <h3>Who We Work With</h3>
+    <p>Our clients are typically small businesses in regulated industries — law firms, medical practices, financial services, defense contractors, and professional services companies — where data handling isn't an abstraction but a daily operational reality. We also work with organizations that have strong institutional knowledge they want to make searchable and accessible through AI without exposing it to the public internet.</p>
+    <p>Whether you're a 5-person operation or a 500-person organization, the problem we solve is the same: <strong style="color:var(--white)">AI that works for you without working against your clients' trust or your legal obligations.</strong></p>
+
     <div class="callout">
-      <strong>FalconRock Can Help</strong>
-      <p>If you're evaluating AI for a program or organization and need experienced guidance — particularly for on-premises deployment, compliance assessment, or integration with existing infrastructure — reach out. We've been through this process in demanding environments and can significantly accelerate your timeline.</p>
+      <strong>Not Sure If You're Ready?</strong>
+      <p>That's exactly the right place to start a conversation. Most of our best engagements began with someone who wasn't sure whether on-prem AI made sense for their situation. We'll tell you honestly if it does — and if it doesn't, we'll tell you that too.</p>
     </div>
   </div>
 </div>
 
-<!-- DOWNLOAD CTA -->
+<!-- PRINT CTA -->
 <div class="download-cta reveal">
-  <h2>Download the Full Guide</h2>
-  <p>Save a copy of this guide as a printable PDF — formatted for easy sharing with your team, PM, or program office.</p>
+  <h2>Save This Guide</h2>
+  <p>Print or save a PDF copy — formatted cleanly for sharing with your leadership, compliance officer, or legal counsel.</p>
   <a href="#" onclick="downloadGuide(event)" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:.6rem">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V10M8 10L5 7M8 10L11 7M3 13H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     Download PDF
@@ -381,9 +474,9 @@
 
 <!-- CONSULT CTA -->
 <div style="background:var(--navy);padding:4rem 5vw;text-align:center;border-top:1px solid rgba(200,164,78,.1)">
-  <div class="section-tag" style="justify-content:center;margin-bottom:1rem">Ready to Deploy?</div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.5rem);text-transform:uppercase;color:var(--white);margin-bottom:1rem">Need Help Going Further?</h2>
-  <p style="color:var(--silver);font-size:1rem;max-width:550px;margin:0 auto 2rem;line-height:1.7">FalconRock specializes in on-premises AI deployment for organizations that can't use cloud services. If this guide raised more questions than it answered, we're happy to talk.</p>
+  <div class="section-tag" style="justify-content:center;margin-bottom:1rem">Ready to Move?</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.5rem);text-transform:uppercase;color:var(--white);margin-bottom:1rem">Let's Talk About Your Situation</h2>
+  <p style="color:var(--silver);font-size:1rem;max-width:550px;margin:0 auto 2rem;line-height:1.7">On-premises AI isn't one-size-fits-all. Tell us about your business, your data, and your compliance requirements — we'll tell you exactly what a deployment looks like and what it costs.</p>
   <a href="contact.html" class="btn btn-primary">Talk to FalconRock</a>
 </div>
 
@@ -393,10 +486,10 @@
     <a href="about.html">About</a>
     <a href="index.html#capabilities">Capabilities</a>
     <a href="contact.html">Contact</a>
-    <a href="training.html">AI Training Guide</a>
+    <a href="training.html">On-Prem AI Guide</a>
   </div>
 </footer>
-<p class="disclaimer">This guide is provided for informational purposes. Product capabilities and pricing referenced are subject to change. Consult current Anthropic documentation for the latest information.</p>
+<p class="disclaimer">This guide is provided for informational purposes. Product names, capabilities, and pricing referenced are subject to change. Consult qualified legal counsel for compliance determinations specific to your situation.</p>
 
 <script>
   const reveals=document.querySelectorAll('.reveal');
@@ -423,6 +516,7 @@
   .page-hero{padding:2rem 0;background:none}
   .page-hero .hero-grid{display:none}
   .page-title{color:#0a1628;font-size:2rem}
+  .page-title .gold{color:#c8a44e}
   .page-subtitle{color:#444}
   .section-tag{color:#c8a44e}
   .section-tag::before{background:#c8a44e}
@@ -435,12 +529,22 @@
   h3{color:#1a2d4a}
   p,li{color:#444;font-size:.9rem}
   .callout{background:#fffbf0;border-left:4px solid #c8a44e}
+  .callout.danger{background:#fff5f5;border-left-color:#c84e4e}
   .callout p{color:#444}
-  .model-table th{color:#c8a44e}
-  .model-table td{color:#444}
+  .compare-table th{color:#c8a44e}
+  .compare-table td{color:#444}
+  .good{color:#2a7a36}
+  .bad{color:#c84e4e}
+  .mid{color:#8a6a20}
   .step-card{background:#f5f5f5;border:1px solid #ddd;break-inside:avoid}
   .step-card h4,.step-card .step-num{color:#0a1628}
   .step-card p{color:#444}
+  .threat-card{background:#fff5f5;border:1px solid #e0c0c0;break-inside:avoid}
+  .threat-card h4{color:#c84e4e}
+  .threat-card p{color:#444}
+  .use-case-card{background:#f5f5f5;border:1px solid #ddd;break-inside:avoid}
+  .use-case-card h4{color:#0a1628}
+  .use-case-card p{color:#444}
   .toc-item{background:#f5f5f5;border:1px solid #ddd;break-inside:avoid}
   .toc-num{color:#c8a44e}
   .toc-text h4{color:#0a1628}
