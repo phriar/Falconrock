@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BD Intel Report — FalconRock Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1829;
+    --navy-mid: #152338;
+    --navy-light: #1E3251;
+    --silver: #8FA3BF;
+    --silver-light: #C4D0DF;
+    --silver-dim: #4A5E75;
+    --white: #F0F4F8;
+    --accent: #4A90D9;
+    --accent-dim: #2A5A8A;
+    --bid: #2ECC71;
+    --watch: #F39C12;
+    --skip: #E74C3C;
+    --bid-bg: rgba(46,204,113,0.08);
+    --watch-bg: rgba(243,156,18,0.08);
+    --skip-bg: rgba(231,76,60,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74,144,217,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,144,217,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid rgba(143,163,191,0.15);
+    background: linear-gradient(180deg, rgba(11,24,41,0.98) 0%, rgba(21,35,56,0.95) 100%);
+    backdrop-filter: blur(8px);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: white;
+    letter-spacing: -1px;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .logo-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--silver);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .header-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(74,144,217,0.1);
+    border: 1px solid rgba(74,144,217,0.25);
+    padding: 5px 12px;
+    border-radius: 3px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+
+  /* ── PAGE TITLE ── */
+  .page-title-block {
+    margin-bottom: 40px;
+  }
+
+  .page-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+    color: var(--white);
+  }
+
+  .page-title span {
+    color: var(--silver);
+    font-weight: 300;
+  }
+
+  .page-desc {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--silver);
+    line-height: 1.6;
+    font-style: italic;
+    max-width: 600px;
+  }
+
+  /* ── CONFIG PANEL ── */
+  .config-panel {
+    background: var(--navy-mid);
+    border: 1px solid rgba(143,163,191,0.12);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .config-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .config-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(143,163,191,0.1);
+  }
+
+  .config-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .config-grid.two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field-group.span-2 {
+    grid-column: span 2;
+  }
+
+  label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--silver-dim);
+  }
+
+  input[type="text"], input[type="password"], input[type="date"], textarea, select {
+    background: var(--navy);
+    border: 1px solid rgba(143,163,191,0.15);
+    border-radius: 4px;
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 10px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+
+  select option {
+    background: var(--navy);
+  }
+
+  .key-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .key-row .field-group { flex: 1; }
+
+  .key-note {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--silver-dim);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .key-note a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── KEYWORD TAGS ── */
+  .keyword-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .preset-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(143,163,191,0.2);
+    color: var(--silver);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+
+  .preset-tag:hover, .preset-tag.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(74,144,217,0.08);
+  }
+
+  /* ── RUN BUTTON ── */
+  .run-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .run-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+  .run-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    display: none;
+    background: var(--navy-mid);
+    border: 1px solid rgba(74,144,217,0.2);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    align-items: center;
+    gap: 12px;
+  }
+
+  .status-bar.visible { display: flex; }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(74,144,217,0.2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── REPORT HEADER ── */
+  .report-header {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(143,163,191,0.1);
+  }
+
+  .report-header.visible { display: flex; }
+
+  .report-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    color: var(--silver-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .report-meta strong {
+    color: var(--white);
+    font-size: 15px;
+  }
+
+  .summary-pills {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 3px;
+  }
+
+  .pill.bid { background: var(--bid-bg); color: var(--bid); border: 1px solid rgba(46,204,113,0.2); }
+  .pill.watch { background: var(--watch-bg); color: var(--watch); border: 1px solid rgba(243,156,18,0.2); }
+  .pill.skip { background: var(--skip-bg); color: var(--skip); border: 1px solid rgba(231,76,60,0.2); }
+
+  /* ── OPP CARDS ── */
+  .results-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .opp-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(143,163,191,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .opp-card:hover { border-color: rgba(143,163,191,0.25); }
+  .opp-card.bid { border-left: 3px solid var(--bid); }
+  .opp-card.watch { border-left: 3px solid var(--watch); }
+  .opp-card.skip { border-left: 3px solid var(--skip); opacity: 0.75; }
+
+  .card-header {
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+  }
+
+  .verdict-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .verdict-badge.bid { background: var(--bid-bg); color: var(--bid); border: 1px solid rgba(46,204,113,0.25); }
+  .verdict-badge.watch { background: var(--watch-bg); color: var(--watch); border: 1px solid rgba(243,156,18,0.25); }
+  .verdict-badge.skip { background: var(--skip-bg); color: var(--skip); border: 1px solid rgba(231,76,60,0.25); }
+
+  .card-main { flex: 1; min-width: 0; }
+
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    color: var(--silver-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .card-meta span { display: flex; align-items: center; gap: 4px; }
+
+  .score-ring {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-ring svg {
+    position: absolute;
+    top: 0; left: 0;
+    transform: rotate(-90deg);
+  }
+
+  .score-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-body {
+    padding: 0 24px 20px;
+    display: none;
+  }
+
+  .card-body.open { display: block; }
+
+  .analysis-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver-dim);
+    margin-bottom: 8px;
+  }
+
+  .analysis-text {
+    font-size: 13px;
+    color: var(--silver-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(143,163,191,0.07);
+    border: 1px solid rgba(143,163,191,0.12);
+    color: var(--silver);
+  }
+
+  .view-sam-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 7px 14px;
+    border: 1px solid rgba(74,144,217,0.3);
+    border-radius: 3px;
+    transition: all 0.15s;
+    background: rgba(74,144,217,0.05);
+  }
+
+  .view-sam-btn:hover {
+    background: rgba(74,144,217,0.12);
+    border-color: var(--accent);
+  }
+
+  /* ── EMPTY / ERROR ── */
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 60px 32px;
+    color: var(--silver-dim);
+  }
+
+  .empty-state.visible { display: block; }
+
+  .empty-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    opacity: 0.4;
+  }
+
+  .empty-state h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--silver);
+    margin-bottom: 8px;
+  }
+
+  .empty-state p {
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: rgba(143,163,191,0.08);
+    margin: 28px 0;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(143,163,191,0.08);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--silver-dim);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .config-grid { grid-template-columns: 1fr; }
+    .config-grid.two-col { grid-template-columns: 1fr; }
+    .field-group.span-2 { grid-column: span 1; }
+    .header-inner { padding: 16px 20px; }
+    .main { padding: 32px 20px; }
+    .page-title { font-size: 36px; }
+    .report-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-lockup">
+      <div class="logo-icon">FR</div>
+      <div class="logo-text">
+        <div class="logo-name">FalconRock</div>
+        <div class="logo-sub">Consulting</div>
+      </div>
+    </div>
+    <div class="header-badge">BD Intel — Internal</div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main class="main">
+
+  <div class="page-title-block">
+    <div class="page-eyebrow">Business Development</div>
+    <div class="page-title">SAM.gov <span>Intel</span><br>Report</div>
+    <div class="page-desc">AI-scored opportunity pipeline for cleared IT infrastructure — bid, watch, or skip decisions with reasoning.</div>
+  </div>
+
+  <!-- ── CONFIG ── -->
+  <div class="config-panel">
+    <div class="config-title">Configuration</div>
+
+    <div class="config-grid two-col" style="margin-bottom:16px;">
+      <div class="field-group">
+        <label>SAM.gov API Key</label>
+        <input type="password" id="samKey" placeholder="Your api.data.gov key…">
+        <div class="key-note">No key yet? <a href="https://api.data.gov/signup/" target="_blank">Get one free →</a></div>
+      </div>
+      <div class="field-group">
+        <label>Anthropic API Key</label>
+        <input type="password" id="claudeKey" placeholder="sk-ant-…">
+        <div class="key-note">Used for opportunity analysis — never stored.</div>
+      </div>
+    </div>
+
+    <div class="config-grid">
+      <div class="field-group">
+        <label>Posted From</label>
+        <input type="date" id="dateFrom">
+      </div>
+      <div class="field-group">
+        <label>Posted To</label>
+        <input type="date" id="dateTo">
+      </div>
+      <div class="field-group">
+        <label>Max Results</label>
+        <select id="maxResults">
+          <option value="10">10 opportunities</option>
+          <option value="20" selected>20 opportunities</option>
+          <option value="50">50 opportunities</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field-group" style="margin-bottom:14px;">
+      <label>Search Keywords</label>
+      <input type="text" id="keywords" placeholder="e.g. on-premise AI, systems engineer, virtualization">
+      <div class="keyword-presets">
+        <button class="preset-tag active" data-kw="IT infrastructure systems architect">IT Architect</button>
+        <button class="preset-tag" data-kw="on-premise AI LLM generative">On-Prem AI</button>
+        <button class="preset-tag" data-kw="VMware NSX virtualization">VMware / NSX</button>
+        <button class="preset-tag" data-kw="Citrix VDI desktop virtualization">Citrix VDI</button>
+        <button class="preset-tag" data-kw="SD-WAN network engineer clearance">SD-WAN</button>
+        <button class="preset-tag" data-kw="SETA systems engineering technical assistance">SETA</button>
+        <button class="preset-tag" data-kw="RMF STIG cybersecurity DoD">RMF / STIG</button>
+        <button class="preset-tag" data-kw="air-gapped classified AI deployment">Air-Gapped AI</button>
+      </div>
+    </div>
+
+    <div class="field-group" style="margin-bottom:20px;">
+      <label>Your Company Profile (for scoring context)</label>
+      <textarea id="profile">FalconRock Consulting (Wisebird Holdings LLC) — cleared IT infrastructure consulting firm. TS/SCI cleared principal. 25 years DoD experience. Deep expertise: Citrix CVAD, VMware NSX-T, Versa SD-WAN, Infoblox, Ansible, PowerShell, on-prem AI (Ollama/AnythingLLM). SETA experience on SPARTN program under Booz Allen Hamilton. Small business, NAICS 541512. Eligible SDVOSB/VOSB. Based in La Jolla CA. Strongest on: air-gapped environments, classified infrastructure, IT modernization, local LLM deployment for CUI/DoD environments.</textarea>
+    </div>
+
+    <button class="run-btn" id="runBtn" onclick="runReport()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Run Intelligence Report
+    </button>
+  </div>
+
+  <!-- ── STATUS ── -->
+  <div class="status-bar" id="statusBar">
+    <div class="spinner"></div>
+    <span id="statusMsg">Initializing…</span>
+  </div>
+
+  <!-- ── REPORT HEADER ── -->
+  <div class="report-header" id="reportHeader">
+    <div class="report-meta">
+      <strong id="reportCount">0</strong> opportunities analyzed
+      <span id="reportRange" style="margin-left:8px;"></span>
+    </div>
+    <div class="summary-pills">
+      <div class="pill bid" id="bidCount">0 Bid</div>
+      <div class="pill watch" id="watchCount">0 Watch</div>
+      <div class="pill skip" id="skipCount">0 Skip</div>
+    </div>
+  </div>
+
+  <!-- ── RESULTS ── -->
+  <div class="results-grid" id="resultsGrid"></div>
+
+  <!-- ── EMPTY ── -->
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">📡</div>
+    <h3>No results found</h3>
+    <p>Try different keywords or a wider date range. Some searches require broader terms to return active opportunities.</p>
+  </div>
+
+  <div class="page-footer">
+    FalconRock Consulting · Internal BD Tool · Powered by SAM.gov API + Claude
+  </div>
+</main>
+
+<script>
+// ── DEFAULTS ──
+window.addEventListener('DOMContentLoaded', () => {
+  const today = new Date();
+  const from = new Date();
+  from.setDate(today.getDate() - 30);
+  document.getElementById('dateTo').value = today.toISOString().split('T')[0];
+  document.getElementById('dateFrom').value = from.toISOString().split('T')[0];
+  document.getElementById('keywords').value = 'IT infrastructure systems architect';
+
+  // Restore saved keys (sessionStorage only — not persisted)
+  const sk = sessionStorage.getItem('fr_sam_key');
+  const ck = sessionStorage.getItem('fr_claude_key');
+  if (sk) document.getElementById('samKey').value = sk;
+  if (ck) document.getElementById('claudeKey').value = ck;
+});
+
+// ── KEYWORD PRESETS ──
+document.querySelectorAll('.preset-tag').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset-tag').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('keywords').value = btn.dataset.kw;
+  });
+});
+
+// ── STATUS ──
+function setStatus(msg, visible=true) {
+  const bar = document.getElementById('statusBar');
+  document.getElementById('statusMsg').textContent = msg;
+  bar.classList.toggle('visible', visible);
+}
+
+// ── FORMAT DATE FOR SAM.gov API ──
+function toSamDate(isoStr) {
+  const [y, m, d] = isoStr.split('-');
+  return `${m}/${d}/${y}`;
+}
+
+// ── SCORE RING SVG ──
+function scoreRing(score, verdict) {
+  const color = verdict === 'BID' ? '#2ECC71' : verdict === 'WATCH' ? '#F39C12' : '#E74C3C';
+  const r = 20, cx = 26, cy = 26;
+  const circ = 2 * Math.PI * r;
+  const dash = (score / 100) * circ;
+  return `
+    <div class="score-ring">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4"/>
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="4"
+          stroke-dasharray="${dash} ${circ}" stroke-linecap="round"/>
+      </svg>
+      <span class="score-num">${score}</span>
+    </div>`;
+}
+
+// ── CARD TOGGLE ──
+function toggleCard(id) {
+  const body = document.getElementById('body-' + id);
+  body.classList.toggle('open');
+}
+
+// ── RENDER CARD ──
+function renderCard(opp, analysis, idx) {
+  const verdict = analysis.verdict || 'SKIP';
+  const score = analysis.score || 0;
+  const cls = verdict.toLowerCase();
+  const delay = idx * 0.07;
+
+  const posted = opp.postedDate ? opp.postedDate.substring(0,10) : '—';
+  const deadline = opp.responseDeadLine ? opp.responseDeadLine.substring(0,10) : 'TBD';
+  const agency = opp.organizationHierarchy?.[0]?.name || opp.fullParentPathName?.split('.')?.[0] || '—';
+  const naics = opp.naicsCode || '—';
+  const setAside = opp.typeOfSetAside || 'Full & Open';
+  const link = opp.uiLink || `https://sam.gov/opp/${opp.noticeId}/view`;
+
+  const tags = (analysis.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+
+  return `
+    <div class="opp-card ${cls}" style="animation-delay:${delay}s">
+      <div class="card-header" onclick="toggleCard(${idx})">
+        <span class="verdict-badge ${cls}">${verdict}</span>
+        <div class="card-main">
+          <div class="card-title">${opp.title || 'Untitled Opportunity'}</div>
+          <div class="card-meta">
+            <span>🏛 ${agency}</span>
+            <span>📅 Posted ${posted}</span>
+            <span>⏰ Due ${deadline}</span>
+            <span>🏷 NAICS ${naics}</span>
+            <span>🎯 ${setAside}</span>
+          </div>
+        </div>
+        ${scoreRing(score, verdict)}
+      </div>
+      <div class="card-body" id="body-${idx}">
+        <div class="analysis-label">Intelligence Assessment</div>
+        <div class="analysis-text">${analysis.reasoning || 'No analysis available.'}</div>
+        ${tags ? `<div class="tags-row">${tags}</div>` : ''}
+        <a href="${link}" target="_blank" class="view-sam-btn">
+          View on SAM.gov ↗
+        </a>
+      </div>
+    </div>`;
+}
+
+// ── MAIN RUN ──
+async function runReport() {
+  const samKey = document.getElementById('samKey').value.trim();
+  const claudeKey = document.getElementById('claudeKey').value.trim();
+  const dateFrom = document.getElementById('dateFrom').value;
+  const dateTo = document.getElementById('dateTo').value;
+  const keywords = document.getElementById('keywords').value.trim();
+  const maxResults = document.getElementById('maxResults').value;
+  const profile = document.getElementById('profile').value.trim();
+
+  if (!samKey) { alert('Please enter your SAM.gov API key.'); return; }
+  if (!claudeKey) { alert('Please enter your Anthropic API key.'); return; }
+  if (!dateFrom || !dateTo) { alert('Please set a date range.'); return; }
+
+  // Save keys to session
+  sessionStorage.setItem('fr_sam_key', samKey);
+  sessionStorage.setItem('fr_claude_key', claudeKey);
+
+  const btn = document.getElementById('runBtn');
+  btn.disabled = true;
+  document.getElementById('resultsGrid').innerHTML = '';
+  document.getElementById('reportHeader').classList.remove('visible');
+  document.getElementById('emptyState').classList.remove('visible');
+
+  try {
+    // ── STEP 1: Pull SAM.gov ──
+    setStatus('Pulling opportunities from SAM.gov…');
+
+    const samParams = new URLSearchParams({
+      api_key: samKey,
+      postedFrom: toSamDate(dateFrom),
+      postedTo: toSamDate(dateTo),
+      limit: maxResults,
+      keywords: keywords,
+      ptype: 'o,p,k'
+    });
+
+    const samRes = await fetch(`https://api.sam.gov/opportunities/v2/search?${samParams}`);
+    if (!samRes.ok) {
+      const err = await samRes.json().catch(() => ({}));
+      throw new Error(`SAM.gov error ${samRes.status}: ${err.error?.message || samRes.statusText}`);
+    }
+
+    const samData = await samRes.json();
+    const opps = samData.opportunitiesData || [];
+
+    if (opps.length === 0) {
+      setStatus('', false);
+      document.getElementById('emptyState').classList.add('visible');
+      btn.disabled = false;
+      return;
+    }
+
+    setStatus(`Fetched ${opps.length} opportunities — analyzing with Claude…`);
+
+    // ── STEP 2: Claude Analysis ──
+    const oppSummaries = opps.map((o, i) => {
+      const desc = (o.description || '').substring(0, 600);
+      return `[${i}] TITLE: ${o.title}\nAGENCY: ${o.organizationHierarchy?.[0]?.name || 'Unknown'}\nNAICS: ${o.naicsCode || 'N/A'}\nSET-ASIDE: ${o.typeOfSetAside || 'Full & Open'}\nTYPE: ${o.type || 'N/A'}\nDEADLINE: ${o.responseDeadLine || 'TBD'}\nDESC: ${desc}`;
+    }).join('\n\n---\n\n');
+
+    const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': claudeKey, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 4000,
+        system: `You are a GovCon BD analyst for a cleared IT infrastructure firm. Analyze SAM.gov opportunities and score them for fit.
+
+Firm profile:
+${profile}
+
+For each opportunity, respond ONLY with a JSON array (no markdown, no preamble). Each element:
+{
+  "index": <number matching [N] in input>,
+  "verdict": "BID" | "WATCH" | "SKIP",
+  "score": <0-100 fit score>,
+  "reasoning": "<2-3 sentence assessment — why this is a bid/watch/skip, what makes it fit or not, any red flags or advantages>",
+  "tags": ["<3-5 short keyword tags relevant to this opp>"]
+}
+
+Scoring guidance:
+- BID (70-100): Strong fit, aligns with core capabilities, realistic win probability, set-aside favorable
+- WATCH (40-69): Partial fit, monitor for amendments, possible teaming target, or worth a capability statement
+- SKIP (0-39): Poor fit, wrong market, out of scope, or too large/complex without prime support`,
+        messages: [{ role: 'user', content: `Analyze these ${opps.length} opportunities:\n\n${oppSummaries}` }]
+      })
+    });
+
+    if (!claudeRes.ok) {
+      const err = await claudeRes.json().catch(() => ({}));
+      throw new Error(`Claude API error ${claudeRes.status}: ${err.error?.message || claudeRes.statusText}`);
+    }
+
+    const claudeData = await claudeRes.json();
+    const rawText = claudeData.content?.[0]?.text || '[]';
+
+    let analyses = [];
+    try {
+      const clean = rawText.replace(/```json|```/g, '').trim();
+      analyses = JSON.parse(clean);
+    } catch {
+      console.error('Parse error:', rawText);
+      throw new Error('Failed to parse Claude analysis. Check console for raw output.');
+    }
+
+    // ── STEP 3: Render ──
+    setStatus('', false);
+
+    // Sort: BID first, then WATCH, then SKIP
+    const verdictOrder = { BID: 0, WATCH: 1, SKIP: 2 };
+    const sorted = analyses.slice().sort((a, b) => (verdictOrder[a.verdict] || 2) - (verdictOrder[b.verdict] || 2));
+
+    const counts = { BID: 0, WATCH: 0, SKIP: 0 };
+    sorted.forEach(a => { if (counts[a.verdict] !== undefined) counts[a.verdict]++; });
+
+    document.getElementById('reportCount').textContent = opps.length;
+    document.getElementById('reportRange').textContent = `${dateFrom} → ${dateTo}`;
+    document.getElementById('bidCount').textContent = `${counts.BID} Bid`;
+    document.getElementById('watchCount').textContent = `${counts.WATCH} Watch`;
+    document.getElementById('skipCount').textContent = `${counts.SKIP} Skip`;
+    document.getElementById('reportHeader').classList.add('visible');
+
+    const grid = document.getElementById('resultsGrid');
+    sorted.forEach((analysis, idx) => {
+      const opp = opps[analysis.index] || opps[idx] || {};
+      grid.innerHTML += renderCard(opp, analysis, idx);
+    });
+
+  } catch (err) {
+    setStatus(`⚠ Error: ${err.message}`);
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
