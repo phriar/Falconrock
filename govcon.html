@@ -163,6 +163,8 @@
     nav{padding:.9rem 1.5rem}
   }
   @media(max-width:768px){
+    .naics-table th:last-child,.naics-table td:last-child{display:none}
+    .naics-table{width:100%;table-layout:auto}
     nav{padding:.9rem 1.2rem}
     .nav-links{display:none!important}
     .hamburger{display:flex!important}
@@ -193,8 +195,8 @@
     FalconRock
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#capabilities">Capabilities</a></li>
-    <li><a href="index.html#ai">On-Prem AI</a></li>
+    <li><a href="index.html#approach">Approach</a></li>
+    <li><a href="index.html#pivots">Pivots</a></li>
     <li><a href="index.html#engage">Engagement</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="training.html">AI Guide</a></li>
@@ -209,8 +211,8 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="index.html#capabilities" onclick="closeMobileMenu()">Capabilities</a></li>
-    <li><a href="index.html#ai" onclick="closeMobileMenu()">On-Prem AI</a></li>
+    <li><a href="index.html#approach" onclick="closeMobileMenu()">Approach</a></li>
+    <li><a href="index.html#pivots" onclick="closeMobileMenu()">Pivots</a></li>
     <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
     <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
@@ -225,7 +227,7 @@
   <div class="page-hero-content">
     <div class="section-tag">Federal Contractor Profile</div>
     <h1 class="page-title">SAM Registered.<br><span class="gold">Cleared.</span><br>Ready to Team.</h1>
-    <p class="page-subtitle">This page provides contracting officers, prime BD leads, and procurement teams with FalconRock's registration details, NAICS codes, past performance, and teaming information in one place.</p>
+    <p class="page-subtitle">This page provides contracting officers, prime BD leads, and procurement teams with FalconRock's registration details, NAICS codes, past performance, and teaming information in one place. Primary service: cleared data center implementation and schedule recovery, keeping DoD and IC builds moving when dependencies slip.</p>
 
     <!-- LEGAL ENTITY NOTE -->
     <div style="background:rgba(200,164,78,.06);border:1px solid rgba(200,164,78,.2);border-left:3px solid var(--accent);padding:1rem 1.5rem;margin-bottom:1.5rem;max-width:700px;">
@@ -278,14 +280,14 @@
   </div>
   <div class="cap-grid">
     <div class="cap-card reveal">
-      <h3>Systems Architecture</h3>
-      <p>Senior-level design and implementation of enterprise IT infrastructure across classified and unclassified environments. 25+ years across DoD programs requiring high availability and zero-tolerance operations.</p>
+      <h3>Implementation &amp; Schedule Recovery</h3>
+      <p>Primary service. We step in at deployment on cleared and air-gapped data center builds. When licenses, hardware, approvals or upstream teams slip, we design the interim path, get it approved within the existing ATO, and execute on site. 25+ years across DoD programs with zero-tolerance operations.</p>
       <div class="cap-tags">
-        <span class="cap-tag">VMware NSX-T</span>
-        <span class="cap-tag">vSphere</span>
-        <span class="cap-tag">Citrix CVAD</span>
+        <span class="cap-tag">VCF / vSphere</span>
+        <span class="cap-tag">NSX</span>
         <span class="cap-tag">Air-Gap</span>
-        <span class="cap-tag">Hyper-V</span>
+        <span class="cap-tag">RMF / ATO</span>
+        <span class="cap-tag">On-Site Surge</span>
       </div>
     </div>
     <div class="cap-card reveal">
@@ -410,12 +412,12 @@
     <div class="perf-card reveal">
       <div class="perf-header">
         <div>
-          <div class="perf-agency">DoD Program / BAH Prime</div>
+          <div class="perf-agency">DoD Program / Major Defense Contractor Prime</div>
           <div class="perf-title">Senior Systems Architect — TS/SCI Program</div>
         </div>
         <div class="perf-type">C2C</div>
       </div>
-      <div class="perf-desc">Embedded senior architect supporting a classified DoD program via Booz Allen Hamilton. Responsible for network segmentation design, VDI platform lifecycle, NSX-T microsegmentation policy, and infrastructure automation across multi-domain environment.</div>
+      <div class="perf-desc">Embedded senior architect supporting a classified DoD program as a subcontractor to a major defense contractor. Responsible for network segmentation design, VDI platform lifecycle, NSX-T microsegmentation policy, and infrastructure automation across multi-domain environment. Currently leading implementation sequencing and workaround planning on a multi-site, offline VMware Cloud Foundation build.</div>
       <div class="perf-meta">
         <span>2024–Present</span>
         <span>TS/SCI Required</span>
@@ -477,16 +479,17 @@
     <h2 class="section-title">Teaming & Subcontracting</h2>
   </div>
   <div class="teaming-box reveal">
-    <p class="teaming-intro">FalconRock Consulting (a trade name of <strong>Wisebird Holdings LLC</strong>) is available as a <strong>subcontractor, C2C resource, or teaming partner</strong> on federal programs requiring cleared IT infrastructure expertise. We are particularly well-positioned for prime contractors seeking to fulfill small business subcontracting plan obligations on DoD and IC programs. Existing supplier portal registration with Booz Allen Hamilton under Wisebird Holdings LLC — reduced onboarding friction for BAH-primed work.</p>
+    <p class="teaming-intro">FalconRock Consulting (a trade name of <strong>Wisebird Holdings LLC</strong>) is available as a <strong>subcontractor, C2C resource, or teaming partner</strong> on federal programs requiring cleared IT infrastructure expertise. We are particularly well-positioned for prime contractors seeking to fulfill small business subcontracting plan obligations on DoD and IC programs. Currently performing cleared work as a subcontractor to a major defense contractor, with established supplier onboarding under Wisebird Holdings LLC.</p>
     <div class="teaming-grid">
       <div class="teaming-col">
         <h3>What We Bring</h3>
         <ul class="teaming-list">
-          <li>TS/SCI cleared senior architect available for direct placement</li>
+          <li>TS/SCI implementation lead who keeps cleared builds moving when licenses, hardware or approvals slip</li>
+          <li>Workarounds framed within RMF and approved with the ISSM/AO before execution</li>
           <li>25+ years of hands-on DoD and classified environment experience</li>
           <li>Deep VMware NSX-T, Citrix CVAD, and Infoblox DDI expertise</li>
           <li>Proprietary on-prem AI tooling (VaultAI) deployable in air-gapped environments</li>
-          <li>Existing BAH supplier portal registration — reduced onboarding friction</li>
+          <li>Active subcontractor to a major defense contractor — proven cleared onboarding</li>
           <li>Lean, responsive engagement with no overhead drag or staffing delays</li>
           <li>Infrastructure automation library (Ansible, PowerShell) ready to deploy</li>
         </ul>
@@ -565,7 +568,7 @@
   <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
   <div class="footer-links">
     <a href="about.html">About</a>
-    <a href="index.html#capabilities">Capabilities</a>
+    <a href="index.html#approach">Approach</a>
     <a href="govcon.html">GovCon Profile</a>
     <a href="contact.html">Contact</a>
     <a href="training.html">AI Training Guide</a>
