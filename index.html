@@ -142,6 +142,16 @@ section{padding:7rem 5vw;position:relative}
 .chip{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.9rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--light);padding:.65rem 1.2rem;border:1px solid rgba(200,164,78,.18);background:rgba(26,45,74,.3)}
 .platforms .note{margin-top:1.8rem;font-size:.95rem;color:var(--silver);max-width:720px;line-height:1.7}
 
+/* PRIVATE AI BANNER */
+.ai-banner{background:var(--deep);border-top:1px solid rgba(200,164,78,.15);border-bottom:1px solid rgba(200,164,78,.15);padding:1.6rem 5vw}
+.ai-banner a{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;text-decoration:none;max-width:1200px}
+.ai-banner .ai-new{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);background:var(--accent);padding:.25rem .6rem;margin-right:1rem;vertical-align:middle}
+.ai-banner .ai-text{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:1px;text-transform:uppercase;color:var(--white)}
+.ai-banner .ai-sub{display:block;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:.95rem;letter-spacing:0;text-transform:none;color:var(--silver);margin-top:.35rem}
+.ai-banner .ai-go{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);white-space:nowrap;transition:transform .3s}
+.ai-banner a:hover .ai-go,.ai-banner a:focus-visible .ai-go{transform:translateX(4px)}
+.ai-banner a:hover .ai-text{color:var(--accent-light)}
+
 /* CLEARANCE */
 .clearance-banner{background:linear-gradient(90deg,var(--steel),var(--deep));padding:4rem 5vw;display:flex;align-items:center;justify-content:center;gap:4rem;border-top:1px solid rgba(200,164,78,.15);border-bottom:1px solid rgba(200,164,78,.15)}
 .clearance-banner .shield-icon{width:64px;height:64px;color:var(--accent);flex-shrink:0}
@@ -202,6 +212,7 @@ footer .footer-links a:hover{color:var(--accent)}
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
+@media(max-width:1200px) and (min-width:769px){.nav-links{gap:1.4rem}.nav-links a{letter-spacing:2px}}
 </style>
 </head>
 <body>
@@ -215,6 +226,7 @@ footer .footer-links a:hover{color:var(--accent)}
     <li><a href="#approach">Approach</a></li>
     <li><a href="#pivots">Pivots</a></li>
     <li><a href="#engage">Engage</a></li>
+    <li><a href="private-ai.html">Private AI</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="govcon.html">GovCon Profile</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -227,6 +239,7 @@ footer .footer-links a:hover{color:var(--accent)}
     <li><a href="#approach" onclick="closeMobileMenu()">Approach</a></li>
     <li><a href="#pivots" onclick="closeMobileMenu()">Pivots</a></li>
     <li><a href="#engage" onclick="closeMobileMenu()">Engage</a></li>
+    <li><a href="private-ai.html" onclick="closeMobileMenu()">Private AI</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
     <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
     <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
@@ -258,6 +271,14 @@ footer .footer-links a:hover{color:var(--accent)}
     <div class="stat-item"><div class="stat-number">90</div><div class="stat-label">Days Out Is Ideal</div></div>
   </div>
 </section>
+
+<!-- PRIVATE AI (supporting banner; links to private-ai.html) -->
+<aside class="ai-banner" aria-label="New capability">
+  <a href="private-ai.html">
+    <span class="ai-text"><span class="ai-new">New</span>Private AI, integrated into your environment<span class="ai-sub">Open-source AI on your hardware, inside your boundary, fully air-gapped.</span></span>
+    <span class="ai-go">Learn more &rarr;</span>
+  </a>
+</aside>
 
 <!-- PROBLEM -->
 <section class="problem" id="problem">
@@ -399,6 +420,7 @@ footer .footer-links a:hover{color:var(--accent)}
   <div class="footer-links">
     <a href="about.html">About</a>
     <a href="#approach">Approach</a>
+    <a href="private-ai.html">Private AI</a>
     <a href="govcon.html">GovCon Profile</a>
     <a href="contact.html">Contact</a>
     <a href="training.html">AI Training Guide</a>

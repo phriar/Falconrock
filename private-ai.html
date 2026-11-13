@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private AI for Air-Gapped Environments | FalconRock Consulting</title>
+<meta name="description" content="FalconRock integrates open-source AI (local LLMs and search over your own documents) on your hardware, inside your network, fully air-gapped. Built for CUI and classified environments.">
+<link rel="canonical" href="https://falconrockconsulting.com/private-ai.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FalconRock Consulting">
+<meta property="og:title" content="Private AI, Built Into the Infrastructure You Already Run">
+<meta property="og:description" content="Open-source AI deployed inside your network on hardware you own. Nothing leaves your network and nothing depends on an outside connection. From a cleared infrastructure firm with 25+ years of DoD and IC work.">
+<meta property="og:url" content="https://falconrockconsulting.com/private-ai.html">
+<!-- TODO: add og:image once a 1200x630 share image exists, e.g. /assets/og-private-ai.png -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Private AI, Built Into the Infrastructure You Already Run">
+<meta name="twitter:description" content="Open-source AI deployed inside your network on hardware you own. Nothing leaves your network.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6;--muted:#6b7c96}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--navy);color:var(--light);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--navy);padding:.6rem 1rem;z-index:2000;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.skip-link:focus{left:1rem;top:1rem}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,164,78,.15);transition:padding .4s ease}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.logo-icon{width:36px;height:36px}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s;position:relative}
+.nav-links a.active{color:var(--accent)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:width .3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1100;-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-width:40px;min-height:40px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--light);transition:all .3s ease;transform-origin:center;pointer-events:none}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--deep);z-index:1050;display:flex;flex-direction:column;justify-content:center;padding:3rem 2.5rem;transition:right .35s ease;border-left:1px solid rgba(200,164,78,.15);box-shadow:-20px 0 60px rgba(0,0,0,.4)}
+.mobile-menu.open{right:0}
+.mobile-menu ul{list-style:none}
+.mobile-menu ul li{border-bottom:1px solid rgba(200,164,78,.08)}
+.mobile-menu ul li:first-child{border-top:1px solid rgba(200,164,78,.08)}
+.mobile-menu ul li a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:2px;text-transform:uppercase;color:var(--light);text-decoration:none;display:block;padding:1.1rem 0;transition:color .2s,padding-left .2s}
+.mobile-menu ul li a:hover,.mobile-menu ul li a.active{color:var(--accent)}
+.mobile-menu ul li a:hover{padding-left:.5rem}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1040}
+.mobile-overlay.open{display:block}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:9rem 5vw 5rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(26,45,74,.6) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(200,164,78,.08) 0%,transparent 50%),linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(30deg,rgba(200,164,78,.04) 1px,transparent 1px),linear-gradient(-30deg,rgba(200,164,78,.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;max-width:880px;animation:fadeUp 1s ease-out .3s both}
+.hero-badge{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:2rem}
+.hero-badge::before{content:'';width:40px;height:1px;background:var(--accent)}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,4.8rem);line-height:.98;text-transform:uppercase;color:var(--white);margin-bottom:2rem;letter-spacing:-1px}
+.hero h1 .gold{color:var(--accent)}
+.hero-desc{font-size:1.15rem;line-height:1.75;color:var(--silver);max-width:680px;margin-bottom:1.6rem}
+.hero-points{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-bottom:2.5rem}
+.hero-points li{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--light);display:flex;align-items:center;gap:.55rem}
+.hero-points li::before{content:'';width:7px;height:7px;background:var(--accent);transform:rotate(45deg);flex-shrink:0}
+.hero-cta{display:inline-flex;gap:1.5rem;flex-wrap:wrap}
+.btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2.5px;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;transition:all .35s ease;cursor:pointer;border:none;display:inline-block;text-align:center}
+.btn-primary{background:var(--accent);color:var(--navy);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,164,78,.25)}
+.btn-outline{background:transparent;color:var(--light);border:1px solid rgba(200,164,78,.3);clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-primary.loading{opacity:.7;cursor:not-allowed;pointer-events:none}
+
+/* SECTIONS */
+section{padding:7rem 5vw;position:relative}
+.section-header{margin-bottom:3.5rem;max-width:780px}
+.section-tag{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--accent)}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;color:var(--white);letter-spacing:-.5px;line-height:1.05}
+.section-lead{font-size:1.08rem;line-height:1.75;color:var(--silver);margin-top:1.2rem}
+
+/* PROBLEM */
+.problem{background:var(--deep)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.slip-card{padding:2rem;background:linear-gradient(135deg,rgba(13,31,60,.8),rgba(26,45,74,.4));border:1px solid rgba(200,164,78,.08);transition:all .4s ease}
+.slip-card:hover{border-color:rgba(200,164,78,.2);transform:translateY(-4px)}
+.slip-card .num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:3px;color:var(--accent);margin-bottom:1rem}
+.slip-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
+.slip-card p{font-size:.93rem;line-height:1.65;color:var(--silver)}
+.problem-close{margin-top:3rem;font-size:1.15rem;line-height:1.7;color:var(--light);max-width:760px;padding-left:1.4rem;border-left:3px solid var(--accent)}
+
+/* METHOD */
+.method{background:var(--navy)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;list-style:none}
+.step{padding:2rem 1.6rem 2rem 0;position:relative}
+.step-mark{display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem}
+.step-mark .dot{width:44px;height:44px;flex-shrink:0;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;color:var(--accent);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+.step-mark .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(200,164,78,.5),rgba(200,164,78,.05))}
+.step:last-child .step-mark .line{display:none}
+.step h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
+.step p{font-size:.93rem;line-height:1.65;color:var(--silver)}
+.step ul{list-style:none;margin-top:.7rem}
+.step ul li{font-size:.88rem;line-height:1.55;color:var(--light);padding-left:1rem;position:relative;margin-bottom:.3rem}
+.step ul li::before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--accent)}
+
+/* ENGAGE */
+.engage{background:var(--deep)}
+.engage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.engage-card{padding:2rem;background:rgba(26,45,74,.4);border:1px solid rgba(200,164,78,.08);border-top:3px solid var(--accent);display:flex;flex-direction:column;transition:all .3s ease}
+.engage-card:hover{border-color:rgba(200,164,78,.2);transform:translateY(-3px)}
+.engage-card.alt{border-top-color:var(--silver)}
+.engage-card .when{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2rem;color:var(--accent);line-height:1;text-transform:uppercase}
+.engage-card.alt .when{color:var(--light)}
+.engage-card .when-sub{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);margin:.45rem 0 1.2rem}
+.engage-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.6rem}
+.engage-card p{font-size:.9rem;line-height:1.65;color:var(--silver)}
+.engage-card ul{list-style:none;margin-top:1rem;flex:1}
+.engage-card ul li{font-size:.88rem;line-height:1.55;color:var(--light);padding-left:1rem;position:relative;margin-bottom:.35rem}
+.engage-card ul li::before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--accent)}
+.engage-card .tag{align-self:flex-start;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);background:var(--accent);padding:.25rem .6rem;margin-bottom:1rem}
+.engage-note{margin-top:2rem;font-size:.95rem;color:var(--silver);line-height:1.7;max-width:820px}
+
+.scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.scope-col{padding:1.6rem 1.8rem;background:rgba(10,22,40,.45);border:1px solid rgba(200,164,78,.1);border-left:3px solid var(--accent)}
+.scope-col.out{border-left-color:var(--muted)}
+.scope-col h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:.9rem}
+.scope-col ul{list-style:none}
+.scope-col li{font-size:.9rem;line-height:1.55;color:var(--light);padding-left:1rem;position:relative;margin-bottom:.4rem}
+.scope-col li::before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--accent)}
+.scope-col.out li{color:var(--silver)}
+.scope-col.out li::before{background:var(--muted)}
+
+/* WHY */
+.why{background:var(--navy)}
+.why-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+.why-points{display:flex;flex-direction:column;gap:1.2rem}
+.why-point{padding:1.4rem 1.8rem;background:rgba(26,45,74,.3);border-left:3px solid var(--accent)}
+.why-point h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.35rem}
+.why-point p{font-size:.92rem;color:var(--silver);line-height:1.6}
+.pull{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.3;color:var(--white);text-transform:uppercase;letter-spacing:.5px;margin-top:2rem}
+.pull span{color:var(--accent)}
+
+/* DEMO + BRIEF */
+.demo{background:var(--deep)}
+.demo-inner{display:grid;grid-template-columns:1.6fr 1fr;gap:3rem;align-items:center}
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:rgba(10,22,40,.7);border:1px solid rgba(200,164,78,.2);overflow:hidden}
+.video-frame iframe,.video-frame video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:1.5rem;background:radial-gradient(ellipse at 50% 40%,rgba(200,164,78,.08) 0%,transparent 60%)}
+.video-fallback svg{width:64px;height:64px;color:var(--accent)}
+.video-fallback .vf-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:2px;text-transform:uppercase;color:var(--white)}
+.video-fallback .vf-sub{font-size:.95rem;color:var(--silver);max-width:380px;line-height:1.6}
+.brief h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.6rem;text-transform:uppercase;color:var(--white);letter-spacing:.5px;margin-bottom:.8rem}
+.brief p{font-size:1rem;line-height:1.7;color:var(--silver);margin-bottom:1.8rem}
+.brief .meta{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--silver);margin-top:1rem;margin-bottom:0}
+
+/* DISCOVERY CTA + FORM */
+.cta-section{background:var(--navy)}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,164,78,.06) 0%,transparent 60%);pointer-events:none}
+.cta-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;max-width:1150px;margin:0 auto;align-items:start}
+.cta-copy p{font-size:1.05rem;color:var(--silver);line-height:1.75;margin-bottom:1.2rem}
+.cta-copy ul{list-style:none;margin:1.5rem 0}
+.cta-copy ul li{font-size:.98rem;line-height:1.6;color:var(--light);padding-left:1.2rem;position:relative;margin-bottom:.5rem}
+.cta-copy ul li::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--accent)}
+.form-card{padding:2.2rem;background:rgba(13,31,60,.85);border:1px solid rgba(200,164,78,.15);border-top:3px solid var(--accent)}
+.form-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:1.5rem}
+.form-group{margin-bottom:1.3rem}
+.form-group label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:.5rem}
+.form-group label .req{color:var(--accent)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.9rem 1.2rem;background:rgba(26,45,74,.5);border:1px solid rgba(200,164,78,.2);color:var(--light);font-family:'Source Serif 4',Georgia,serif;font-size:1rem;transition:border-color .3s}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group select option{background:var(--deep);color:var(--light)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.form-card .btn-primary{width:100%}
+.form-note{font-size:.82rem;color:var(--silver);margin-top:1rem;line-height:1.55}
+.form-error{display:none;margin-top:1rem;padding:.8rem 1rem;border-left:3px solid #e07a6a;background:rgba(224,122,106,.08);color:var(--light);font-size:.9rem;line-height:1.5}
+.form-error.show{display:block}
+.form-error a{color:var(--accent)}
+.success-msg{display:none;text-align:center;padding:2.5rem 1rem}
+.success-msg.show{display:block}
+.success-msg h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.8rem;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.success-msg p{font-size:1rem;color:var(--silver)}
+
+/* FOOTER */
+footer{background:var(--deep);border-top:1px solid rgba(200,164,78,.1);padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items:center;gap:1.5rem}
+footer p{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:2px;color:var(--silver)}
+footer .footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+footer .footer-links a{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .3s}
+footer .footer-links a:hover{color:var(--accent)}
+.disclaimer{font-size:.7rem;color:var(--silver);opacity:.6;text-align:center;padding:0 5vw 1.5rem;background:var(--deep)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1200px){
+  .nav-links{gap:1.5rem}
+  .steps{grid-template-columns:repeat(3,1fr);gap:1rem 2rem}
+  .step .step-mark .line{display:none}
+}
+@media(max-width:1024px){
+  .grid-3,.engage-grid,.scope-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .why-inner,.demo-inner,.cta-grid{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:768px){
+  nav{padding:.9rem 1.2rem}
+  .nav-links{display:none!important}
+  .hamburger{display:flex!important}
+  .hero{padding:7rem 1.2rem 4rem;min-height:auto}
+  .steps{grid-template-columns:1fr}
+  .step{padding:1rem 0}
+  section{padding:4rem 1.2rem}
+  .hero-cta{flex-direction:column;align-items:stretch;width:100%}
+  .form-row{grid-template-columns:1fr}
+  .form-card{padding:1.5rem}
+  footer{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+  .section-title br{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav id="navbar" aria-label="Primary">
+  <a href="index.html" class="logo">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M18 2L4 12V28L18 34L32 28V12L18 2Z" stroke="#c8a44e" stroke-width="1.5" fill="none"/><path d="M18 8L11 18L18 15L25 18L18 8Z" fill="#c8a44e"/><path d="M18 15L11 18L18 28L25 18L18 15Z" fill="#c8a44e" opacity="0.6"/></svg>
+    FalconRock
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#approach">Approach</a></li>
+    <li><a href="index.html#pivots">Pivots</a></li>
+    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="private-ai.html" class="active" aria-current="page">Private AI</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="govcon.html">GovCon Profile</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#approach" onclick="closeMobileMenu()">Approach</a></li>
+    <li><a href="index.html#pivots" onclick="closeMobileMenu()">Pivots</a></li>
+    <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
+    <li><a href="private-ai.html" class="active" aria-current="page" onclick="closeMobileMenu()">Private AI</a></li>
+    <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
+    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">New Capability &middot; Private AI</div>
+    <h1 id="hero-title">Private AI, Built Into the <span class="gold">Infrastructure You Already Run</span></h1>
+    <p class="hero-desc">We deploy open-source AI inside your network on hardware you own: local language models, plus search over your own documents. Nothing leaves your network, and nothing depends on an outside connection.</p>
+    <ul class="hero-points" aria-label="What this means">
+      <li>Your hardware</li>
+      <li>Your boundary</li>
+      <li>Fully air-gapped</li>
+      <li>No appliance to buy</li>
+    </ul>
+    <div class="hero-cta">
+      <a href="#discovery" class="btn btn-primary">Schedule a Discovery Call</a>
+      <a href="#how" class="btn btn-outline">How We Deliver</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem" aria-labelledby="problem-title">
+  <div class="section-header reveal">
+    <div class="section-tag">The Problem</div>
+    <h2 class="section-title" id="problem-title">The Demand Is Real. <br>The Usual Options Don't Fit.</h2>
+    <p class="section-lead">Teams in DoD and Intelligence Community environments want the same generative AI tools everyone else is using. The standard ways of getting them break down inside a cleared boundary.</p>
+  </div>
+  <div class="grid-3">
+    <div class="slip-card reveal"><div class="num">01</div><h3>Cloud AI Is Off the Table</h3><p>CUI and classified data can't be sent to a commercial AI service. If the model runs outside the boundary, the conversation ends there.</p></div>
+    <div class="slip-card reveal"><div class="num">02</div><h3>Appliances Arrive as a Foreign Object</h3><p>A vendor box brings its own identity model, its own networking, its own storage and its own update path. None of it matches what your ISSM has already accredited.</p></div>
+    <div class="slip-card reveal"><div class="num">03</div><h3>Pilots Stall at Integration</h3><p>Getting a model running on one workstation is straightforward. Getting it behind your existing login, on the right network segment, with an update process your team can follow is where projects stall.</p></div>
+  </div>
+  <p class="problem-close reveal">The AI is the easy part. Making it work inside your boundary is the hard part, and that's what we've done for 25 years.</p>
+</section>
+
+<!-- HOW WE DELIVER -->
+<section class="method" id="how" aria-labelledby="how-title">
+  <div class="section-header reveal">
+    <div class="section-tag">How We Deliver</div>
+    <h2 class="section-title" id="how-title">Five Steps, <br>Inside Your Boundary</h2>
+    <p class="section-lead">We don't resell hardware or license a platform. We help you pick the right hardware, then integrate open-source components into the environment you already operate.</p>
+  </div>
+  <ol class="steps">
+    <li class="step reveal">
+      <div class="step-mark" aria-hidden="true"><div class="dot">1</div><div class="line"></div></div>
+      <h3>Assess</h3>
+      <p>Agree on one use case, the users, the document set and the environment. Identify the constraints we have to work within, and write down what is in scope and what isn't.</p>
+    </li>
+    <li class="step reveal">
+      <div class="step-mark" aria-hidden="true"><div class="dot">2</div><div class="line"></div></div>
+      <h3>Size &amp; Select Hardware</h3>
+      <p>Recommend GPU, memory and storage for the agreed use case and user count. You buy it through your normal channels. We don't resell hardware.</p>
+    </li>
+    <li class="step reveal">
+      <div class="step-mark" aria-hidden="true"><div class="dot">3</div><div class="line"></div></div>
+      <h3>Integrate</h3>
+      <p>Connect it to the services you already run, to the extent agreed in the assessment. Typically:</p>
+      <ul>
+        <li>Sign-in through your existing directory or SSO</li>
+        <li>DNS and certificates from your existing services</li>
+        <li>Placement on the right network segment</li>
+        <li>GPU setup on your virtualization platform</li>
+      </ul>
+    </li>
+    <li class="step reveal">
+      <div class="step-mark" aria-hidden="true"><div class="dot">4</div><div class="line"></div></div>
+      <h3>Deploy</h3>
+      <p>Install air-gapped from transferred media. Load open-source models and index the agreed document set so users can ask questions in plain language.</p>
+    </li>
+    <li class="step reveal">
+      <div class="step-mark" aria-hidden="true"><div class="dot">5</div><div class="line"></div></div>
+      <h3>Sustain</h3>
+      <p>Optional monthly retainer for a defined number of offline update bundles: newer model versions and updates to the deployed open-source components.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ENGAGEMENT OPTIONS -->
+<section class="engage" id="engage" aria-labelledby="engage-title">
+  <div class="section-header reveal">
+    <div class="section-tag">Engagement Options</div>
+    <h2 class="section-title" id="engage-title">Start Small. <br>Prove It. Then Scale.</h2>
+  </div>
+  <div class="engage-grid">
+    <article class="engage-card reveal">
+      <span class="tag">Start here</span>
+      <div class="when">Pilot</div>
+      <div class="when-sub">Fixed scope &middot; One use case</div>
+      <h3>Prove It on Your Network</h3>
+      <p>One well-defined use case, one document set and a small user group, deployed inside your boundary on your hardware.</p>
+      <ul>
+        <li>Assessment and hardware recommendation</li>
+        <li>Air-gapped deployment on one system</li>
+        <li>Written acceptance criteria, agreed up front</li>
+        <li>Readout of results and options</li>
+      </ul>
+    </article>
+    <article class="engage-card reveal">
+      <div class="when">Production</div>
+      <div class="when-sub">Full deployment</div>
+      <h3>Production Deployment</h3>
+      <p>Move a completed pilot, or a clearly defined requirement, into production. Scoped and quoted separately.</p>
+      <ul>
+        <li>Statement of work with defined deliverables</li>
+        <li>Integration items listed by name, not "full integration"</li>
+        <li>As-built documentation and runbooks</li>
+        <li>Technical documentation your team can use in its ATO package</li>
+      </ul>
+    </article>
+    <article class="engage-card alt reveal">
+      <div class="when">Sustain</div>
+      <div class="when-sub">Optional monthly retainer</div>
+      <h3>Sustainment Retainer</h3>
+      <p>Keep the deployed system current without opening a connection to the outside.</p>
+      <ul>
+        <li>A set number of update bundles per term</li>
+        <li>Covers the components we deployed, nothing else</li>
+        <li>Packaged for your media transfer process</li>
+        <li>Other work quoted separately</li>
+      </ul>
+    </article>
+  </div>
+  <p class="engage-note reveal">Available directly, or as a subcontract through a prime or an OEM professional-services partner. Every engagement is fixed in scope and quoted in writing. Anything outside that scope is a separate quote, agreed before the work starts.</p>
+  <div class="scope-grid reveal">
+    <div class="scope-col">
+      <h3>Included</h3>
+      <ul>
+        <li>Hardware recommendation for the agreed use case</li>
+        <li>Install and configure open-source models and document search</li>
+        <li>Integration items listed in the statement of work</li>
+        <li>As-built documentation and a handoff session</li>
+      </ul>
+    </div>
+    <div class="scope-col out">
+      <h3>Not Included</h3>
+      <ul>
+        <li>Custom application or chatbot development</li>
+        <li>Training or fine-tuning models</li>
+        <li>Cleaning up or reorganizing document repositories</li>
+        <li>Writing or owning your ATO package</li>
+        <li>Buying hardware or user help desk support</li>
+      </ul>
+    </div>
+    <div class="scope-col">
+      <h3>You Provide</h3>
+      <ul>
+        <li>Hardware installed, powered and on the network</li>
+        <li>Accounts, access and a named technical point of contact</li>
+        <li>The document set, already approved for use</li>
+        <li>Media transfer through your existing process</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY FALCONROCK -->
+<section class="why" id="why" aria-labelledby="why-title">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="section-header" style="margin-bottom:0">
+        <div class="section-tag">Why FalconRock</div>
+        <h2 class="section-title" id="why-title">We Started With <br>the Infrastructure, <br>Not the AI</h2>
+        <p class="section-lead">For 25+ years we've designed and built infrastructure for DoD and Intelligence Community environments, including offline and air-gapped builds. Private AI is another workload on that infrastructure, with the same kind of integration problems.</p>
+      </div>
+      <p class="pull">Same boundary. <span>Same rules.</span> New workload.</p>
+    </div>
+    <div class="why-points">
+      <div class="why-point reveal"><h3>Identity</h3><p>Experience with Active Directory, PKI and CAC/PIV environments, so sign-in follows the pattern you already use.</p></div>
+      <div class="why-point reveal"><h3>Network</h3><p>Experience with NSX-T, SD-WAN and Infoblox DDI, so the service fits your existing network design.</p></div>
+      <div class="why-point reveal"><h3>Compute</h3><p>Experience with VMware VCF and vSphere, so it runs on a platform your team already supports.</p></div>
+      <div class="why-point reveal"><h3>Air-Gapped Operations</h3><p>Offline depots, media transfer and Ansible-driven builds, so installs and updates can be repeated with no outbound connection.</p></div>
+      <div class="why-point reveal"><h3>Accreditation</h3><p>We provide architecture and as-built documentation designed to support your ATO package. The package itself stays with your security team.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO + BRIEF -->
+<section class="demo" id="demo" aria-labelledby="demo-title">
+  <div class="section-header reveal">
+    <div class="section-tag">See It</div>
+    <h2 class="section-title" id="demo-title">Demo &amp; Capability Brief</h2>
+  </div>
+  <div class="demo-inner">
+    <div class="video-frame reveal">
+      <!--
+        TODO: Demo video. Replace VIDEO_URL_HERE with the embed URL, uncomment the iframe,
+        and delete the .video-fallback block below. Example (YouTube, privacy-enhanced):
+        <iframe src="VIDEO_URL_HERE" title="FalconRock Private AI demo"
+                loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+      -->
+      <div class="video-fallback">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="12" width="56" height="40" stroke="currentColor" stroke-width="2"/><path d="M27 24L41 32L27 40Z" fill="currentColor"/></svg>
+        <div class="vf-title">Demo Coming Soon</div>
+        <p class="vf-sub">A short walkthrough of a local model answering questions over a document set with no network connection.</p>
+      </div>
+    </div>
+    <div class="brief reveal">
+      <h3>Capability Brief</h3>
+      <p>A short brief for your program office or ISSM: what we deliver, how it fits inside your boundary, and how the engagement options work.</p>
+      <a href="/assets/FalconRock-Private-AI-Brief.pdf" class="btn btn-outline" download>Download the Brief (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="discovery" aria-labelledby="discovery-title">
+  <div class="cta-grid">
+    <div class="cta-copy reveal">
+      <div class="section-header" style="margin-bottom:1.5rem">
+        <div class="section-tag">Next Step</div>
+        <h2 class="section-title" id="discovery-title">Schedule a 30-Minute <br>Discovery Call</h2>
+      </div>
+      <p>Tell us what you'd like AI to do and where it has to run. On the call we'll cover:</p>
+      <ul>
+        <li>Whether your use case is a good fit for a local model</li>
+        <li>What a fixed-scope pilot would include, and what it wouldn't</li>
+        <li>What you'd need in place before we start</li>
+      </ul>
+      <p>No obligation and no sales deck. You'll be talking to the engineer who would do the work.</p>
+    </div>
+    <div class="form-card reveal">
+      <form id="aiForm" novalidate>
+        <h3>Request a Discovery Call</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ai-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="ai-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label for="ai-org">Organization</label>
+            <input type="text" id="ai-org" name="organization" autocomplete="organization">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ai-email">Work Email <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="ai-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-group">
+          <label for="ai-env">Target Environment</label>
+          <select id="ai-env" name="environment">
+            <option value="">Select one...</option>
+            <option>Unclassified / CUI</option>
+            <option>Classified (we'll coordinate details offline)</option>
+            <option>Commercial / private sector</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ai-message">What would you like AI to help with?</label>
+          <textarea id="ai-message" name="message" aria-describedby="ai-msg-hint"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="aiSubmit">Request a Call</button>
+        <p class="form-note" id="ai-msg-hint">Don't include CUI or classified information in this form. For sensitive requirements, email us and we'll arrange an appropriate channel.</p>
+        <div class="form-error" id="aiError" role="alert"></div>
+      </form>
+      <div class="success-msg" id="aiSuccess" role="status" aria-live="polite" tabindex="-1">
+        <h3>Request Received</h3>
+        <p>Thanks. We'll reply within one business day to schedule a time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="private-ai.html">Private AI</a>
+    <a href="govcon.html">GovCon Profile</a>
+    <a href="contact.html">Contact</a>
+    <a href="training.html">AI Training Guide</a>
+  </div>
+</footer>
+<p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners. FalconRock Consulting is an independent consultancy and is not affiliated with or endorsed by any referenced vendor or government agency. Open-source models and components are subject to their respective licenses.</p>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver((entries)=>{entries.forEach((entry,i)=>{if(entry.isIntersecting){setTimeout(()=>entry.target.classList.add('visible'),i*90);observer.unobserve(entry.target)}})},{threshold:.12});
+  reveals.forEach(el=>observer.observe(el));
+}else{reveals.forEach(el=>el.classList.add('visible'))}
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{ if(window.innerWidth>768){ nav.style.padding=window.scrollY>50?'0.8rem 3rem':'1.2rem 3rem'; } });
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+const mobileOverlay=document.getElementById('mobileOverlay');
+function closeMobileMenu(){hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');mobileMenu.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+hamburger.addEventListener('click',()=>{ if(mobileMenu.classList.contains('open')){closeMobileMenu();} else{hamburger.classList.add('open');hamburger.setAttribute('aria-expanded','true');mobileMenu.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';} });
+mobileOverlay.addEventListener('click',closeMobileMenu);
+
+// Discovery form -> same Formspree endpoint as contact.html.
+// _subject tags these leads as "Private AI inquiry" in the notification email.
+const aiForm=document.getElementById('aiForm');
+const aiErr=document.getElementById('aiError');
+aiForm.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  aiErr.classList.remove('show');
+  const name=document.getElementById('ai-name');
+  const email=document.getElementById('ai-email');
+  if(!name.value.trim()||!email.checkValidity()||!email.value.trim()){
+    aiErr.textContent='Please enter your name and a valid email address.';
+    aiErr.classList.add('show');
+    (!name.value.trim()?name:email).focus();
+    return;
+  }
+  const btn=document.getElementById('aiSubmit');
+  btn.classList.add('loading');btn.textContent='Sending...';
+  try{
+    const res=await fetch('https://formspree.io/f/xpqyagkz',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'Private AI inquiry',
+        interest:'Private AI',
+        source:'private-ai.html',
+        name:name.value.trim(),
+        email:email.value.trim(),
+        organization:document.getElementById('ai-org').value.trim(),
+        environment:document.getElementById('ai-env').value,
+        message:document.getElementById('ai-message').value
+      })
+    });
+    if(!res.ok)throw new Error('Submission failed');
+    aiForm.style.display='none';
+    const ok=document.getElementById('aiSuccess');
+    ok.classList.add('show');ok.focus();
+  }catch(err){
+    aiErr.innerHTML='There was a problem sending your request. Please email <a href="mailto:simon.holt@falconrockconsulting.com">simon.holt@falconrockconsulting.com</a> directly.';
+    aiErr.classList.add('show');
+    btn.classList.remove('loading');btn.textContent='Request a Call';
+  }
+});
+</script>
+</body>
+</html>
