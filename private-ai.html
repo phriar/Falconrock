@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Private AI for Air-Gapped Environments | FalconRock Consulting</title>
-<meta name="description" content="FalconRock integrates open-source AI (local LLMs and search over your own documents) on your hardware, inside your network, fully air-gapped. Built for CUI and classified environments.">
+<title>Private AI for Small Business | FalconRock Consulting</title>
+<meta name="description" content="A private AI assistant that runs on a computer your business owns and works with your own files. Ask questions in plain English without sending client information to a public AI service. Fixed-price pilot, live demo available.">
 <link rel="canonical" href="https://falconrockconsulting.com/private-ai.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FalconRock Consulting">
-<meta property="og:title" content="Private AI, Built Into the Infrastructure You Already Run">
-<meta property="og:description" content="Open-source AI deployed inside your network on hardware you own. Nothing leaves your network and nothing depends on an outside connection. From a cleared infrastructure firm with 25+ years of DoD and IC work.">
+<meta property="og:title" content="Your Knowledge. Your Infrastructure. Your Private AI.">
+<meta property="og:description" content="A private AI assistant that runs on a computer your business owns and works with your own files, without sending client information to a public AI service.">
 <meta property="og:url" content="https://falconrockconsulting.com/private-ai.html">
 <!-- TODO: add og:image once a 1200x630 share image exists, e.g. /assets/og-private-ai.png -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Private AI, Built Into the Infrastructure You Already Run">
-<meta name="twitter:description" content="Open-source AI deployed inside your network on hardware you own. Nothing leaves your network.">
+<meta name="twitter:title" content="Your Knowledge. Your Infrastructure. Your Private AI.">
+<meta name="twitter:description" content="A private AI assistant that runs on your own computer and works with your own files.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6;--muted:#6b7c96}
@@ -90,10 +90,23 @@ section{padding:7rem 5vw;position:relative}
 .slip-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
 .slip-card p{font-size:.93rem;line-height:1.65;color:var(--silver)}
 .problem-close{margin-top:3rem;font-size:1.15rem;line-height:1.7;color:var(--light);max-width:760px;padding-left:1.4rem;border-left:3px solid var(--accent)}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.fit-card{padding:2rem;background:rgba(10,22,40,.45);border:1px solid rgba(200,164,78,.1);border-top:3px solid var(--accent)}
+.fit-card.alt{border-top-color:var(--silver)}
+.fit-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.25rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.7rem}
+.fit-card p{font-size:.95rem;line-height:1.65;color:var(--silver);margin-bottom:.8rem}
+.fit-card ul{list-style:none}
+.fit-card li{font-size:.9rem;line-height:1.55;color:var(--light);padding-left:1rem;position:relative;margin-bottom:.4rem}
+.fit-card li::before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--accent)}
+.note-box{margin-top:2.5rem;padding:1.4rem 1.8rem;background:rgba(26,45,74,.3);border-left:3px solid var(--silver);max-width:860px}
+.note-box h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:.5rem}
+.note-box p{font-size:.93rem;line-height:1.65;color:var(--silver)}
+.tech-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.chip{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--light);padding:.5rem 1rem;border:1px solid rgba(200,164,78,.18);background:rgba(26,45,74,.3)}
 
 /* METHOD */
 .method{background:var(--navy)}
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;list-style:none}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none}
 .step{padding:2rem 1.6rem 2rem 0;position:relative}
 .step-mark{display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem}
 .step-mark .dot{width:44px;height:44px;flex-shrink:0;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;color:var(--accent);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
@@ -131,6 +144,19 @@ section{padding:7rem 5vw;position:relative}
 .scope-col li::before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--accent)}
 .scope-col.out li{color:var(--silver)}
 .scope-col.out li::before{background:var(--muted)}
+
+.ex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.ex-card{padding:1.6rem 1.8rem;background:rgba(10,22,40,.45);border:1px solid rgba(200,164,78,.1);border-left:3px solid var(--accent)}
+.ex-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin-bottom:.4rem}
+.ex-card p{font-size:.92rem;line-height:1.6;color:var(--silver)}
+.faq{max-width:860px;display:flex;flex-direction:column;gap:.8rem}
+.faq details{background:rgba(26,45,74,.3);border:1px solid rgba(200,164,78,.1);border-left:3px solid var(--accent)}
+.faq summary{cursor:pointer;padding:1.1rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.5px;text-transform:uppercase;color:var(--white);list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--accent);font-size:1.4rem;line-height:1}
+.faq details[open] summary::after{content:'\2212'}
+.faq details p{padding:0 1.5rem 1.3rem;font-size:.97rem;line-height:1.7;color:var(--light)}
+.demo .brief .btn{margin-top:.2rem}
 
 /* WHY */
 .why{background:var(--navy)}
@@ -198,11 +224,11 @@ footer .footer-links a:hover{color:var(--accent)}
 
 @media(max-width:1200px){
   .nav-links{gap:1.5rem}
-  .steps{grid-template-columns:repeat(3,1fr);gap:1rem 2rem}
+  .steps{grid-template-columns:repeat(2,1fr);gap:1rem 2rem}
   .step .step-mark .line{display:none}
 }
 @media(max-width:1024px){
-  .grid-3,.engage-grid,.scope-grid{grid-template-columns:1fr}
+  .grid-3,.engage-grid,.scope-grid,.fit-grid,.ex-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr)}
   .why-inner,.demo-inner,.cta-grid{grid-template-columns:1fr;gap:2.5rem}
 }
@@ -237,9 +263,8 @@ footer .footer-links a:hover{color:var(--accent)}
     FalconRock
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#approach">Approach</a></li>
-    <li><a href="index.html#pivots">Pivots</a></li>
-    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how">How We Work</a></li>
     <li><a href="private-ai.html" class="active" aria-current="page">Private AI</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="govcon.html">GovCon Profile</a></li>
@@ -250,14 +275,13 @@ footer .footer-links a:hover{color:var(--accent)}
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="index.html#approach" onclick="closeMobileMenu()">Approach</a></li>
-    <li><a href="index.html#pivots" onclick="closeMobileMenu()">Pivots</a></li>
-    <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
+    <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
+    <li><a href="index.html#how" onclick="closeMobileMenu()">How We Work</a></li>
     <li><a href="private-ai.html" class="active" aria-current="page" onclick="closeMobileMenu()">Private AI</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
     <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
     <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
-    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Guide</a></li>
   </ul>
 </div>
 
@@ -268,232 +292,293 @@ footer .footer-links a:hover{color:var(--accent)}
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="hero-badge">New Capability &middot; Private AI</div>
-    <h1 id="hero-title">Private AI, Built Into the <span class="gold">Infrastructure You Already Run</span></h1>
-    <p class="hero-desc">We deploy open-source AI inside your network on hardware you own: local language models, plus search over your own documents. Nothing leaves your network, and nothing depends on an outside connection.</p>
+    <div class="hero-badge">Private AI for Small &amp; Mid-Sized Businesses</div>
+    <h1 id="hero-title">Your Knowledge. <br>Your Infrastructure. <br><span class="gold">Your Private AI.</span></h1>
+    <p class="hero-desc">An AI assistant that runs on a computer your business owns and works with your own files. Your team asks questions in plain English and gets answers that point back to the source document, without sending client or company information to a public AI service.</p>
     <ul class="hero-points" aria-label="What this means">
-      <li>Your hardware</li>
-      <li>Your boundary</li>
-      <li>Fully air-gapped</li>
-      <li>No appliance to buy</li>
+      <li>Runs on your own computer</li>
+      <li>Works with your documents</li>
+      <li>No per-user AI subscription</li>
+      <li>Fixed-price setup</li>
     </ul>
     <div class="hero-cta">
-      <a href="#discovery" class="btn btn-primary">Schedule a Discovery Call</a>
-      <a href="#how" class="btn btn-outline">How We Deliver</a>
+      <a href="#discovery" class="btn btn-primary">See a Live Demo</a>
+      <a href="#how" class="btn btn-outline">How It Works</a>
     </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- THE PROBLEM -->
 <section class="problem" id="problem" aria-labelledby="problem-title">
   <div class="section-header reveal">
     <div class="section-tag">The Problem</div>
-    <h2 class="section-title" id="problem-title">The Demand Is Real. <br>The Usual Options Don't Fit.</h2>
-    <p class="section-lead">Teams in DoD and Intelligence Community environments want the same generative AI tools everyone else is using. The standard ways of getting them break down inside a cleared boundary.</p>
+    <h2 class="section-title" id="problem-title">Your Team Wants to Use AI. <br>Your Files Shouldn't Go With It.</h2>
+    <p class="section-lead">AI tools are genuinely useful for finding, summarizing and drafting. The catch is where your information goes when someone pastes it in.</p>
   </div>
   <div class="grid-3">
-    <div class="slip-card reveal"><div class="num">01</div><h3>Cloud AI Is Off the Table</h3><p>CUI and classified data can't be sent to a commercial AI service. If the model runs outside the boundary, the conversation ends there.</p></div>
-    <div class="slip-card reveal"><div class="num">02</div><h3>Appliances Arrive as a Foreign Object</h3><p>A vendor box brings its own identity model, its own networking, its own storage and its own update path. None of it matches what your ISSM has already accredited.</p></div>
-    <div class="slip-card reveal"><div class="num">03</div><h3>Pilots Stall at Integration</h3><p>Getting a model running on one workstation is straightforward. Getting it behind your existing login, on the right network segment, with an update process your team can follow is where projects stall.</p></div>
+    <div class="slip-card reveal"><div class="num">01</div><h3>People Are Already Using It</h3><p>Staff paste contracts, client emails and internal documents into free AI tools because it saves them time, whether or not there's a policy about it.</p></div>
+    <div class="slip-card reveal"><div class="num">02</div><h3>You Don't Control Where It Goes</h3><p>Public AI services process what's typed into them on their own servers, under terms that vary by provider and plan, and that can change.</p></div>
+    <div class="slip-card reveal"><div class="num">03</div><h3>"Just Don't Use AI" Doesn't Work</h3><p>Banning it leaves your team slower than competitors, and people tend to use it anyway. A private option gives them a safe place to do it.</p></div>
   </div>
-  <p class="problem-close reveal">The AI is the easy part. Making it work inside your boundary is the hard part, and that's what we've done for 25 years.</p>
 </section>
 
-<!-- HOW WE DELIVER -->
+<!-- WHAT IT DOES -->
+<section class="method" id="what" aria-labelledby="what-title">
+  <div class="section-header reveal">
+    <div class="section-tag">What It Does</div>
+    <h2 class="section-title" id="what-title">Like a Chat Assistant <br>That Only Knows Your Files</h2>
+    <p class="section-lead">Most businesses already have the answers they need, buried in policies, contracts, procedures, old proposals and past work. Private AI makes that information easy to find and use.</p>
+  </div>
+  <div class="grid-3">
+    <div class="slip-card reveal"><div class="num">01</div><h3>Ask Your Documents</h3><p>"What's our notice period in the Smith lease?" Ask in plain English instead of hunting through folders.</p></div>
+    <div class="slip-card reveal"><div class="num">02</div><h3>See Where Answers Come From</h3><p>Answers point back to the documents they came from, so your team can check the original before relying on it.</p></div>
+    <div class="slip-card reveal"><div class="num">03</div><h3>Summarize &amp; Draft</h3><p>Summarize long documents, pull out key dates and obligations, and draft first versions from your own material.</p></div>
+    <div class="slip-card reveal"><div class="num">04</div><h3>Stays on Your Equipment</h3><p>The AI and your document library run on a computer you own, so questions and files aren't sent to an outside AI provider.</p></div>
+    <div class="slip-card reveal"><div class="num">05</div><h3>You Decide What It Sees</h3><p>You choose which documents go in and who can use it. It's set up around how your business already works.</p></div>
+    <div class="slip-card reveal"><div class="num">06</div><h3>Start Small</h3><p>Try it on one job with a few people first. Expand only if it earns its place.</p></div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="engage" id="who" aria-labelledby="who-title">
+  <div class="section-header reveal">
+    <div class="section-tag">Who It's For</div>
+    <h2 class="section-title" id="who-title">Businesses With Information <br>They Can't Be Casual About</h2>
+    <p class="section-lead">Examples of how different kinds of firms could use it. The pilot is where we prove what works for yours.</p>
+  </div>
+  <div class="ex-grid">
+    <div class="ex-card reveal"><h3>Law Firms</h3><p>Search matter files and past work product, find precedent clauses, and summarize long documents for review.</p></div>
+    <div class="ex-card reveal"><h3>Accounting &amp; Financial Advisors</h3><p>Find answers across client files, engagement letters, procedures and regulatory guidance you keep on file.</p></div>
+    <div class="ex-card reveal"><h3>Insurance Agencies &amp; Brokers</h3><p>Look up coverage details across policy documents and carrier guides instead of reading them end to end.</p></div>
+    <div class="ex-card reveal"><h3>Engineering, Architecture &amp; Construction</h3><p>Search specifications, past proposals and project documents to reuse what you've already written.</p></div>
+    <div class="ex-card reveal"><h3>Healthcare Practices</h3><p>Help office staff find answers in internal policies, procedures and payer guidance.</p></div>
+    <div class="ex-card reveal"><h3>HR &amp; Operations, Any Business</h3><p>Answer staff questions from your handbook, SOPs and internal policies, consistently.</p></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
 <section class="method" id="how" aria-labelledby="how-title">
   <div class="section-header reveal">
-    <div class="section-tag">How We Deliver</div>
-    <h2 class="section-title" id="how-title">Five Steps, <br>Inside Your Boundary</h2>
-    <p class="section-lead">We don't resell hardware or license a platform. We help you pick the right hardware, then integrate open-source components into the environment you already operate.</p>
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title" id="how-title">Four Steps, <br>No Surprises</h2>
+    <p class="section-lead">We don't sell hardware or license our own product. We recommend the right equipment, you buy it, and we set up proven open-source AI software on it.</p>
   </div>
   <ol class="steps">
     <li class="step reveal">
       <div class="step-mark" aria-hidden="true"><div class="dot">1</div><div class="line"></div></div>
-      <h3>Assess</h3>
-      <p>Agree on one use case, the users, the document set and the environment. Identify the constraints we have to work within, and write down what is in scope and what isn't.</p>
+      <h3>Discovery</h3>
+      <p>A short conversation about what you want AI to help with, which documents matter, who will use it, and what you already have. You get a written scope and a fixed price.</p>
     </li>
     <li class="step reveal">
       <div class="step-mark" aria-hidden="true"><div class="dot">2</div><div class="line"></div></div>
-      <h3>Size &amp; Select Hardware</h3>
-      <p>Recommend GPU, memory and storage for the agreed use case and user count. You buy it through your normal channels. We don't resell hardware.</p>
+      <h3>Pilot</h3>
+      <p>We recommend the computer to buy (sized to your users and documents, from a capable desktop to a small server), set it up with one set of documents and a small group, and agree up front what "working" means.</p>
     </li>
     <li class="step reveal">
       <div class="step-mark" aria-hidden="true"><div class="dot">3</div><div class="line"></div></div>
-      <h3>Integrate</h3>
-      <p>Connect it to the services you already run, to the extent agreed in the assessment. Typically:</p>
+      <h3>Rollout</h3>
+      <p>If the pilot proves itself, we expand it to more people and documents and fit it into your setup:</p>
       <ul>
-        <li>Sign-in through your existing directory or SSO</li>
-        <li>DNS and certificates from your existing services</li>
-        <li>Placement on the right network segment</li>
-        <li>GPU setup on your virtualization platform</li>
+        <li>Sign-in with the accounts you already use, where possible</li>
+        <li>Access only from your office network or VPN</li>
+        <li>Backups and a simple update process</li>
       </ul>
     </li>
     <li class="step reveal">
       <div class="step-mark" aria-hidden="true"><div class="dot">4</div><div class="line"></div></div>
-      <h3>Deploy</h3>
-      <p>Install air-gapped from transferred media. Load open-source models and index the agreed document set so users can ask questions in plain language.</p>
-    </li>
-    <li class="step reveal">
-      <div class="step-mark" aria-hidden="true"><div class="dot">5</div><div class="line"></div></div>
-      <h3>Sustain</h3>
-      <p>Optional monthly retainer for a defined number of offline update bundles: newer model versions and updates to the deployed open-source components.</p>
+      <h3>Handoff &amp; Support</h3>
+      <p>Plain-English documentation, a walkthrough for your staff, and a handoff to whoever looks after your IT. Optional support plan for updates and newer AI models.</p>
     </li>
   </ol>
+  <div class="note-box reveal">
+    <h3>For Your IT Person or Provider</h3>
+    <p>We work alongside your existing IT provider, not instead of them. The system is built from open-source components: a local language model, a document index with retrieval (often called RAG) and a web interface, running on Linux, in containers or on a virtualization platform. It can run with no internet connection at all; if it's allowed to fetch updates, we document exactly what connects out and when. Specific components are chosen during discovery to fit your environment.</p>
+  </div>
 </section>
 
 <!-- ENGAGEMENT OPTIONS -->
-<section class="engage" id="engage" aria-labelledby="engage-title">
+<section class="problem" id="engage" aria-labelledby="engage-title">
   <div class="section-header reveal">
     <div class="section-tag">Engagement Options</div>
-    <h2 class="section-title" id="engage-title">Start Small. <br>Prove It. Then Scale.</h2>
+    <h2 class="section-title" id="engage-title">Start Small. <br>Prove It. Then Grow.</h2>
   </div>
   <div class="engage-grid">
     <article class="engage-card reveal">
       <span class="tag">Start here</span>
       <div class="when">Pilot</div>
-      <div class="when-sub">Fixed scope &middot; One use case</div>
-      <h3>Prove It on Your Network</h3>
-      <p>One well-defined use case, one document set and a small user group, deployed inside your boundary on your hardware.</p>
+      <div class="when-sub">Fixed price &middot; One use case</div>
+      <h3>Prove It in Your Office</h3>
+      <p>One job, one set of documents and a small group of users, on a computer you own.</p>
       <ul>
-        <li>Assessment and hardware recommendation</li>
-        <li>Air-gapped deployment on one system</li>
-        <li>Written acceptance criteria, agreed up front</li>
-        <li>Readout of results and options</li>
+        <li>Hardware recommendation</li>
+        <li>Setup on one computer</li>
+        <li>Written success criteria, agreed up front</li>
+        <li>Review of results and next steps</li>
       </ul>
     </article>
     <article class="engage-card reveal">
-      <div class="when">Production</div>
-      <div class="when-sub">Full deployment</div>
-      <h3>Production Deployment</h3>
-      <p>Move a completed pilot, or a clearly defined requirement, into production. Scoped and quoted separately.</p>
+      <div class="when">Rollout</div>
+      <div class="when-sub">Fixed price &middot; Quoted separately</div>
+      <h3>Put It to Work</h3>
+      <p>Take a successful pilot, or a clearly defined need, and roll it out to the people who need it.</p>
       <ul>
-        <li>Statement of work with defined deliverables</li>
-        <li>Integration items listed by name, not "full integration"</li>
-        <li>As-built documentation and runbooks</li>
-        <li>Technical documentation your team can use in its ATO package</li>
+        <li>Written scope listing exactly what's included</li>
+        <li>Sign-in, access and backup setup as agreed</li>
+        <li>Documentation your IT provider can follow</li>
+        <li>Staff walkthrough</li>
       </ul>
     </article>
     <article class="engage-card alt reveal">
-      <div class="when">Sustain</div>
-      <div class="when-sub">Optional monthly retainer</div>
-      <h3>Sustainment Retainer</h3>
-      <p>Keep the deployed system current without opening a connection to the outside.</p>
+      <div class="when">Support</div>
+      <div class="when-sub">Optional &middot; Monthly</div>
+      <h3>Keep It Current</h3>
+      <p>AI models improve quickly. A support plan keeps yours up to date on a predictable schedule.</p>
       <ul>
-        <li>A set number of update bundles per term</li>
-        <li>Covers the components we deployed, nothing else</li>
-        <li>Packaged for your media transfer process</li>
+        <li>A set number of updates per term</li>
+        <li>Covers what we installed, nothing else</li>
+        <li>Newer AI models as they're worth adopting</li>
         <li>Other work quoted separately</li>
       </ul>
     </article>
   </div>
-  <p class="engage-note reveal">Available directly, or as a subcontract through a prime or an OEM professional-services partner. Every engagement is fixed in scope and quoted in writing. Anything outside that scope is a separate quote, agreed before the work starts.</p>
+  <p class="engage-note reveal">Every engagement is fixed in scope and quoted in writing. Anything outside that scope is a separate quote, agreed before the work starts.</p>
   <div class="scope-grid reveal">
     <div class="scope-col">
       <h3>Included</h3>
       <ul>
-        <li>Hardware recommendation for the agreed use case</li>
-        <li>Install and configure open-source models and document search</li>
-        <li>Integration items listed in the statement of work</li>
-        <li>As-built documentation and a handoff session</li>
+        <li>Advice on what computer to buy</li>
+        <li>Installing and configuring the AI and document search</li>
+        <li>Setup items listed in the written scope</li>
+        <li>Documentation and a handoff session</li>
       </ul>
     </div>
     <div class="scope-col out">
       <h3>Not Included</h3>
       <ul>
-        <li>Custom application or chatbot development</li>
-        <li>Training or fine-tuning models</li>
-        <li>Cleaning up or reorganizing document repositories</li>
-        <li>Writing or owning your ATO package</li>
-        <li>Buying hardware or user help desk support</li>
+        <li>Building a custom app or chatbot</li>
+        <li>Retraining the AI model itself</li>
+        <li>Cleaning up or reorganizing your files</li>
+        <li>Running your compliance program</li>
+        <li>The hardware itself, or day-to-day help desk</li>
       </ul>
     </div>
     <div class="scope-col">
       <h3>You Provide</h3>
       <ul>
-        <li>Hardware installed, powered and on the network</li>
-        <li>Accounts, access and a named technical point of contact</li>
-        <li>The document set, already approved for use</li>
-        <li>Media transfer through your existing process</li>
+        <li>The agreed computer, set up and on your network</li>
+        <li>A contact person and access to set things up</li>
+        <li>The documents you want it to use</li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="method" id="faq" aria-labelledby="faq-title">
+  <div class="section-header reveal">
+    <div class="section-tag">Straight Answers</div>
+    <h2 class="section-title" id="faq-title">Common Questions</h2>
+  </div>
+  <div class="faq reveal">
+    <details>
+      <summary>Is it as good as ChatGPT?</summary>
+      <p>Not at everything. The biggest cloud AI models are still stronger at open-ended writing and complex reasoning. For finding and summarizing information in your own documents, a well-set-up private model does the job well. The pilot is where you find out whether it's good enough for your work, before you spend more.</p>
+    </details>
+    <details>
+      <summary>Does anything leave our office?</summary>
+      <p>The AI and your document library run on your own computer, so your questions and files aren't sent to an AI provider. It can be set up with no internet connection at all. If you'd like it to download updates, we'll document exactly what connects out and when.</p>
+    </details>
+    <details>
+      <summary>Does this make us compliant with HIPAA, or protect privilege?</summary>
+      <p>No technology does that by itself. Keeping AI in-house removes one significant risk: sending sensitive information to an outside AI service. Compliance also depends on who has access, how the system is configured, and your own policies and procedures. We document exactly what we built so you and your advisors can assess it.</p>
+    </details>
+    <details>
+      <summary>Will it learn from our data?</summary>
+      <p>It reads the documents you give it so it can answer questions, but the AI model itself isn't retrained on your data. You decide which documents are included and can remove them.</p>
+    </details>
+    <details>
+      <summary>Do we need an IT department?</summary>
+      <p>No. Many small businesses have one IT person or an outside IT provider. We work alongside them and hand over documentation they can follow. We're not trying to replace your IT provider.</p>
+    </details>
+    <details>
+      <summary>What does it cost?</summary>
+      <p>There are three parts: the computer (you buy it; we tell you what to get), a fixed-price setup quoted in writing, and an optional support plan. Because it's built on open-source software, there's no per-user AI subscription. After a short discovery call we can give you real numbers for your situation.</p>
+    </details>
+    <details>
+      <summary>Can different people see different documents?</summary>
+      <p>In most setups, yes. For example, HR files can be kept separate from everything else. We confirm exactly what's possible for your situation during discovery.</p>
+    </details>
+  </div>
+  <p class="engage-note reveal">Want the longer version? Read our free guide, <a href="training.html" style="color:var(--accent)">On-Premises AI for Small Business</a>.</p>
+</section>
+
 <!-- WHY FALCONROCK -->
-<section class="why" id="why" aria-labelledby="why-title">
+<section class="why" id="why" aria-labelledby="why-title" style="background:var(--deep)">
   <div class="why-inner">
     <div class="reveal">
       <div class="section-header" style="margin-bottom:0">
         <div class="section-tag">Why FalconRock</div>
         <h2 class="section-title" id="why-title">We Started With <br>the Infrastructure, <br>Not the AI</h2>
-        <p class="section-lead">For 25+ years we've designed and built infrastructure for DoD and Intelligence Community environments, including offline and air-gapped builds. Private AI is another workload on that infrastructure, with the same kind of integration problems.</p>
+        <p class="section-lead">For 25+ years we've designed, built and fixed business and government infrastructure, including networks with no internet connection at all. Getting an AI model running is the easy part. Making it reliable and secure, and something your team will actually use, is infrastructure work.</p>
       </div>
-      <p class="pull">Same boundary. <span>Same rules.</span> New workload.</p>
+      <p class="pull">The person who scopes it <span>is the person who builds it.</span></p>
     </div>
     <div class="why-points">
-      <div class="why-point reveal"><h3>Identity</h3><p>Experience with Active Directory, PKI and CAC/PIV environments, so sign-in follows the pattern you already use.</p></div>
-      <div class="why-point reveal"><h3>Network</h3><p>Experience with NSX-T, SD-WAN and Infoblox DDI, so the service fits your existing network design.</p></div>
-      <div class="why-point reveal"><h3>Compute</h3><p>Experience with VMware VCF and vSphere, so it runs on a platform your team already supports.</p></div>
-      <div class="why-point reveal"><h3>Air-Gapped Operations</h3><p>Offline depots, media transfer and Ansible-driven builds, so installs and updates can be repeated with no outbound connection.</p></div>
-      <div class="why-point reveal"><h3>Accreditation</h3><p>We provide architecture and as-built documentation designed to support your ATO package. The package itself stays with your security team.</p></div>
+      <div class="why-point reveal"><h3>Set Up Properly</h3><p>Sign-in, access, network placement and backups done the way an infrastructure engineer would, not just installed and left running.</p></div>
+      <div class="why-point reveal"><h3>No Lock-In</h3><p>Open-source software on hardware you own. If you stop working with us, the system keeps working and the documentation stays with you.</p></div>
+      <div class="why-point reveal"><h3>Honest Scope</h3><p>Fixed price, written scope, and clear success criteria for the pilot. If it isn't a good fit for your use case, we'll tell you.</p></div>
+      <div class="why-point reveal"><h3>Built for Sensitive Environments</h3><p>The same approach we use in cleared, air-gapped government environments, scaled to a small office.</p></div>
     </div>
   </div>
 </section>
 
-<!-- DEMO + BRIEF -->
-<section class="demo" id="demo" aria-labelledby="demo-title">
+<!-- DEMO -->
+<section class="demo" id="demo" aria-labelledby="demo-title" style="background:var(--navy)">
   <div class="section-header reveal">
-    <div class="section-tag">See It</div>
-    <h2 class="section-title" id="demo-title">Demo &amp; Capability Brief</h2>
+    <div class="section-tag">See It Running</div>
+    <h2 class="section-title" id="demo-title">A Working Demo, <br>Not a Slide Deck</h2>
   </div>
   <div class="demo-inner">
-    <div class="video-frame reveal">
-      <!--
-        TODO: Demo video. Replace VIDEO_URL_HERE with the embed URL, uncomment the iframe,
-        and delete the .video-fallback block below. Example (YouTube, privacy-enhanced):
-        <iframe src="VIDEO_URL_HERE" title="FalconRock Private AI demo"
-                loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-      -->
-      <div class="video-fallback">
-        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="4" y="12" width="56" height="40" stroke="currentColor" stroke-width="2"/><path d="M27 24L41 32L27 40Z" fill="currentColor"/></svg>
-        <div class="vf-title">Demo Coming Soon</div>
-        <p class="vf-sub">A short walkthrough of a local model answering questions over a document set with no network connection.</p>
-      </div>
-    </div>
     <div class="brief reveal">
-      <h3>Capability Brief</h3>
-      <p>A short brief for your program office or ISSM: what we deliver, how it fits inside your boundary, and how the engagement options work.</p>
-      <a href="/assets/FalconRock-Private-AI-Brief.pdf" class="btn btn-outline" download>Download the Brief (PDF)</a>
+      <h3>Live Demo</h3>
+      <p>We'll show you a private AI system running on a single local computer, answering questions over a set of sample documents and showing where each answer came from. We can do it over a screen share or in person. Bring your questions, and we'll talk about how it would apply to your files.</p>
+      <a href="#discovery" class="btn btn-primary">Request a Demo</a>
+      <!-- TODO: add a short recorded demo video here when one exists. -->
+    </div>
+    <div class="fit-card alt reveal">
+      <h3>Government &amp; Cleared Environments</h3>
+      <p>We also deploy private AI for teams handling CUI or classified information, including fully air-gapped networks, CAC/PIV sign-in and documentation to support an ATO package.</p>
+      <p><a href="/assets/FalconRock-Private-AI-Brief.pdf" download style="color:var(--accent)">Government capability brief (PDF)</a> &middot; <a href="govcon.html" style="color:var(--accent)">GovCon Profile</a></p>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="discovery" aria-labelledby="discovery-title">
+<section class="cta-section" id="discovery" aria-labelledby="discovery-title" style="background:var(--deep)">
   <div class="cta-grid">
     <div class="cta-copy reveal">
       <div class="section-header" style="margin-bottom:1.5rem">
         <div class="section-tag">Next Step</div>
-        <h2 class="section-title" id="discovery-title">Schedule a 30-Minute <br>Discovery Call</h2>
+        <h2 class="section-title" id="discovery-title">See a Demo or <br>Book a 30-Minute Call</h2>
       </div>
-      <p>Tell us what you'd like AI to do and where it has to run. On the call we'll cover:</p>
+      <p>Tell us a little about your business and what you'd like AI to help with. We'll cover:</p>
       <ul>
-        <li>Whether your use case is a good fit for a local model</li>
-        <li>What a fixed-scope pilot would include, and what it wouldn't</li>
+        <li>Whether your use case is a good fit for private AI</li>
+        <li>What a fixed-price pilot would include, and what it wouldn't</li>
         <li>What you'd need in place before we start</li>
       </ul>
-      <p>No obligation and no sales deck. You'll be talking to the engineer who would do the work.</p>
+      <p>No obligation and no sales pitch. You'll be talking to the engineer who would do the work.</p>
     </div>
     <div class="form-card reveal">
       <form id="aiForm" novalidate>
-        <h3>Request a Discovery Call</h3>
+        <h3>Request a Demo or Call</h3>
         <div class="form-row">
           <div class="form-group">
             <label for="ai-name">Full Name <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="ai-name" name="name" autocomplete="name" required>
           </div>
           <div class="form-group">
-            <label for="ai-org">Organization</label>
+            <label for="ai-org">Business Name</label>
             <input type="text" id="ai-org" name="organization" autocomplete="organization">
           </div>
         </div>
@@ -501,27 +586,41 @@ footer .footer-links a:hover{color:var(--accent)}
           <label for="ai-email">Work Email <span class="req" aria-hidden="true">*</span></label>
           <input type="email" id="ai-email" name="email" autocomplete="email" required>
         </div>
-        <div class="form-group">
-          <label for="ai-env">Target Environment</label>
-          <select id="ai-env" name="environment">
-            <option value="">Select one...</option>
-            <option>Unclassified / CUI</option>
-            <option>Classified (we'll coordinate details offline)</option>
-            <option>Commercial / private sector</option>
-            <option>Not sure yet</option>
-          </select>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ai-request">I'd Like</label>
+            <select id="ai-request" name="request">
+              <option>A live demo</option>
+              <option>A 30-minute call</option>
+              <option>Both</option>
+              <option>Just some answers by email</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ai-env">Type of Organization</label>
+            <select id="ai-env" name="environment">
+              <option value="">Select one...</option>
+              <option>Law firm</option>
+              <option>Accounting / financial</option>
+              <option>Insurance</option>
+              <option>Healthcare practice</option>
+              <option>Engineering / architecture / construction</option>
+              <option>Other business</option>
+              <option>Government or government contractor</option>
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="ai-message">What would you like AI to help with?</label>
-          <textarea id="ai-message" name="message" aria-describedby="ai-msg-hint"></textarea>
+          <textarea id="ai-message" name="message" aria-describedby="ai-msg-hint" placeholder="e.g. Search our contracts and procedures; about 10 staff would use it"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" id="aiSubmit">Request a Call</button>
-        <p class="form-note" id="ai-msg-hint">Don't include CUI or classified information in this form. For sensitive requirements, email us and we'll arrange an appropriate channel.</p>
+        <button type="submit" class="btn btn-primary" id="aiSubmit">Send Request</button>
+        <p class="form-note" id="ai-msg-hint">Please don't include confidential client information in this form. Messages are delivered through our form provider (Formspree).</p>
         <div class="form-error" id="aiError" role="alert"></div>
       </form>
       <div class="success-msg" id="aiSuccess" role="status" aria-live="polite" tabindex="-1">
         <h3>Request Received</h3>
-        <p>Thanks. We'll reply within one business day to schedule a time.</p>
+        <p>Thanks. We'll reply within one business day to set up a time.</p>
       </div>
     </div>
   </div>
@@ -529,15 +628,16 @@ footer .footer-links a:hover{color:var(--accent)}
 
 </main>
 
+
 <footer>
   <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
   <div class="footer-links">
-    <a href="about.html">About</a>
-    <a href="index.html#approach">Approach</a>
+    <a href="index.html#services">Services</a>
     <a href="private-ai.html">Private AI</a>
+    <a href="about.html">About</a>
     <a href="govcon.html">GovCon Profile</a>
     <a href="contact.html">Contact</a>
-    <a href="training.html">AI Training Guide</a>
+    <a href="training.html">AI Guide</a>
   </div>
 </footer>
 <p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners. FalconRock Consulting is an independent consultancy and is not affiliated with or endorsed by any referenced vendor or government agency. Open-source models and components are subject to their respective licenses.</p>
@@ -585,6 +685,7 @@ aiForm.addEventListener('submit',async(e)=>{
         name:name.value.trim(),
         email:email.value.trim(),
         organization:document.getElementById('ai-org').value.trim(),
+        request:document.getElementById('ai-request').value,
         environment:document.getElementById('ai-env').value,
         message:document.getElementById('ai-message').value
       })
@@ -596,7 +697,7 @@ aiForm.addEventListener('submit',async(e)=>{
   }catch(err){
     aiErr.innerHTML='There was a problem sending your request. Please email <a href="mailto:simon.holt@falconrockconsulting.com">simon.holt@falconrockconsulting.com</a> directly.';
     aiErr.classList.add('show');
-    btn.classList.remove('loading');btn.textContent='Request a Call';
+    btn.classList.remove('loading');btn.textContent='Send Request';
   }
 });
 </script>

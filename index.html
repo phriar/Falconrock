@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FalconRock Consulting | Cleared Data Center Implementation</title>
-<meta name="description" content="FalconRock keeps cleared and air-gapped data center builds moving when dependencies slip. We frame the trade-off, get it approved within the ATO, and execute on site.">
+<title>FalconRock Consulting | Infrastructure Engineering, Implementation &amp; Private AI</title>
+<meta name="description" content="Experienced infrastructure engineering for complex environments: architecture and modernization, hands-on deployment and problem resolution, and private AI on infrastructure you control. 25+ years of hands-on work, documented and handed back to your team.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6;--muted:#6b7c96}
@@ -84,6 +84,23 @@ section{padding:7rem 5vw;position:relative}
 .slip-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
 .slip-card p{font-size:.93rem;line-height:1.65;color:var(--silver)}
 .problem-close{margin-top:3rem;font-size:1.15rem;line-height:1.7;color:var(--light);max-width:760px;padding-left:1.4rem;border-left:3px solid var(--accent)}
+
+/* SERVICES */
+.services{background:var(--navy)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc-card{padding:2.2rem;background:linear-gradient(135deg,rgba(13,31,60,.8),rgba(26,45,74,.4));border:1px solid rgba(200,164,78,.08);border-top:3px solid var(--accent);display:flex;flex-direction:column}
+.svc-card .num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:3px;color:var(--accent);margin-bottom:1rem}
+.svc-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:.8rem;line-height:1.15}
+.svc-card p{font-size:.95rem;line-height:1.65;color:var(--silver)}
+.svc-card ul{list-style:none;margin:1.2rem 0 1.5rem;flex:1}
+.svc-card li{font-size:.9rem;line-height:1.55;color:var(--light);padding-left:1rem;position:relative;margin-bottom:.4rem}
+.svc-card li::before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--accent)}
+.svc-card .more{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);text-decoration:none}
+.svc-card .more:hover,.svc-card .more:focus-visible{color:var(--accent-light)}
+.how{background:var(--deep)}
+.steps.three{grid-template-columns:repeat(3,1fr)}
+.how-note{margin-top:2rem;font-size:.95rem;color:var(--silver);max-width:760px;line-height:1.7}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* METHOD */
 .method{background:var(--navy)}
@@ -185,7 +202,8 @@ footer .footer-links a:hover{color:var(--accent)}
 }
 @media(max-width:1024px){
   .grid-4,.engage-grid{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(2,1fr);gap:1rem 2rem}
+  .grid-3{grid-template-columns:1fr}
+  .steps,.steps.three{grid-template-columns:repeat(2,1fr);gap:1rem 2rem}
   .step .step-mark .line{display:none}
   .ato-inner{grid-template-columns:1fr;gap:2.5rem}
 }
@@ -195,7 +213,7 @@ footer .footer-links a:hover{color:var(--accent)}
   .hamburger{display:flex!important}
   .hero{padding:6.5rem 1.2rem 4rem}
   .quote-pair{grid-template-columns:1fr}
-  .grid-4,.engage-grid,.steps{grid-template-columns:1fr}
+  .grid-4,.engage-grid,.steps,.steps.three{grid-template-columns:1fr}
   .step{padding:1rem 0}
   .pivot{grid-template-columns:1fr}
   .pivot .wait,.pivot .ours{border-right:none;border-bottom:1px solid rgba(200,164,78,.08)}
@@ -223,9 +241,8 @@ footer .footer-links a:hover{color:var(--accent)}
     FalconRock
   </a>
   <ul class="nav-links">
-    <li><a href="#approach">Approach</a></li>
-    <li><a href="#pivots">Pivots</a></li>
-    <li><a href="#engage">Engage</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How We Work</a></li>
     <li><a href="private-ai.html">Private AI</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="govcon.html">GovCon Profile</a></li>
@@ -236,14 +253,13 @@ footer .footer-links a:hover{color:var(--accent)}
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="#approach" onclick="closeMobileMenu()">Approach</a></li>
-    <li><a href="#pivots" onclick="closeMobileMenu()">Pivots</a></li>
-    <li><a href="#engage" onclick="closeMobileMenu()">Engage</a></li>
+    <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+    <li><a href="#how" onclick="closeMobileMenu()">How We Work</a></li>
     <li><a href="private-ai.html" onclick="closeMobileMenu()">Private AI</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
     <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
     <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
-    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Guide</a></li>
   </ul>
 </div>
 
@@ -252,40 +268,101 @@ footer .footer-links a:hover{color:var(--accent)}
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">Cleared Data Center Implementation</div>
-    <h1>When the Plan<br>Meets the Site,<br>We Keep the <span class="gold">Build Moving</span></h1>
+    <div class="hero-badge">Infrastructure Engineering &middot; Implementation &middot; Private AI</div>
+    <h1>When Complex<br>Infrastructure Stalls,<br>We Get It <span class="gold">Moving</span></h1>
     <div class="quote-pair">
       <div class="quote"><div class="who">What most teams say</div><p>"We have to wait for X."</p></div>
       <div class="quote ours"><div class="who">What we say</div><p>"We can keep going. Here's what it will take."</p></div>
     </div>
-    <p class="hero-desc">FalconRock steps in at deployment on cleared and air-gapped data center builds. When licenses, hardware, approvals or upstream teams slip, we lay out the trade-off, get it approved within your ATO, and execute it on site.</p>
+    <p class="hero-desc">FalconRock Consulting brings 25 years of hands-on architecture and engineering to complex environments, from data center and network modernization to private AI on infrastructure you control. We work out the practical path, build it, document it, and hand it back to your team.</p>
     <div class="hero-cta">
-      <a href="contact.html" class="btn btn-primary">Bring Us In</a>
-      <a href="#approach" class="btn btn-outline">How It Works</a>
+      <a href="contact.html?topic=project" class="btn btn-primary">Discuss Your Project</a>
+      <a href="#services" class="btn btn-outline">Explore Our Services</a>
     </div>
-    <p class="trust-line">Active subcontractor to a major defense contractor &middot; TS/SCI &middot; SAM registered</p>
+    <p class="trust-line">25+ years hands-on &middot; TS/SCI cleared principal &middot; Active defense subcontractor</p>
   </div>
   <div class="hero-stats">
-    <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Years DoD / IC Builds</div></div>
-    <div class="stat-item"><div class="stat-number">TS/SCI</div><div class="stat-label">Active Clearance</div></div>
-    <div class="stat-item"><div class="stat-number">90</div><div class="stat-label">Days Out Is Ideal</div></div>
+    <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Years Hands-On Engineering</div></div>
+    <div class="stat-item"><div class="stat-number">TS/SCI</div><div class="stat-label">Cleared Principal</div></div>
   </div>
 </section>
 
 <!-- PRIVATE AI (supporting banner; links to private-ai.html) -->
-<aside class="ai-banner" aria-label="New capability">
+<aside class="ai-banner" aria-label="Private AI">
   <a href="private-ai.html">
-    <span class="ai-text"><span class="ai-new">New</span>Private AI, integrated into your environment<span class="ai-sub">Open-source AI on your hardware, inside your boundary, fully air-gapped.</span></span>
+    <span class="ai-text"><span class="ai-new">New</span>Private AI on infrastructure you control<span class="ai-sub">Search and work with your own documents in plain language, without sending them to an outside AI service.</span></span>
     <span class="ai-go">Learn more &rarr;</span>
   </a>
 </aside>
 
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Complex Problems. <br>Practical Engineering. <br>Delivered Solutions.</h2>
+    <p class="section-lead">Project-based engineering with a defined outcome. The person who scopes the work is the person who does it.</p>
+  </div>
+  <div class="grid-3">
+    <div class="svc-card reveal">
+      <div class="num">01</div>
+      <h3>Specialized Deployment &amp; Problem Resolution</h3>
+      <p>Hands-on engineering for deployments that are stuck, slipping or failing.</p>
+      <ul>
+        <li>Stalled or at-risk implementations</li>
+        <li>Integration problems between platforms and teams</li>
+        <li>Infrastructure troubleshooting and recovery</li>
+        <li>Cleared and air-gapped builds</li>
+      </ul>
+      <a href="#approach" class="more">How we unblock builds &rarr;</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="num">02</div>
+      <h3>Infrastructure Architecture &amp; Modernization</h3>
+      <p>Design and modernization of the platforms your organization runs on.</p>
+      <ul>
+        <li>Virtualization and virtual desktop (VDI)</li>
+        <li>Networking, segmentation and security architecture</li>
+        <li>Multi-site and data center deployments</li>
+        <li>Identity, PKI and build automation</li>
+      </ul>
+      <a href="#platforms" class="more">Platforms we work with &rarr;</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="num">03</div>
+      <h3>Private AI Implementation &amp; Integration</h3>
+      <p>AI that works with your own information and runs on infrastructure you control.</p>
+      <ul>
+        <li>Plain-language search across internal documents</li>
+        <li>Answers that point back to their sources</li>
+        <li>Sign-in and access through your existing systems</li>
+        <li>Pilot first, then production</li>
+      </ul>
+      <a href="private-ai.html" class="more">Private AI &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="how" id="how">
+  <div class="section-header reveal">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">Solve It, Build It, <br>Hand It Over</h2>
+    <p class="section-lead">We deliver a defined outcome, not an open-ended dependency on us. Most engagements follow this shape.</p>
+  </div>
+  <div class="steps three">
+    <div class="step reveal"><div class="step-mark"><div class="dot">1</div><div class="line"></div></div><h3>Assess &amp; Architect</h3><p>Understand the environment and its constraints, agree on what success looks like, and lay out a practical way to get there.</p></div>
+    <div class="step reveal"><div class="step-mark"><div class="dot">2</div><div class="line"></div></div><h3>Deploy &amp; Resolve</h3><p>Implement, integrate, test and troubleshoot until it works in your real environment, not just on paper.</p></div>
+    <div class="step reveal"><div class="step-mark"><div class="dot">3</div><div class="line"></div></div><h3>Document &amp; Transition</h3><p>As-built documentation, runbooks and a working handoff session, so your team owns and runs what we built.</p></div>
+  </div>
+  <p class="how-note reveal">Not every project needs all three. Some engagements are a focused assessment. Others start when a build is already in trouble.</p>
+</section>
+
 <!-- PROBLEM -->
 <section class="problem" id="problem">
   <div class="section-header reveal">
-    <div class="section-tag">The Problem</div>
+    <div class="section-tag">Specialty &middot; Cleared &amp; Air-Gapped Builds</div>
     <h2 class="section-title">Every Build Plan Assumes <br>Dependencies Arrive On Time</h2>
-    <p class="section-lead">In cleared environments, they rarely do. The design is sound. The schedule isn't.</p>
+    <p class="section-lead">In cleared and offline environments, they rarely do. The design is sound. The schedule isn't. This is where much of our recent work is.</p>
   </div>
   <div class="grid-4">
     <div class="slip-card reveal"><div class="num">01</div><h3>Licenses &amp; Approvals Land Late</h3><p>Licensing, certificates and accreditation changes arrive weeks after the build window opens.</p></div>
@@ -299,7 +376,7 @@ footer .footer-links a:hover{color:var(--accent)}
 <!-- METHOD -->
 <section class="method" id="approach">
   <div class="section-header reveal">
-    <div class="section-tag">Our Approach</div>
+    <div class="section-tag">Our Approach in Cleared Builds</div>
     <h2 class="section-title">Find the Path. Price It. <br>Get It Approved. Execute.</h2>
   </div>
   <div class="steps">
@@ -346,7 +423,7 @@ footer .footer-links a:hover{color:var(--accent)}
       <div class="section-header" style="margin-bottom:0">
         <div class="section-tag">Compliance-Aware Pivots</div>
         <h2 class="section-title">A Workaround Is Only <br>Useful If It Can <br>Be Approved</h2>
-        <p class="section-lead">The fear with any "fixer" is that today's shortcut becomes tomorrow's security finding. We remove that risk before it starts.</p>
+        <p class="section-lead">The fear with any "fixer" is that today's shortcut becomes tomorrow's security finding. We deal with that before any work starts.</p>
       </div>
     </div>
     <div class="ato-points">
@@ -360,7 +437,7 @@ footer .footer-links a:hover{color:var(--accent)}
 <!-- ENGAGE -->
 <section class="engage" id="engage">
   <div class="section-header reveal">
-    <div class="section-tag">How We Engage</div>
+    <div class="section-tag">Engaging Us on a Cleared Build</div>
     <h2 class="section-title">The Earlier We Start, <br>The Fewer Surprises</h2>
   </div>
   <p class="engage-pitch reveal">Bring us in <span>90 days out</span> and most pivots are pre-approved. <span>30 days out</span> and we triage. <span>After it stalls</span> and we rescue it.</p>
@@ -370,13 +447,13 @@ footer .footer-links a:hover{color:var(--accent)}
     <div class="engage-card reveal"><div class="when">Stalled</div><div class="when-sub">Build already slipping</div><h4>Schedule Recovery</h4><p>Rapid assessment, re-sequenced plan, approved interim paths, and on-site execution to the next milestone.</p></div>
     <div class="engage-card alt reveal"><div class="when">Program</div><div class="when-sub">Full duration</div><h4>Embedded Implementation Lead</h4><p>Ongoing ownership of build sequencing, dependency tracking and pivot decisions inside a prime's team.</p></div>
   </div>
-  <p class="engage-note reveal">Available as fixed-price milestone or T&amp;M subcontract, through a prime or an OEM professional-services partner. We travel to the site and work through critical build windows.</p>
+  <p class="engage-note reveal">Available directly, or as a fixed-price milestone or T&amp;M subcontract through a prime or an OEM professional-services partner. We travel to the site and work through critical build windows. Primes and contracting officers: see our <a href="govcon.html" style="color:var(--accent)">GovCon Profile</a>.</p>
 </section>
 
 <!-- PLATFORMS -->
 <section class="platforms" id="platforms">
   <div class="section-header reveal" style="margin-bottom:2rem">
-    <div class="section-tag">Platforms We Build On</div>
+    <div class="section-tag">Supporting Expertise</div>
     <h2 class="section-title">The Stack Is the Toolset, <br>Not the Service</h2>
   </div>
   <div class="platform-row reveal">
@@ -384,12 +461,14 @@ footer .footer-links a:hover{color:var(--accent)}
     <span class="chip">vSphere</span>
     <span class="chip">NSX</span>
     <span class="chip">Citrix CVAD</span>
+    <span class="chip">Hyper-V</span>
     <span class="chip">Infoblox DDI</span>
     <span class="chip">Versa SD-WAN</span>
     <span class="chip">Ansible</span>
+    <span class="chip">PowerShell</span>
     <span class="chip">Active Directory &amp; PKI</span>
     <span class="chip">CAC / PIV</span>
-    <span class="chip">Air-Gapped AI Stacks</span>
+    <span class="chip">Local LLMs &amp; Document Search</span>
   </div>
   <p class="note reveal">Deep, hands-on platform knowledge is what lets us see which parts of a design can bend and which can't. That judgment is what you're hiring.</p>
 </section>
@@ -398,8 +477,8 @@ footer .footer-links a:hover{color:var(--accent)}
 <div class="clearance-banner reveal">
   <svg class="shield-icon" viewBox="0 0 64 64" fill="none"><path d="M32 4L8 16V32C8 46 32 60 32 60C32 60 56 46 56 32V16L32 4Z" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M24 32L30 38L42 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
   <div class="clearance-text">
-    <h3>Cleared. Hands-On. Committed.</h3>
-    <p>Wisebird Holdings LLC d/b/a FalconRock Consulting holds an active subcontract with a major defense contractor on a classified DoD program. Our principal holds an active TS/SCI clearance and brings 25+ years of DoD and IC infrastructure builds. The person who scopes the work is the person who builds it, and stays until it's done.</p>
+    <h3>Experienced. Hands-On. Accountable.</h3>
+    <p>FalconRock's principal brings 25+ years of hands-on infrastructure engineering, much of it on DoD and IC programs, and holds an active TS/SCI clearance. Wisebird Holdings LLC d/b/a FalconRock Consulting currently holds an active subcontract with a major defense contractor on a classified DoD program. The person who scopes the work is the person who builds it, and stays until it's done.</p>
   </div>
 </div>
 
@@ -408,22 +487,25 @@ footer .footer-links a:hover{color:var(--accent)}
   <div class="cta-inner reveal">
     <div class="section-header">
       <div class="section-tag">Let's Talk</div>
-      <h2 class="section-title">Have a Build Coming Up, <br>or One That's Stuck?</h2>
+      <h2 class="section-title">Have a Project Coming Up, <br>or One That's Stuck?</h2>
     </div>
-    <p>Tell us where you are in the schedule. We'll tell you what's likely to slip and what it will take to keep moving.</p>
-    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    <p>Tell us what you're trying to get done and where it stands. We'll give you a straight read on what it will take.</p>
+    <div class="hero-cta" style="justify-content:center">
+      <a href="contact.html?topic=project" class="btn btn-primary">Discuss Your Project</a>
+      <a href="private-ai.html#discovery" class="btn btn-outline">Request a Private AI Demo</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
   <div class="footer-links">
-    <a href="about.html">About</a>
-    <a href="#approach">Approach</a>
+    <a href="#services">Services</a>
     <a href="private-ai.html">Private AI</a>
+    <a href="about.html">About</a>
     <a href="govcon.html">GovCon Profile</a>
     <a href="contact.html">Contact</a>
-    <a href="training.html">AI Training Guide</a>
+    <a href="training.html">AI Guide</a>
   </div>
 </footer>
 <p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners. FalconRock Consulting is an independent consultancy and is not affiliated with or endorsed by any referenced vendor or government agency.</p>

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | FalconRock Consulting</title>
+<meta name="description" content="Discuss an infrastructure project, a stalled build, private AI, or government teaming with FalconRock Consulting. You'll hear back within one business day.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{--navy:#0a1628;--deep:#0d1f3c;--steel:#1a2d4a;--accent:#c8a44e;--accent-light:#dfc06e;--silver:#8a9bb5;--light:#c9d4e4;--white:#eef1f6}
@@ -115,13 +116,12 @@
     FalconRock
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#approach">Approach</a></li>
-    <li><a href="index.html#pivots">Pivots</a></li>
-    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how">How We Work</a></li>
     <li><a href="private-ai.html">Private AI</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="training.html">AI Guide</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="govcon.html">GovCon Profile</a></li>
+    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -131,13 +131,13 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="index.html#approach" onclick="closeMobileMenu()">Approach</a></li>
-    <li><a href="index.html#pivots" onclick="closeMobileMenu()">Pivots</a></li>
-    <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
+    <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
+    <li><a href="index.html#how" onclick="closeMobileMenu()">How We Work</a></li>
     <li><a href="private-ai.html" onclick="closeMobileMenu()">Private AI</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
-    <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
-    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+    <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
+    <li><a href="contact.html" class="active" aria-current="page" onclick="closeMobileMenu()">Contact</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Guide</a></li>
   </ul>
 </div>
 
@@ -145,8 +145,8 @@
   <div class="hero-grid"></div>
   <div class="page-hero-content">
     <div class="section-tag">Get In Touch</div>
-    <h1 class="page-title">Let's Build<br>Something <span class="gold">Mission-Critical</span></h1>
-    <p class="page-subtitle">Whether you need cleared architecture support, an on-premises AI pilot, or a strategic technology partner — we're ready to talk.</p>
+    <h1 class="page-title">Tell Us What<br>You're <span class="gold">Working On</span></h1>
+    <p class="page-subtitle">An infrastructure project, a build that's stuck, a private AI pilot, or a teaming opportunity. Tell us where things stand and you'll hear back from the engineer who would do the work.</p>
   </div>
 </div>
 
@@ -160,15 +160,11 @@
       </div>
       <div class="contact-method">
         <div class="label">Engagement Models</div>
-        <p>Available as prime or subcontractor. We support C2C, staff augmentation, fixed-scope pilots, and advisory retainer engagements.</p>
+        <p>Fixed-scope projects, assessments, private AI pilots and advisory retainers. Available directly or as a subcontractor.</p>
       </div>
       <div class="contact-method">
-        <div class="label">Contract Support</div>
-        <p>Experienced supporting work under multiple contract vehicles. Can operate under customer or prime contractor processes and compliance frameworks.</p>
-      </div>
-      <div class="contact-method">
-        <div class="label">Cleared Personnel</div>
-        <p>Our personnel hold active DoD security clearances and have extensive experience in classified program environments.</p>
+        <div class="label">Government &amp; Primes</div>
+        <p>Registration, NAICS codes and teaming details are on our <a href="govcon.html">GovCon Profile</a>. Our principal holds an active TS/SCI clearance.</p>
       </div>
       <div class="contact-method">
         <div class="label">Response Time</div>
@@ -193,16 +189,14 @@
           <input type="email" id="email" name="email" placeholder="you@example.com" required>
         </div>
         <div class="form-group">
-          <label for="interest">Area of Interest</label>
+          <label for="interest">What's This About?</label>
           <select id="interest" name="interest">
             <option value="">Select one...</option>
-            <option>System Architecture &amp; Engineering</option>
-            <option>On-Premises AI / LLM Deployment</option>
-            <option>Virtualization &amp; VDI</option>
-            <option>Network Architecture</option>
-            <option>Security &amp; Compliance (RMF/ATO)</option>
-            <option>Staff Augmentation</option>
-            <option>General Inquiry</option>
+            <option value="Infrastructure project" data-topic="project">Infrastructure project</option>
+            <option value="Stalled or at-risk build" data-topic="stalled">A build that's stalled or at risk</option>
+            <option value="Private AI" data-topic="ai">Private AI</option>
+            <option value="Government contracting / teaming" data-topic="govcon">Government contracting or teaming</option>
+            <option value="Other" data-topic="other">Something else</option>
           </select>
         </div>
         <div class="form-group">
@@ -210,7 +204,7 @@
           <textarea id="message" name="message" placeholder="Tell us about your requirements..."></textarea>
         </div>
         <button type="button" class="btn btn-primary" id="submitBtn" onclick="handleSubmit()">Send Message</button>
-        <p class="form-note">All communications are handled with discretion. No information is shared with third parties.</p>
+        <p class="form-note">Messages are delivered to us through our form provider (Formspree) and handled with discretion. We don't sell or share your details.</p>
       </div>
       <div class="success-msg" id="successMsg">
         <h3>Message Received</h3>
@@ -227,18 +221,19 @@
 <div class="security-note">
   <div class="security-note-inner reveal">
     <svg viewBox="0 0 48 48" fill="none"><path d="M24 4L6 14V26C6 38 24 46 24 46S42 38 42 26V14L24 4Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M18 24L22 28L30 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-    <p><strong>Security Notice:</strong> Do not include classified or CUI information in web-based communications. For discussions involving sensitive programs or classified requirements, please contact us via email to coordinate an appropriate communication channel.</p>
+    <p><strong>Security Notice:</strong> Do not include confidential client data, CUI or classified information in web-based communications. For discussions involving sensitive programs or requirements, email us and we'll coordinate an appropriate communication channel.</p>
   </div>
 </div>
 
 <footer>
   <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
   <div class="footer-links">
-    <a href="about.html">About</a>
-    <a href="index.html#approach">Approach</a>
+    <a href="index.html#services">Services</a>
     <a href="private-ai.html">Private AI</a>
+    <a href="about.html">About</a>
+    <a href="govcon.html">GovCon Profile</a>
     <a href="contact.html">Contact</a>
-    <a href="training.html">AI Training Guide</a>
+    <a href="training.html">AI Guide</a>
   </div>
 </footer>
 <p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners.</p>
@@ -282,8 +277,15 @@
 
   mobileOverlay.addEventListener('click', closeMobileMenu);
 
+  // Pre-select the inquiry type from ?topic= (project | stalled | ai | govcon | other)
+  (function () {
+    const topic = new URLSearchParams(window.location.search).get('topic');
+    if (!topic) return;
+    const opt = document.querySelector('#interest option[data-topic="' + CSS.escape(topic) + '"]');
+    if (opt) opt.selected = true;
+  })();
+
   // Form submission via Formspree
-  // TODO: Replace YOUR_FORM_ID with your actual Formspree form ID
   async function handleSubmit() {
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Federal Contractor Profile | FalconRock Consulting</title>
-<meta name="description" content="SAM-registered IT infrastructure and systems architecture firm. CAGE Code, NAICS codes, past performance, and teaming information for federal procurement officers and prime contractors.">
+<meta name="description" content="SAM-registered IT infrastructure and systems architecture firm. CAGE Code, NAICS codes, current work, and teaming information for federal procurement officers and prime contractors.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ── BASE (copied verbatim from site) ── */
@@ -196,13 +196,11 @@
     FalconRock
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#approach">Approach</a></li>
-    <li><a href="index.html#pivots">Pivots</a></li>
-    <li><a href="index.html#engage">Engagement</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how">How We Work</a></li>
     <li><a href="private-ai.html">Private AI</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="training.html">AI Guide</a></li>
-    <li><a href="govcon.html" class="active">GovCon Profile</a></li>
+    <li><a href="govcon.html" class="active" aria-current="page">GovCon Profile</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -213,14 +211,13 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="index.html#approach" onclick="closeMobileMenu()">Approach</a></li>
-    <li><a href="index.html#pivots" onclick="closeMobileMenu()">Pivots</a></li>
-    <li><a href="index.html#engage" onclick="closeMobileMenu()">Engagement</a></li>
+    <li><a href="index.html#services" onclick="closeMobileMenu()">Services</a></li>
+    <li><a href="index.html#how" onclick="closeMobileMenu()">How We Work</a></li>
     <li><a href="private-ai.html" onclick="closeMobileMenu()">Private AI</a></li>
     <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
-    <li><a href="govcon.html" onclick="closeMobileMenu()">GovCon Profile</a></li>
+    <li><a href="govcon.html" class="active" aria-current="page" onclick="closeMobileMenu()">GovCon Profile</a></li>
     <li><a href="contact.html" onclick="closeMobileMenu()">Contact</a></li>
-    <li><a href="training.html" onclick="closeMobileMenu()">AI Training Guide</a></li>
+    <li><a href="training.html" onclick="closeMobileMenu()">AI Guide</a></li>
   </ul>
 </div>
 
@@ -229,8 +226,8 @@
   <div class="hero-grid"></div>
   <div class="page-hero-content">
     <div class="section-tag">Federal Contractor Profile</div>
-    <h1 class="page-title">SAM Registered.<br><span class="gold">Cleared.</span><br>Ready to Team.</h1>
-    <p class="page-subtitle">This page provides contracting officers, prime BD leads, and procurement teams with FalconRock's registration details, NAICS codes, past performance, and teaming information in one place. Primary service: cleared data center implementation and schedule recovery, keeping DoD and IC builds moving when dependencies slip.</p>
+    <h1 class="page-title">SAM Registered.<br><span class="gold">TS/SCI Cleared.</span><br>Ready to Team.</h1>
+    <p class="page-subtitle">This page provides contracting officers, prime BD leads, and procurement teams with FalconRock's registration details, NAICS codes, current work, and teaming information in one place. Primary federal service: cleared data center implementation and schedule recovery, keeping DoD and IC builds moving when dependencies slip. Clearance status refers to personnel (TS/SCI).</p>
 
     <!-- LEGAL ENTITY NOTE -->
     <div style="background:rgba(200,164,78,.06);border:1px solid rgba(200,164,78,.2);border-left:3px solid var(--accent);padding:1rem 1.5rem;margin-bottom:1.5rem;max-width:700px;">
@@ -284,7 +281,7 @@
   <div class="cap-grid">
     <div class="cap-card reveal">
       <h3>Implementation &amp; Schedule Recovery</h3>
-      <p>Primary service. We step in at deployment on cleared and air-gapped data center builds. When licenses, hardware, approvals or upstream teams slip, we design the interim path, get it approved within the existing ATO, and execute on site. 25+ years across DoD programs with zero-tolerance operations.</p>
+      <p>Primary service. We step in at deployment on cleared and air-gapped data center builds. When licenses, hardware, approvals or upstream teams slip, we design the interim path, get it approved within the existing ATO, and execute on site. 25+ years of hands-on work across DoD programs.</p>
       <div class="cap-tags">
         <span class="cap-tag">VCF / vSphere</span>
         <span class="cap-tag">NSX</span>
@@ -306,12 +303,12 @@
     </div>
     <div class="cap-card reveal">
       <h3>On-Prem AI / RAG</h3>
-      <p>Air-gap compatible document intelligence and infrastructure automation platforms. Locally-hosted LLM pipelines for regulated environments with no cloud dependencies and full data sovereignty.</p>
+      <p>Private AI deployed on customer-controlled infrastructure: local language models with search over approved document sets. Designed to install and update with no outbound connection, reducing external data exposure for CUI and other sensitive workloads.</p>
       <div class="cap-tags">
         <span class="cap-tag">Ollama</span>
         <span class="cap-tag">LanceDB</span>
         <span class="cap-tag">AnythingLLM</span>
-        <span class="cap-tag">CMMC 2.0</span>
+        <span class="cap-tag">Air-Gap</span>
         <span class="cap-tag">RAG</span>
       </div>
     </div>
@@ -405,11 +402,12 @@
   </table>
 </section>
 
-<!-- PAST PERFORMANCE -->
+<!-- CURRENT WORK -->
 <section class="bg-deep" id="performance">
   <div class="section-header reveal">
-    <div class="section-tag">03 — Track Record</div>
-    <h2 class="section-title">Past Performance Highlights</h2>
+    <div class="section-tag">03 — Current Work</div>
+    <h2 class="section-title">Current Engagement</h2>
+    <p style="margin-top:1rem;color:var(--silver);line-height:1.7;max-width:760px">FalconRock is a newer firm and does not yet have completed federal contracts to cite as past performance. Its current engagement is below; the principal's 25+ years of hands-on infrastructure experience is summarized on our <a href="about.html" style="color:var(--accent)">About</a> page.</p>
   </div>
   <div class="perf-grid">
     <div class="perf-card reveal">
@@ -425,51 +423,6 @@
         <span>2024–Present</span>
         <span>TS/SCI Required</span>
         <span>NSX-T · Citrix · Infoblox</span>
-      </div>
-    </div>
-    <div class="perf-card reveal">
-      <div class="perf-header">
-        <div>
-          <div class="perf-agency">Enterprise Infrastructure</div>
-          <div class="perf-title">NSX-T Isolated Dev/Test Environment Build</div>
-        </div>
-        <div class="perf-type">SoW</div>
-      </div>
-      <div class="perf-desc">Designed and implemented a repeatable isolated T1 segment workflow for pre-production validation of VMware infrastructure upgrades. Includes FSMO/RID pool remediation for cloned domain controllers and a reusable PowerShell automation suite.</div>
-      <div class="perf-meta">
-        <span>2024</span>
-        <span>Unclassified</span>
-        <span>VMware · PowerShell · AD DS</span>
-      </div>
-    </div>
-    <div class="perf-card reveal">
-      <div class="perf-header">
-        <div>
-          <div class="perf-agency">Citrix Environment Migration</div>
-          <div class="perf-title">HTTPS/TLS Migration — Citrix CVAD 2507</div>
-        </div>
-        <div class="perf-type">TL</div>
-      </div>
-      <div class="perf-desc">Full runbook development and execution for StoreFront and Delivery Controller certificate migration in a multi-site CVAD 2507 deployment. Coordinated PKI provisioning, IIS binding updates, STA reconfiguration, and post-migration validation testing.</div>
-      <div class="perf-meta">
-        <span>2025</span>
-        <span>Enterprise</span>
-        <span>Citrix · PKI · IIS · TLS 1.2/1.3</span>
-      </div>
-    </div>
-    <div class="perf-card reveal">
-      <div class="perf-header">
-        <div>
-          <div class="perf-agency">Infrastructure Intelligence Platform</div>
-          <div class="perf-title">VaultAI — On-Prem RAG Document Intelligence</div>
-        </div>
-        <div class="perf-type">IP</div>
-      </div>
-      <div class="perf-desc">Proprietary air-gap compatible document intelligence platform targeting regulated and cleared environments. Full stack: Ollama + LanceDB + AnythingLLM. Semantic search over enterprise CLI and policy document corpus. CMMC 2.0 architecture aligned.</div>
-      <div class="perf-meta">
-        <span>2025–Present</span>
-        <span>CMMC Aligned</span>
-        <span>Ollama · LanceDB · React · Ubuntu</span>
       </div>
     </div>
   </div>
@@ -491,7 +444,7 @@
           <li>Workarounds framed within RMF and approved with the ISSM/AO before execution</li>
           <li>25+ years of hands-on DoD and classified environment experience</li>
           <li>Deep VMware NSX-T, Citrix CVAD, and Infoblox DDI expertise</li>
-          <li>Proprietary on-prem AI tooling (VaultAI) deployable in air-gapped environments</li>
+          <li>Working on-premises private AI solution built on open-source components, deployable in air-gapped environments</li>
           <li>Active subcontractor to a major defense contractor — proven cleared onboarding</li>
           <li>Lean, responsive engagement with no overhead drag or staffing delays</li>
           <li>Infrastructure automation library (Ansible, PowerShell) ready to deploy</li>
@@ -523,9 +476,9 @@
       <h2>Start a<br>Conversation</h2>
       <p>Contracting officers, prime BD leads, and program managers are welcome to reach out directly. FalconRock responds within one business day.</p>
       <div class="contact-links">
-        <a href="mailto:contact@falconrockconsulting.com" class="contact-link">
+        <a href="mailto:simon.holt@falconrockconsulting.com" class="contact-link">
           <span class="contact-link-label">Email</span>
-          contact@falconrockconsulting.com
+          simon.holt@falconrockconsulting.com
         </a>
         <a href="https://falconrockconsulting.com" target="_blank" class="contact-link">
           <span class="contact-link-label">Web</span>
@@ -543,7 +496,7 @@
     </div>
     <div class="cap-statement-box reveal">
       <h3>One-Page Capability Statement</h3>
-      <p>Our capability statement provides NAICS codes, differentiators, past performance highlights, and key personnel information — formatted for contracting officer review and prime BD outreach.</p>
+      <p>Our capability statement provides NAICS codes, core competencies, current work, and key personnel information — formatted for contracting officer review and prime BD outreach.</p>
       <a href="falconrock-capability-statement.pdf" class="btn btn-primary" download>Download Capability Statement</a>
       <div class="quick-ref">
         <div class="ref-item"><label>Legal Entity</label><span>Wisebird Holdings LLC</span></div>
@@ -552,7 +505,6 @@
         <div class="ref-item"><label>Set-Asides</label><span>Small Business</span></div>
         <div class="ref-item"><label>Clearance</label><span>TS/SCI (personnel)</span></div>
         <div class="ref-item"><label>Primary NAICS</label><span>541512</span></div>
-        <div class="ref-item"><label>GSA Schedule</label><span>In Progress</span></div>
         <div class="ref-item"><label>SAM Search As</label><span>Wisebird Holdings LLC</span></div>
       </div>
     </div>
@@ -570,12 +522,12 @@
 <footer>
   <p>&copy; 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting. All rights reserved.</p>
   <div class="footer-links">
-    <a href="about.html">About</a>
-    <a href="index.html#approach">Approach</a>
+    <a href="index.html#services">Services</a>
     <a href="private-ai.html">Private AI</a>
+    <a href="about.html">About</a>
     <a href="govcon.html">GovCon Profile</a>
     <a href="contact.html">Contact</a>
-    <a href="training.html">AI Training Guide</a>
+    <a href="training.html">AI Guide</a>
   </div>
 </footer>
 <p class="disclaimer">All trademarks, product names, and company names are the property of their respective owners. FalconRock Consulting is an independent consultancy and is not affiliated with or endorsed by any referenced vendor or government agency.</p>
