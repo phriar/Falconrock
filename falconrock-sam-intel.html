@@ -5,24 +5,25 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BD Intel Report — FalconRock Consulting</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
   :root {
-    --navy: #0B1829;
-    --navy-mid: #152338;
-    --navy-light: #1E3251;
-    --silver: #8FA3BF;
-    --silver-light: #C4D0DF;
-    --silver-dim: #4A5E75;
-    --white: #F0F4F8;
-    --accent: #4A90D9;
-    --accent-dim: #2A5A8A;
-    --bid: #2ECC71;
-    --watch: #F39C12;
-    --skip: #E74C3C;
-    --bid-bg: rgba(46,204,113,0.08);
-    --watch-bg: rgba(243,156,18,0.08);
-    --skip-bg: rgba(231,76,60,0.08);
+    --navy: #FFFFFF;
+    --navy-mid: #F4F4F3;
+    --navy-light: #E8E8E6;
+    --silver: #565C64;
+    --silver-light: #2B3139;
+    --silver-dim: #8B9097;
+    --white: #0B1219;
+    --accent: #2E353D;
+    --accent-dim: #0B1219;
+    --bid: #1F8A4C;
+    --watch: #B86E00;
+    --skip: #B3372A;
+    --bid-bg: rgba(31,138,76,0.08);
+    --watch-bg: rgba(184,110,0,0.08);
+    --skip-bg: rgba(179,55,42,0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +31,7 @@
   body {
     background: var(--navy);
     color: var(--white);
-    font-family: 'Libre Baskerville', Georgia, serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -41,8 +42,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(74,144,217,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,144,217,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(46,53,61,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,53,61,0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -52,8 +53,8 @@
   .site-header {
     position: relative;
     z-index: 10;
-    border-bottom: 1px solid rgba(143,163,191,0.15);
-    background: linear-gradient(180deg, rgba(11,24,41,0.98) 0%, rgba(21,35,56,0.95) 100%);
+    border-bottom: 1px solid rgba(86,92,100,0.15);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,244,243,0.95) 100%);
     backdrop-filter: blur(8px);
   }
 
@@ -81,7 +82,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 20px;
     color: white;
@@ -95,7 +96,7 @@
   }
 
   .logo-name {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 22px;
     letter-spacing: 0.04em;
@@ -105,7 +106,7 @@
   }
 
   .logo-sub {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 11px;
     letter-spacing: 0.15em;
@@ -115,14 +116,14 @@
   }
 
   .header-badge {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    background: rgba(74,144,217,0.1);
-    border: 1px solid rgba(74,144,217,0.25);
+    background: rgba(46,53,61,0.1);
+    border: 1px solid rgba(46,53,61,0.25);
     padding: 5px 12px;
     border-radius: 3px;
   }
@@ -142,7 +143,7 @@
   }
 
   .page-eyebrow {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.2em;
@@ -152,7 +153,7 @@
   }
 
   .page-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 52px;
     font-weight: 800;
     text-transform: uppercase;
@@ -178,14 +179,14 @@
   /* ── CONFIG PANEL ── */
   .config-panel {
     background: var(--navy-mid);
-    border: 1px solid rgba(143,163,191,0.12);
+    border: 1px solid rgba(86,92,100,0.12);
     border-radius: 8px;
     padding: 28px 32px;
     margin-bottom: 32px;
   }
 
   .config-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.15em;
@@ -201,7 +202,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(143,163,191,0.1);
+    background: rgba(86,92,100,0.1);
   }
 
   .config-grid {
@@ -226,7 +227,7 @@
   }
 
   label {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -236,7 +237,7 @@
 
   input[type="text"], input[type="password"], input[type="date"], textarea, select {
     background: var(--navy);
-    border: 1px solid rgba(143,163,191,0.15);
+    border: 1px solid rgba(86,92,100,0.15);
     border-radius: 4px;
     color: var(--white);
     font-family: 'JetBrains Mono', monospace;
@@ -272,7 +273,7 @@
   .key-row .field-group { flex: 1; }
 
   .key-note {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     color: var(--silver-dim);
     font-style: italic;
@@ -293,13 +294,13 @@
   }
 
   .preset-tag {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
     padding: 4px 10px;
     border-radius: 3px;
-    border: 1px solid rgba(143,163,191,0.2);
+    border: 1px solid rgba(86,92,100,0.2);
     color: var(--silver);
     background: transparent;
     cursor: pointer;
@@ -310,7 +311,7 @@
   .preset-tag:hover, .preset-tag.active {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(74,144,217,0.08);
+    background: rgba(46,53,61,0.08);
   }
 
   /* ── RUN BUTTON ── */
@@ -321,7 +322,7 @@
     border: none;
     border-radius: 5px;
     color: white;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 17px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -342,7 +343,7 @@
   .status-bar {
     display: none;
     background: var(--navy-mid);
-    border: 1px solid rgba(74,144,217,0.2);
+    border: 1px solid rgba(46,53,61,0.2);
     border-radius: 6px;
     padding: 16px 20px;
     margin-bottom: 24px;
@@ -358,7 +359,7 @@
   .spinner {
     width: 16px;
     height: 16px;
-    border: 2px solid rgba(74,144,217,0.2);
+    border: 2px solid rgba(46,53,61,0.2);
     border-top-color: var(--accent);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
@@ -374,13 +375,13 @@
     justify-content: space-between;
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(143,163,191,0.1);
+    border-bottom: 1px solid rgba(86,92,100,0.1);
   }
 
   .report-header.visible { display: flex; }
 
   .report-meta {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     color: var(--silver-dim);
     letter-spacing: 0.05em;
@@ -397,7 +398,7 @@
   }
 
   .pill {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -406,9 +407,9 @@
     border-radius: 3px;
   }
 
-  .pill.bid { background: var(--bid-bg); color: var(--bid); border: 1px solid rgba(46,204,113,0.2); }
-  .pill.watch { background: var(--watch-bg); color: var(--watch); border: 1px solid rgba(243,156,18,0.2); }
-  .pill.skip { background: var(--skip-bg); color: var(--skip); border: 1px solid rgba(231,76,60,0.2); }
+  .pill.bid { background: var(--bid-bg); color: var(--bid); border: 1px solid rgba(31,138,76,0.2); }
+  .pill.watch { background: var(--watch-bg); color: var(--watch); border: 1px solid rgba(184,110,0,0.2); }
+  .pill.skip { background: var(--skip-bg); color: var(--skip); border: 1px solid rgba(179,55,42,0.2); }
 
   /* ── OPP CARDS ── */
   .results-grid {
@@ -419,7 +420,7 @@
 
   .opp-card {
     background: var(--navy-mid);
-    border: 1px solid rgba(143,163,191,0.1);
+    border: 1px solid rgba(86,92,100,0.1);
     border-radius: 8px;
     overflow: hidden;
     transition: border-color 0.2s;
@@ -431,7 +432,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .opp-card:hover { border-color: rgba(143,163,191,0.25); }
+  .opp-card:hover { border-color: rgba(86,92,100,0.25); }
   .opp-card.bid { border-left: 3px solid var(--bid); }
   .opp-card.watch { border-left: 3px solid var(--watch); }
   .opp-card.skip { border-left: 3px solid var(--skip); opacity: 0.75; }
@@ -445,7 +446,7 @@
   }
 
   .verdict-badge {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -456,14 +457,14 @@
     margin-top: 2px;
   }
 
-  .verdict-badge.bid { background: var(--bid-bg); color: var(--bid); border: 1px solid rgba(46,204,113,0.25); }
-  .verdict-badge.watch { background: var(--watch-bg); color: var(--watch); border: 1px solid rgba(243,156,18,0.25); }
-  .verdict-badge.skip { background: var(--skip-bg); color: var(--skip); border: 1px solid rgba(231,76,60,0.25); }
+  .verdict-badge.bid { background: var(--bid-bg); color: var(--bid); border: 1px solid rgba(31,138,76,0.25); }
+  .verdict-badge.watch { background: var(--watch-bg); color: var(--watch); border: 1px solid rgba(184,110,0,0.25); }
+  .verdict-badge.skip { background: var(--skip-bg); color: var(--skip); border: 1px solid rgba(179,55,42,0.25); }
 
   .card-main { flex: 1; min-width: 0; }
 
   .card-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--white);
@@ -475,7 +476,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     color: var(--silver-dim);
     letter-spacing: 0.05em;
@@ -500,7 +501,7 @@
   }
 
   .score-num {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 800;
     color: var(--white);
@@ -516,7 +517,7 @@
   .card-body.open { display: block; }
 
   .analysis-label {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.15em;
@@ -540,15 +541,15 @@
   }
 
   .tag {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 3px 8px;
     border-radius: 2px;
-    background: rgba(143,163,191,0.07);
-    border: 1px solid rgba(143,163,191,0.12);
+    background: rgba(86,92,100,0.07);
+    border: 1px solid rgba(86,92,100,0.12);
     color: var(--silver);
   }
 
@@ -556,7 +557,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -564,14 +565,14 @@
     color: var(--accent);
     text-decoration: none;
     padding: 7px 14px;
-    border: 1px solid rgba(74,144,217,0.3);
+    border: 1px solid rgba(46,53,61,0.3);
     border-radius: 3px;
     transition: all 0.15s;
-    background: rgba(74,144,217,0.05);
+    background: rgba(46,53,61,0.05);
   }
 
   .view-sam-btn:hover {
-    background: rgba(74,144,217,0.12);
+    background: rgba(46,53,61,0.12);
     border-color: var(--accent);
   }
 
@@ -592,7 +593,7 @@
   }
 
   .empty-state h3 {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
@@ -611,7 +612,7 @@
   /* ── DIVIDER ── */
   .divider {
     height: 1px;
-    background: rgba(143,163,191,0.08);
+    background: rgba(86,92,100,0.08);
     margin: 28px 0;
   }
 
@@ -620,8 +621,8 @@
     text-align: center;
     margin-top: 60px;
     padding-top: 24px;
-    border-top: 1px solid rgba(143,163,191,0.08);
-    font-family: 'Barlow Condensed', sans-serif;
+    border-top: 1px solid rgba(86,92,100,0.08);
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -638,6 +639,13 @@
     .page-title { font-size: 36px; }
     .report-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
+
+  /* Brand refresh: matches the FalconRock logo */
+  .logo-mark{height:42px;width:auto;display:block;flex-shrink:0}
+  .logo-name{font-family:'Cinzel',Georgia,serif!important;font-weight:600!important;letter-spacing:.1em!important}
+  .logo-sub{letter-spacing:.32em!important}
+  h1,h2,.page-title{font-family:'Cinzel',Georgia,serif!important;letter-spacing:.02em;font-weight:600!important}
+  .page-title{font-size:clamp(30px,5vw,46px)!important;line-height:1.1!important}
 </style>
 </head>
 <body>
@@ -646,7 +654,7 @@
 <header class="site-header">
   <div class="header-inner">
     <div class="logo-lockup">
-      <div class="logo-icon">FR</div>
+      <img class="logo-mark" src="assets/falconrock-mark.png" alt="" width="52" height="42">
       <div class="logo-text">
         <div class="logo-name">FalconRock</div>
         <div class="logo-sub">Consulting</div>
@@ -804,14 +812,14 @@ function toSamDate(isoStr) {
 
 // ── SCORE RING SVG ──
 function scoreRing(score, verdict) {
-  const color = verdict === 'BID' ? '#2ECC71' : verdict === 'WATCH' ? '#F39C12' : '#E74C3C';
+  const color = verdict === 'BID' ? '#1F8A4C' : verdict === 'WATCH' ? '#B86E00' : '#B3372A';
   const r = 20, cx = 26, cy = 26;
   const circ = 2 * Math.PI * r;
   const dash = (score / 100) * circ;
   return `
     <div class="score-ring">
       <svg width="52" height="52" viewBox="0 0 52 52">
-        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4"/>
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(11,18,25,0.04)" stroke-width="4"/>
         <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="4"
           stroke-dasharray="${dash} ${circ}" stroke-linecap="round"/>
       </svg>

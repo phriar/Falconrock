@@ -8,24 +8,24 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
-:root{--navy:#0b1219;--deep:#2e353d;--gold:#2e353d;--gold-l:#4a525c;--ink:#1a2333;--muted:#55627a;--line:#d9dee7;--tint:#f3f3f2}
+:root{--navy:#0b1219;--deep:#2e353d;--gold:#2e353d;--gold-l:#4a525c;--ink:#1b2026;--muted:#5b6169;--line:#dcdddf;--tint:#f3f3f2}
 @page{size:letter;margin:0}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Source Serif 4',Georgia,serif;color:var(--ink);background:#ececeb;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .sheet{width:8.5in;min-height:11in;margin:0 auto;background:#fff;display:flex;flex-direction:column}
 .cond{font-family:'Montserrat',sans-serif}
-header{background:var(--navy);color:#eef1f6;padding:.42in .5in .32in;display:grid;grid-template-columns:1fr auto;gap:.3in;align-items:end;border-bottom:4px solid var(--gold-l)}
+header{background:var(--navy);color:#f4f4f3;padding:.42in .5in .32in;display:grid;grid-template-columns:1fr auto;gap:.3in;align-items:end;border-bottom:4px solid var(--gold-l)}
 .brand{display:flex;align-items:center;gap:.14in}
 .brand svg{width:.46in;height:.46in;flex-shrink:0}
 .brand-name{font-family:'Cinzel',Georgia,serif;font-weight:600;font-size:22pt;letter-spacing:2px;text-transform:uppercase;line-height:1.05}
 .brand-sub{font-family:'Montserrat',sans-serif;font-weight:600;font-size:8pt;letter-spacing:3px;text-transform:uppercase;color:#a7acb2;margin-top:4px}
-.doc-type{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10pt;letter-spacing:3px;text-transform:uppercase;color:#8a9bb5;text-align:right}
+.doc-type{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10pt;letter-spacing:3px;text-transform:uppercase;color:#8b9097;text-align:right}
 .headline{padding:.24in .5in .2in;background:var(--tint);border-bottom:1px solid var(--line)}
 .headline h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:19pt;text-transform:uppercase;color:var(--navy);line-height:1.05;letter-spacing:-.2px}
 .headline h1 span{color:var(--gold)}
 .headline p{font-size:9.6pt;line-height:1.5;margin-top:6px;color:var(--ink)}
 .quotes{display:flex;gap:.16in;margin-top:8px;font-size:9pt}
-.quotes div{flex:1;padding:5px 10px;border-left:3px solid #9aa6b8;background:#fff}
+.quotes div{flex:1;padding:5px 10px;border-left:3px solid #a7acb2;background:#fff}
 .quotes div.ours{border-left-color:var(--gold)}
 .quotes b{font-family:'Montserrat',sans-serif;font-size:7pt;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block}
 .quotes .ours b{color:var(--gold)}
@@ -38,7 +38,7 @@ li::before{content:'';position:absolute;left:0;top:6px;width:5px;height:5px;back
 li b{font-weight:600;color:var(--navy)}
 .tiers{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .tier{border:1px solid var(--line);border-top:2.5px solid var(--gold-l);padding:6px 8px}
-.tier.alt{border-top-color:#9aa6b8}
+.tier.alt{border-top-color:#a7acb2}
 .tier .when{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12pt;color:var(--gold);line-height:1}
 .tier.alt .when{color:var(--muted)}
 .tier .name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8.5pt;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin:3px 0 2px}
@@ -55,11 +55,17 @@ li b{font-weight:600;color:var(--navy)}
 .data span{font-size:8.6pt;line-height:1.35;color:var(--ink)}
 footer{background:var(--navy);color:#d4d6d9;padding:.16in .5in;display:flex;justify-content:space-between;align-items:center;font-family:'Montserrat',sans-serif;font-size:9pt;letter-spacing:1px;margin-top:.1in}
 footer b{color:var(--gold-l);font-weight:700;letter-spacing:2px;text-transform:uppercase}
-footer a{color:#eef1f6;text-decoration:none}
+footer a{color:#f4f4f3;text-decoration:none}
 @media screen and (max-width:760px){body{background:#fff}.sheet{width:100%;min-height:0}main{grid-template-columns:1fr}.data{grid-template-columns:1fr 1fr}header{grid-template-columns:1fr}.doc-type{text-align:left}}
 
 @media(max-width:600px){*{min-width:0}body{overflow-wrap:break-word}.brand-name{font-size:17pt}}
 h1,h2,h3,.brand{font-family:'Cinzel',Georgia,serif!important;letter-spacing:.02em}
+.headline h1{font-size:16.5pt!important;font-weight:600!important}
+h2{font-size:9.8pt!important;letter-spacing:1.5px!important}
+.brand-name{font-size:17pt;white-space:nowrap}
+.brand-sub{font-size:7pt!important;letter-spacing:2px!important;white-space:nowrap}
+header{padding:.3in .5in .26in!important}
+.headline h1{font-size:15.5pt!important}
 </style>
 </head>
 <body>

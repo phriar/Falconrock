@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>FalconRock Consulting · Private AI Capability Brief</title>
+<!-- Source for assets/FalconRock-Private-AI-Brief.pdf. Print to PDF: Letter, no margins, background graphics on. -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+@page{size:letter;margin:0}
+:root{--ink:#0b1219;--rock:#2e353d;--stone:#8b9097;--text:#1b2026;--muted:#5b6169;--line:#dcdddf;--tint:#f3f3f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;color:var(--text);background:#ececeb;font-size:9.4pt;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;margin:0 auto 24px;background:#fff;display:flex;flex-direction:column;overflow:hidden;position:relative}
+@media print{body{background:#fff}.page{margin:0;page-break-after:always}}
+.lab{font-family:'Montserrat',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:2.2px;font-size:6.8pt}
+.serif{font-family:'Cinzel',Georgia,serif}
+/* bands */
+.topbar{background:var(--ink);color:#d4d6d9;display:flex;justify-content:space-between;align-items:center;padding:.16in .5in}
+.topbar .brand{display:flex;align-items:center;gap:10px}
+.topbar img{height:26px;width:auto;display:block}
+.topbar .name{font-family:'Cinzel',serif;font-weight:600;font-size:12pt;letter-spacing:2px;color:#fff}
+.topbar .lab{color:#a7acb2}
+.hero{background:var(--ink);color:#fff;padding:.12in .5in .3in}
+.hero .lab{color:#a7acb2;display:flex;align-items:center;gap:8px}
+.hero .lab::before{content:'';width:26px;height:1px;background:#a7acb2}
+.hero h1{font-family:'Cinzel',serif;font-weight:600;font-size:21pt;line-height:1.12;margin:.08in 0 .1in;letter-spacing:.3px}
+.hero h1 span{color:#a7acb2}
+.hero p{color:#d4d6d9;font-size:10pt;max-width:6.6in}
+.pills{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:.14in}
+.pills span{font-family:'Montserrat',sans-serif;font-weight:600;font-size:6.8pt;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.pills span::before{content:'◆';color:#8b9097;margin-right:6px}
+.body{padding:.2in .5in 0;flex:1;display:flex;flex-direction:column;gap:.17in}
+h2{font-family:'Cinzel',serif;font-weight:700;font-size:11.5pt;color:var(--ink);letter-spacing:.6px;display:flex;align-items:baseline;gap:10px;border-bottom:1.5px solid var(--rock);padding-bottom:3px;margin-bottom:.09in}
+h2 .lab{color:var(--stone);font-size:6.5pt}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.16in}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:.1in}
+.num{font-family:'Montserrat',sans-serif;font-weight:700;font-size:7pt;letter-spacing:2px;color:var(--stone)}
+h3{font-family:'Cinzel',serif;font-weight:700;font-size:8.8pt;color:var(--ink);letter-spacing:.3px;line-height:1.2;margin:2px 0 3px}
+.step{border-top:2px solid var(--rock);background:var(--tint);padding:.08in .09in .1in}
+.step p,.prob p{font-size:8.7pt}
+.callout{border-left:3px solid var(--rock);background:var(--tint);padding:.09in .14in;font-style:italic;font-size:9.6pt;color:var(--ink)}
+/* architecture */
+.arch{border:1.5px dashed var(--stone);padding:.12in .14in .1in;position:relative}
+.arch>.lab{position:absolute;top:-.07in;left:.14in;background:#fff;padding:0 6px;color:var(--rock)}
+.archrow{display:grid;grid-template-columns:1fr 14px 1.15fr 14px 1.35fr;align-items:stretch;gap:4px;margin-top:.04in}
+.box{border:1px solid var(--line);padding:.07in .09in;background:#fff}
+.box .lab{color:var(--ink);margin-bottom:3px;display:block}
+.box ul{list-style:none;font-size:8.2pt}
+.box li::before{content:'— ';color:var(--stone)}
+.arrow{display:flex;align-items:center;justify-content:center;color:var(--rock);font-family:'Montserrat',sans-serif;font-weight:700}
+.svc{background:var(--ink);color:#fff;border-color:var(--ink)}
+.svc .lab{color:#fff}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:4px 0 5px}
+.chips div{border:1px solid #4a525c;text-align:center;font-family:'Montserrat',sans-serif;font-size:6.6pt;font-weight:600;padding:4px 2px;line-height:1.2;color:#fff}
+.svc p{font-size:7.9pt;color:#d4d6d9}
+.updates{display:flex;gap:10px;align-items:center;margin-top:.08in;font-size:8.2pt}
+.updates .tag{font-family:'Montserrat',sans-serif;font-weight:700;font-size:6.5pt;letter-spacing:1.5px;border:1px solid var(--rock);padding:3px 7px;color:var(--rock)}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;padding:.12in .5in .18in;font-size:7pt;color:var(--muted);border-top:1px solid var(--line);margin-top:.12in;gap:.3in}
+.foot .lab{color:var(--rock);white-space:nowrap}
+/* page 2 */
+.opt{border:1px solid var(--line);border-top:3px solid var(--rock);padding:.1in .12in}
+.opt.first{background:var(--tint);border-top-color:var(--ink)}
+.opt .lab{color:var(--stone)}
+.opt h3{font-size:11pt;margin:3px 0 4px}
+.opt p{font-size:8.8pt}
+ul.sq{list-style:none;margin-top:5px;font-size:8.5pt}
+ul.sq li{padding-left:12px;position:relative;margin-bottom:2px}
+ul.sq li::before{content:'';position:absolute;left:0;top:.5em;width:5px;height:5px;background:var(--rock)}
+ul.x li::before{content:'×';background:none;width:auto;height:auto;top:0;color:#9a3b30;font-weight:700}
+.note{font-style:italic;font-size:8.4pt;color:var(--muted)}
+.scope{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.scope>div{padding:.08in .11in}
+.scope>div+div{border-left:1px solid var(--line)}
+.scope .lab{color:var(--ink)}
+.why{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:.1in .18in}
+.why .intro p{font-size:9.4pt;margin-bottom:5px}
+.why .intro .small{font-size:8pt;color:var(--muted);font-style:normal}
+.why .cap{font-size:8.5pt}
+.why .cap b{font-family:'Montserrat',sans-serif;font-weight:700;font-size:6.8pt;letter-spacing:1.6px;text-transform:uppercase;color:var(--ink);margin-right:4px}
+.why .wide{grid-column:2/4}
+.cta{background:var(--ink);color:#fff;display:grid;grid-template-columns:1.6fr 1fr;gap:.25in;padding:.16in .22in;margin-top:auto}
+.cta h4{font-family:'Cinzel',serif;font-weight:600;font-size:13pt;letter-spacing:.4px;margin-bottom:4px}
+.cta h4 span{color:#a7acb2}
+.cta p{font-size:8.7pt;color:#d4d6d9}
+.cta .contact{border-left:1px solid #4a525c;padding-left:.18in;font-size:8.8pt;color:#d4d6d9}
+.cta .contact .lab{color:#a7acb2;display:block;margin-bottom:3px}
+.cta .contact b{color:#fff;font-weight:600}
+h1,h2,h3,h4,.topbar .name{text-transform:uppercase}
+.p2 .body{gap:.1in}
+.p2 .opt{padding:.08in .11in}
+.p2 ul.sq li{margin-bottom:1px}
+.p2 h2{margin-bottom:.06in}
+.p2 .opt p,.p2 ul.sq{font-size:8.3pt}
+.p2 .why .intro p{font-size:8.8pt}
+.p2 .why .cap{font-size:8.2pt}
+.p2 .cta{padding:.13in .2in}
+.p2 .note{font-size:8pt}
+</style>
+</head>
+<body>
+
+<section class="page">
+  <div class="topbar">
+    <div class="brand"><img src="../assets/falconrock-mark-white.png" alt=""><span class="name">FALCONROCK</span></div>
+    <span class="lab">Capability Brief · Private AI</span>
+  </div>
+  <div class="hero">
+    <div class="lab">New capability</div>
+    <h1>Private AI, built into the<br><span>infrastructure you already run</span></h1>
+    <p>We deploy open-source AI inside your network on hardware you own: local language models, plus search over your own documents. Nothing leaves your network, and nothing depends on an outside connection.</p>
+    <div class="pills"><span>Your hardware</span><span>Your boundary</span><span>Fully air-gapped</span><span>No appliance to buy</span></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <h2>The Problem <span class="lab">Why the usual options don't fit</span></h2>
+      <div class="grid3">
+        <div class="prob"><div class="num">01</div><h3>Cloud AI is off the table</h3><p>CUI and classified data can't be sent to a commercial AI service. If the model runs outside the boundary, the conversation ends there.</p></div>
+        <div class="prob"><div class="num">02</div><h3>Appliances arrive as a foreign object</h3><p>A vendor box brings its own identity, networking, storage and update path. None of it matches what your ISSM has already accredited.</p></div>
+        <div class="prob"><div class="num">03</div><h3>Pilots stall at integration</h3><p>A model on one workstation is easy. Getting it behind your existing login, on the right segment, with an update process your team can follow is where projects stall.</p></div>
+      </div>
+    </div>
+
+    <div class="callout">The AI is the easy part. Making it work inside your boundary is the hard part, and that's what we've done for 25 years.</div>
+
+    <div>
+      <h2>How We Deliver <span class="lab">Five steps, inside your boundary</span></h2>
+      <div class="grid5">
+        <div class="step"><div class="num">01</div><h3>Assess</h3><p>Agree on one use case, the users, the document set and the environment. Write down what is in scope and what isn't.</p></div>
+        <div class="step"><div class="num">02</div><h3>Size &amp; Select</h3><p>Recommend GPU, memory and storage for the use case and user count. You buy through your normal channels.</p></div>
+        <div class="step"><div class="num">03</div><h3>Integrate</h3><p>Connect to the services you already run (sign-in, DNS, certificates, network segment, virtualization) to the extent agreed.</p></div>
+        <div class="step"><div class="num">04</div><h3>Deploy</h3><p>Install air-gapped from transferred media. Load open-source models and index the agreed document set.</p></div>
+        <div class="step"><div class="num">05</div><h3>Sustain</h3><p>Optional retainer for a defined number of offline update bundles per term.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Reference Architecture <span class="lab">Illustrative · final design set in assessment</span></h2>
+      <div class="arch">
+        <span class="lab">Your accredited boundary · no outbound connection</span>
+        <div class="archrow">
+          <div class="box"><span class="lab">Users</span><ul><li>Standard browser on existing workstations</li><li>Sign in with existing credentials (e.g. CAC/PIV)</li><li>No client software to install</li></ul></div>
+          <div class="arrow">→</div>
+          <div class="box"><span class="lab">Services you already run</span><ul><li>Directory / SSO for sign-in</li><li>DNS and certificates (PKI)</li><li>Assigned network segment</li><li>Logging to your existing tools, where agreed</li></ul></div>
+          <div class="arrow">→</div>
+          <div class="box svc"><span class="lab">Private AI service</span><div class="chips"><div>Web interface</div><div>Local model server</div><div>Document search index</div></div><p>Open-source components on your GPU hardware or virtualization platform. Indexes only the document set approved for use.</p></div>
+        </div>
+        <div class="updates"><span class="tag">UPDATES</span><span><b class="lab" style="color:var(--ink)">Offline bundles</b> New model versions and component updates, packaged for your existing media transfer process. Nothing is pulled from the internet.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Wisebird Holdings LLC d/b/a FalconRock Consulting · falconrockconsulting.com</span><span class="lab">01 / 02</span></div>
+</section>
+
+<section class="page p2">
+  <div class="topbar">
+    <div class="brand"><img src="../assets/falconrock-mark-white.png" alt=""><span class="name">FALCONROCK</span><span class="lab" style="margin-left:6px">· Private AI</span></div>
+    <span class="lab">Capability Brief</span>
+  </div>
+
+  <div class="body" style="padding-top:.15in">
+    <div>
+      <h2>Engagement Options <span class="lab">Start small. Prove it. Then scale.</span></h2>
+      <div class="grid3">
+        <div class="opt first"><span class="lab">Start here · fixed scope</span><h3>Pilot</h3><p>One well-defined use case, one document set and a small user group, deployed inside your boundary on your hardware.</p>
+          <ul class="sq"><li>Assessment and hardware recommendation</li><li>Air-gapped deployment on one system</li><li>Written acceptance criteria, agreed up front</li><li>Readout of results and options</li></ul></div>
+        <div class="opt"><span class="lab">Full deployment</span><h3>Production</h3><p>Move a completed pilot, or a clearly defined requirement, into production. Scoped and quoted separately.</p>
+          <ul class="sq"><li>Statement of work with defined deliverables</li><li>Integration items listed by name</li><li>As-built documentation and runbooks</li><li>Technical documentation for your ATO package</li></ul></div>
+        <div class="opt"><span class="lab">Optional · monthly</span><h3>Sustainment</h3><p>Keep the deployed system current without opening a connection to the outside.</p>
+          <ul class="sq"><li>A set number of update bundles per term</li><li>Covers the components we deployed only</li><li>Packaged for your media transfer process</li><li>Other work quoted separately</li></ul></div>
+      </div>
+      <p class="note" style="margin-top:.08in">Available directly, or as a subcontract through a prime or an OEM professional-services partner. Every engagement is fixed in scope and quoted in writing. Anything outside that scope is a separate quote, agreed before the work starts.</p>
+    </div>
+
+    <div>
+      <h2>Scope at a Glance</h2>
+      <div class="scope">
+        <div><span class="lab">Included</span><ul class="sq"><li>Hardware recommendation for the agreed use case</li><li>Install and configure open-source models and document search</li><li>Integration items listed in the statement of work</li><li>As-built documentation and a handoff session</li></ul></div>
+        <div><span class="lab">Not included</span><ul class="sq x"><li>Custom application or chatbot development</li><li>Training or fine-tuning models</li><li>Cleaning up or reorganizing document repositories</li><li>Writing or owning your ATO package</li><li>Buying hardware or user help desk support</li></ul></div>
+        <div><span class="lab">You provide</span><ul class="sq"><li>Hardware installed, powered and on the network</li><li>Accounts, access and a named technical point of contact</li><li>The document set, already approved for use</li><li>Media transfer through your existing process</li></ul></div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Why FalconRock <span class="lab">Same boundary. Same rules. New workload.</span></h2>
+      <div class="why">
+        <div class="intro" style="grid-row:span 3"><p>For 25+ years we've designed and built infrastructure for DoD and Intelligence Community environments, including offline and air-gapped builds.</p><p>Private AI is another workload on that infrastructure, with the same integration problems. The person who scopes the work is the person who builds it.</p><p class="small">Principal holds an active TS/SCI clearance · SAM registered · Active subcontractor to a major defense contractor on a DoD program</p></div>
+        <div class="cap"><b>Identity</b>Active Directory, PKI and CAC/PIV, so sign-in follows the pattern you already use.</div>
+        <div class="cap"><b>Network</b>NSX-T, SD-WAN and Infoblox DDI, so the service fits your network design.</div>
+        <div class="cap"><b>Compute</b>VMware VCF and vSphere, so it runs on a platform your team already supports.</div>
+        <div class="cap"><b>Air-gapped ops</b>Offline depots, media transfer and Ansible-driven builds that can be repeated.</div>
+        <div class="cap wide"><b>Accreditation</b>Architecture and as-built documentation designed to support your ATO package. The package itself stays with your security team.</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div><h4>Schedule a 30-minute <span>discovery call</span></h4><p>We'll cover whether your use case fits a local model, what a fixed-scope pilot would and wouldn't include, and what you'd need in place first. No obligation. You'll be talking to the engineer who would do the work.</p></div>
+      <div class="contact"><span class="lab">Contact</span><b>Simon Holt, Managing Director</b><br>simon.holt@falconrockconsulting.com<br>falconrockconsulting.com/private-ai</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Do not send CUI or classified information by email; we'll arrange an appropriate channel. Product names are the property of their respective owners. FalconRock is an independent consultancy, not affiliated with or endorsed by any referenced vendor or government agency. © 2026 Wisebird Holdings LLC d/b/a FalconRock Consulting.</span><span class="lab">02 / 02</span></div>
+</section>
+
+</body>
+</html>
